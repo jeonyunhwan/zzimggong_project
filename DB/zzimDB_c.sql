@@ -29,14 +29,14 @@ CREATE TABLE jjim_user( -- 회원테이블
 --포장 테이블
 CREATE TABLE take_out(
    id varchar2(30) CONSTRAINT take_out_id_FK REFERENCES jjim_user(id),
-   resNum varchar2(30) constraint restaurant_resNum_fk references restaurant(resNum),
+   resNum varchar2(30) constraint take_out_resNum_fk references restaurant(resNum),
    take_out_time DATE,
    receipt_time DATE
 );
 -- 예약 테이블
 CREATE TABLE reservation(
    id varchar2(30) CONSTRAINT reservation_id_FK REFERENCES jjim_user(id),
-   resNum varchar2(30) constraint restaurant_resNum_fk references restaurant(resNum),
+   resNum varchar2(30) constraint reservation_resNum_fk references restaurant(resNum),
    reserve_apply_person NUMBER,
    reserve_start_time DATE,
    reserve_request varchar2(100)
@@ -45,7 +45,7 @@ CREATE TABLE reservation(
 CREATE TABLE jjim_review(
    review_code varchar2(20) PRIMARY KEY,
    id varchar2(30) CONSTRAINT jjim_review_id_FK REFERENCES jjim_user(id),
-   resNum varchar2(30) constraint restaurant_resNum_fk references restaurant(resNum),
+   resNum varchar2(30) constraint jjim_review_resNum_fk references restaurant(resNum),
    star_sco NUMBER,
    review_date DATE,
    review_content varchar2(100),
@@ -53,7 +53,7 @@ CREATE TABLE jjim_review(
 );
 -- 메뉴테이블
 create table menu(
-    resNum varchar2(30) constraint restaurant_resNum_fk references restaurant(resNum),
+    resNum varchar2(30) constraint menu_resNum_fk references restaurant(resNum),
     mCategory varchar(30),
     menuName varchar2(30),
     price number,
@@ -61,7 +61,7 @@ create table menu(
 );
 -- 매장픽 테이블
 create table resPick(
-    resNum varchar2(30) constraint restaurant_resNum_fk references restaurant(resNum),
+    resNum varchar2(30) constraint resPick_resNum_fk references restaurant(resNum),
     mood varchar2(20),
     purpose varchar2(20),
     food_type varchar2(20),
@@ -71,8 +71,8 @@ create table resPick(
 -- 줄서기 테이블
 create table waiting
 (
-    resNum varchar2(30) constraint restaurant_resNum_fk references restaurant (resNum),
-    id varchar2(30) constraint jjim_user_id_kf references jjim_user(id),
+    resNum varchar2(30) constraint waiting_resNum_fk references restaurant (resNum),
+    id varchar2(30) constraint waiting_id_kf references jjim_user(id),
     wStartTime varchar2(30),
     waiting_num number, --대기팀 수
     waiting_person number,
