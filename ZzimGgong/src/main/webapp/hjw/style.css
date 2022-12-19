@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.shop_name{
+    margin-top: 20px;
+    text-align: center;
+}
+.shop_header_span{
+    color: #61188B;
+}
+.shop_option_contain{
+    margin-top: 30px;
+    text-align: center;
+}
+.shop_option{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+.shop_option_a{
+    display: block;
+    padding-top: 85px;
+}
