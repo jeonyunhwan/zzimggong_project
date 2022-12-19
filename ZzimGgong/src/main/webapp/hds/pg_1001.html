@@ -36,10 +36,20 @@
         width: 127px;
         height: 49px;
         text-align: center;
-        padding-left: 10px;
+        padding-left: 30px;
         display: block;
         font-size: 20px;
         margin-left: 338px;
+    }
+
+    .cnt_wrapper{
+        position: relative;
+    }
+
+    .cnt_wrapper img{
+        position: absolute;
+        right: 122px;
+        top: 12px;
     }
 
     select{
@@ -58,7 +68,7 @@
 
     [name="resDate"]{
         width: 214px; 
-        padding: 7px 0; 
+        padding: 7px 0 7px 42px; 
         border: 1px solid #601986;
         border-radius: 10px;
         font-family: inherit;  
@@ -84,6 +94,21 @@
         flex-direction: column;
         align-items: flex-end;
         padding-right: 31px;
+        position: relative;
+    }
+
+    .date_input_wrapper img:first-child{
+        position: absolute;
+        right: 210px;
+        top: 8px;
+
+    }
+
+    .img02{
+        position: absolute;
+        right: 155px;
+        top: 67px;
+
     }
 
     [type="submit"]{
@@ -134,10 +159,17 @@
                 <span>본인 포함 식사할 인원</span><br>
                 방문하시는 인원을 선택하세요
             </p>
-            <input type="number" id="resCnt" name="resCnt"  min="1" max="10" step="1" value="1"/>
+
+            <div class="cnt_wrapper">
+                <img src="../index_markup/img/myPageImg.png" alt="">
+                <input type="number" id="resCnt" name="resCnt"  min="1" max="10" step="1" value="1"/>
+            </div>
+
             <p>방문 일시를 선택하세요</p>
             <div class="date_input_wrapper">
+                <img src="../index_markup/img/date_icon.png" alt="">
                 <input type="date" name="resDate" id="resDate"><br>
+                <img class="img02" src="../index_markup/img/clock_icon.png" alt="">
                 <select name="resTime" id="resTime">
                     <option value="1130">11 : 30</option>
                     <option value="1200">12 : 00</option>
