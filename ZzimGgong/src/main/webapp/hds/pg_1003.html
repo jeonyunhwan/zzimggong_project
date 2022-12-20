@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>즉시예약 거절 사유 선택</title>
+<title>즉시 예약 승인 및 거절</title>
 <link rel="stylesheet" href="../index_markup/reset.css">
 <style type="text/css">
 
@@ -19,6 +19,8 @@
         line-height: 18px;
         color: #601986;
         line-height: 30px;
+        padding-bottom: 20px;
+
     }
 
     .content p{
@@ -28,36 +30,43 @@
         line-height: 50px;
     }
 
-    [type="submit"]{
-        width: 94px;
-        height: 48px;
-        background: #601986;
-        border-radius: 10px;
-        border: none;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 18px;
-        color: #FFFFFF;
-        font-family: inherit;
-        display: block;
-        margin: auto;
-        margin: 20px auto 0;
-        cursor: pointer;
+    .info_wrap{
+        line-height: 30px;
+        color: #601986;
+        padding: 10px 0;
     }
 
-    select{
-        width: 320px; 
-        padding: 10px 7px; 
-        border: 1px solid #601986;
+    .info_wrap img{
+        padding-right: 14px;
+    }
+
+    /* 버튼 디자인 */
+
+    .btn_wrapper{
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        padding-top: 45px;
+    }
+
+    .btn{
+        background-color: #601986;
+        width: 94px;
+        height: 43px;
+        text-align: center;
         border-radius: 10px;
-        font-family: inherit;  
-        background: url('../index_markup/img/select_arrow.png') no-repeat 95% 50%; 
-        -webkit-appearance: none; 
-        -moz-appearance: none;
-        appearance: none;
-        font-size: 20px;
-        margin: 20px auto 0;
-        display: block;
+        line-height: 43px;
+        font-weight: 400;
+        font-size: 16px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .btn a{
+        color: #fff;
+        line-height: 43px;
+        font-weight: 400;
+        font-size: 16px;
     }
 
 </style>
@@ -79,21 +88,24 @@
     </header>
     <section>
         <div class="content">
-            <h3>예약 거절 사유 선택</h3>
-            <p>
-                예약 거절 사유를 선택창에서 고른 후,
-                확인 버튼을 눌러 주세요.
-            </p>
-            <form>
-                <select name="deny" id="deny">
-                    <option value="deny01">매장 휴무일</option>
-                    <option value="deny02">이미 예약 완료된 일시</option>
-                    <option value="deny03">재료 소진</option>
-                    <option value="deny04">요청사항 반영이 어려움</option>
-                    <option value="deny05">기타사유 - 매장으로 직접 문의</option>
-                </select><br>
-                <input type="submit" value="확인">
-            </form>
+            <h3>예약 승인 및 거절</h3>
+            <p>* 예약 신청 정보</p>
+            <div class="info_wrap">
+                <img src="../index_markup/img/myPageImg.png" alt="">
+                방문인원 :
+            </div>
+            <div class="info_wrap">
+                <img src="../index_markup/img/date_icon.png" alt="">
+                방문일 : 
+            </div>
+            <div class="info_wrap">
+                <img src="../index_markup/img/clock_icon.png" alt="">
+                방문시간 : 
+            </div>
+            <div class="btn_wrapper">
+                <div class="btn">승인</div>
+                <div class="btn"><a href="pg_1003.html">거절</a></div>
+            </div>
         </div>
     </section>
     <footer>
