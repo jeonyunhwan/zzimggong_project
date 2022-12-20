@@ -1,3 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="java.util.*"
+    import="ymw.*"
+   %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +28,7 @@
     		display:flex;
     	}
    	.schBtn>button{
-  		    width: 40px;
+  		width: 40px;
 	    height: 40px;
 	    border: 1px solid gray;
 	    border-radius: 6px 0px 0px 6px;
@@ -30,6 +40,7 @@
 	    margin-left: -1px;
 	    border: 1px gray solid;
 	    border-radius: 0px 6px 6px 0px;
+	    background: white;
    	}
    	.schInp>input{
    		padding: 0px 10px;
@@ -46,13 +57,15 @@
    		gap: 10px;
    	}
    	.recKeyword>li{
-   		border:1px solid gray;
+   		border: 2px solid #601986;
    		background:white;
    		padding: 5px;
    		border-radius: 10px;
+   		cursor:pointer;
    	}
    	.popSch>li{
    		padding: 0px 0px 7px 25px;
+   		cursor:pointer;
    	}
    	.schInp>button{
    		background-color: black;
@@ -65,6 +78,9 @@
    	input[type=text]:focus{
    		outline:none;
    	}
+   	#sch2{
+		display: none;
+	}
 
 </style>
 
@@ -159,17 +175,24 @@
 </div>
 
 </body>
-<style>
-	#sch2{
-		display: none;
-	}
-</style>
 <script type="text/javascript">
 	var schInpOb1 = document.querySelector("[name=schContent1]")
 	var schInpOb2 = document.querySelector("[name=schContent2]")
 	var backBtnOb = document.querySelector("#backBtn")
 	var sch1 = document.querySelector("#sch1")
 	var sch2 = document.querySelector("#sch2")
+	var recKeywords = document.querySelectorAll(".recKeyword>li")
+	var popSchs = document.querySelectorAll(".popSch>li")
+	recKeywords.forEach(function(keyword){
+		keyword.onclick = function(){
+			location.href="./pg0011.jsp?sch="+keyword.innerText+"&appKind=전체&arrKind=별점높은순"
+		}
+	})
+	popSchs.forEach(function(pop){
+		pop.onclick = function(){
+			location.href="./pg0011.jsp?sch="+pop.innerText+"&appKind=전체&arrKind=별점높은순"
+		}
+	})
 	function schFocus(){
 		schInpOb1.focus()
 		sch1.style.display = "none";
@@ -191,7 +214,13 @@
 	}
 	schInpOb2.onkeyup = function(){
 		if(event.keyCode==13){
-			location.href="./pg0011.html?sch="+schInpOb2.value
+			if(schInpOb2.value==""){
+				alert("검색어를 입력해주세요.")
+				schInpOb2.focus()
+			}
+			else{
+				location.href="./pg0011.jsp?sch="+schInpOb2.value+"&appKind=전체&arrKind=별점높은순"
+			}
 		}
 	}
 </script>
