@@ -125,7 +125,9 @@
 
 	.sch_wrapper{
 		position: sticky;
-		top: 60px;
+	    padding-top: 14px;
+	    top: 46px;
+	    background: white;
 	}
 </style>
 
