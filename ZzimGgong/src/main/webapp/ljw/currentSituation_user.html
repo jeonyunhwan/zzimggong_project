@@ -52,11 +52,102 @@
 	    height:40px;
 	    margin:0 auto; 
 	    justify-content:center;
-	    line-height:40px; /*글자 세로정렬>>box크기랑 똑같이 설정*/
+	    line-height:40px; 
 	}
-    
-    
-    
+   
+   .crst01{
+   		display:flex;
+   		justify-content:center;
+   		color:#333;
+   		flex-wrap:wrap;	
+   }
+   .crst01>#rstname{
+  		display:block;
+   		margin:10px auto;
+   		width:100%;
+   		text-align:center;
+   		font-size:30px;
+   }
+   .crst01>div{
+		display:inline-flex;
+		margin:0px auto;
+		width:40%;
+		justify-content:space-between;
+		padding-bottom:20px;
+   }
+   .crst01>div>div{
+      	display:inline-flex;
+   		justify-content:center;
+   	    background-color:#E1E5F2;
+	    border-radius:18px;
+	    width:90px;
+	    height:33px;
+	    font-size:18px;
+	    line-height:33px;
+   }
+   .crst01>div>div>img{
+		height:20px;
+		width:20px;
+		margin:auto 1px;
+   }
+   
+   .crst02{
+   		display:flex;
+   		justify-content:center;
+   		color:#333;
+   		flex-wrap:wrap;	
+   		padding:20px 0px;
+   }
+   .crst02>h2{
+   		display:block;
+   		margin:0px auto 10px auto;
+   		text-align:center;
+   		font-size:23px;
+   		width:100%;
+   }
+   .crst02>h1{
+   		display:inline-flex;
+   		text-align:center;
+   		font-size:45px;
+   		color:#da6e85;
+   }
+   .crst02>img{
+   		display:inline-flex;
+   		align-self: center;
+		height:20px;
+		width:20px;
+   }
+   
+   .crst03{
+   		display:flex;
+   		justify-content:center;
+   		color:#333;
+   		flex-wrap:wrap;	
+   }
+   .crst03>h4{
+ 		display:block;
+   		margin:10px auto;
+   		text-align:center;
+   		width:100%;
+   }
+    .crst03>h5{
+ 		display:block;
+   		margin:2.5px auto;
+   		text-align:center;
+   		width:100%;
+   }
+   .crst04{
+   		display:flex;
+   		justify-content:center;
+   		color:#333;
+	    background-color:#E1E5F2;
+	    border-radius:5px;
+	    font-size:25px;
+	    font-weight:900;
+	    width:50%;
+	    margin:0px auto;
+	    line-height:40px; 
+   }
 
 
 
@@ -92,7 +183,28 @@
 		    		<div class="crstRmln">원격줄서기</div>
 		    	</div>
 		    </nav>
-		    <div class="crstiframe"></div>
+		    <div class="crst">
+			    <div class="crst01">
+			    	<h1 id="rstname">상호명</h1>
+			    	<div>
+			    		<div id="phonecall"><img src="../index_markup/img/phonecall_icon.png" alt="">전화</div>
+			    		<div id="location"><img src="../index_markup/img/locationpin_icon.png" alt="">위치</div>
+			    	</div>
+			    </div>
+			    <div class="crst02">
+			    	<h2>현재 내 입장 순서는</h2>
+			    	<h1>3번</h1>
+			    	<img src="../index_markup/img/circlearrow_icon.png" alt=""/>
+			    </div>
+			    <div class="crst03">
+			    	<h4>대기번호 3</h4>
+			    	<h5>인원 3명</h5>
+			    	<h5>접수일시 2222년 2월 2일 2시 2분 </h5>
+			    </div>
+			    <div class="crst04">대기 취소하기</div>
+		    </div>
+		    
+		    
 		    
         </div>
     </section>
