@@ -7,17 +7,14 @@
 	<link rel="stylesheet" href="./reset.css">
 	<link rel="stylesheet" href="./style.css">
 	<style type="text/css">
-		/* ㅇㅇ */
-		.content {
-			width: 100%;
-			height: 500px;
-			background-color: #fff;
-		}
 	</style>
-
-	<script type="text/javascript">
-
-	</script>
+	<script type="text/javascript" src="./script/power.js"></script>
+	<!-- <script>
+		// var on_off = document.querySelector(".shop_option_power");
+		function click_power() {
+			document.querySelector(".shop_option_power").style.background = "#61188B"
+		}
+	</script> -->
 </head>
 
 <body>
@@ -38,16 +35,19 @@
 				</div>
 				<div class="shop_option_contain">
 					<div class="shop_option">
-						<a href="#" class="shop_option_a">가게기능</a>
+						<input type="button" onclick="location.href='zzim_shop_func.html'" class="shop_option_a"
+							id="option1" value="기능" disabled="true">
 					</div>
 					<div class="shop_option">
-						<a href="#" class="shop_option_a">줄서기</a>
+						<input type="button" onclick="location.href='zzim_shop_wating.html'" class="shop_option_a"
+							id="option2" value="줄서기" disabled="true">
 					</div>
 					<div class="shop_option">
-						<a href="#" class="shop_option_a">예약</a>
+						<input type="button" onclick="location.href='zzim_shop_reserve.html'" class="shop_option_a"
+							id="option3" value="예약" disabled="true">
 					</div>
 					<div class="shop_option">
-						<a href="#" class="shop_option_a">ON/OFF</a>
+						<button class="shop_option_power" onclick="click_power()">OFF</a>
 					</div>
 				</div>
 
