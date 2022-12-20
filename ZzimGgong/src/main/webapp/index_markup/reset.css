@@ -35,6 +35,11 @@
         width: 100px;
     }
 
+    .adminLogo a{
+        font-size: 20px;
+        color: #61188B;
+    }
+
     .gnb{
         font-weight: 600;
         font-size: 14px;
