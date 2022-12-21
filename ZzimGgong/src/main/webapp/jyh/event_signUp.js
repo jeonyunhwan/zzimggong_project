@@ -1,5 +1,5 @@
 // 아이디 유효성 검사 기능 정규식을 통하여 test 진행 
-const uid = document.querySelector("[name=uid]");
+var uid = document.querySelector("[name=uid]");
 const idCheck = document.querySelector("[name=idCheck]");
 var idReg = /^[A-Za-z]{1}[A-Za-z0-9]{4,12}$/;
 var idflag = false;
@@ -12,7 +12,29 @@ uid.onkeyup = function(){
         idflag = true;
     }
 }
-
+// 아이디 중복 체크 ajax
+const checkIDflag = false;
+function checkingId(){
+	console.log("밍밍");
+	var xhr = new XMLHttpRequest();
+	xhr.open("get","checkId.jsp?uid="+uid.value,true);
+	xhr.send();
+	
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			 var ck = eval("("+xhr.responseText+")");
+			 if(ck.chId){
+				alert("등록한 아이디가 있습니다.\n다시 입력해주세요");
+				uid.value = "";
+				uid.focus();
+			}else{
+				alert("등록가능합니다.");
+			    checkIDflag = true;
+			}
+		}
+	}
+}
+	
 // 비밀번호 유효성 검사 기능 
 var pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 var pws = document.querySelector("[name=pws]");
@@ -127,6 +149,7 @@ function sample4_execDaumPostcode() {
 const s01 = document.querySelector("[name = s01]");
 const s02 = document.querySelector("[name = s02]");
 const s03 = document.querySelector("[name = s03]");
+const s04 = document.querySelector("[name = s04]");
 var addrflag = false;
 var addrCheck = document.querySelector("[name = addrCheck]");
 if(s01.value == "" || s02.value == "" || s03.value == ""){
@@ -151,7 +174,6 @@ const agreeChkAll = document.querySelector('input[name=check_all]');
 // onsubmit -> action 일어나기전에 일어나는 이벤트 처리 
 // false 해주면 이벤트 강제종료되서 action 처리안됨.
 function joinform_check(){
-    const addid = document.getElementById("s04");
     const vital1 = document.getElementById("agree01");
     const vital2 = document.getElementById("agree02");
     //아이디 최종 유효성

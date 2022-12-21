@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="./reset.css">
+<link rel="stylesheet" href="signUpCss.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -12,14 +14,7 @@
         height: 500px;
         background-color: #fff;
     }
-
-
 </style>
-
-<script type="text/javascript">
-
-                 
-</script>
 </head>
 <body>
 
@@ -38,12 +33,12 @@
                 <h2 id = "s01">회원가입</h2>
             </div>
             <div class = "content_form">
-                <form action ="" method = "post" onsubmit="joinForm_check()">
+                <form action ="insertMember.jsp" method = "post" onsubmit="return joinform_check()">
                     <div id = "e_form">
                     <div class="insert_form">
                         <b>아이디</b><span name = "idCheck"></span><br>
                         <input type = "text" name = "uid" maxlength="12" placeholder="영문자로 시작하는 5~13자 영문자 또는 숫자"/>
-                        <button>중복확인</button>             
+                        <button type = "button" onclick = "checkingId()">중복확인</button>             
                     </div>
                     <div class = "insert_form">
                         <b>비밀번호</b><span name = "pwCheck"></span><br>
