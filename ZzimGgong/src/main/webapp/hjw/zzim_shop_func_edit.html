@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../index_markup/reset.css">
     <link rel="stylesheet" href="./style.css">
     <style type="text/css">
+
     </style>
     <script type="text/javascript" src="./script/power.js"></script>
 </head>
@@ -26,11 +27,11 @@
             <div class="content">
                 <div class="myshop_header">
                     <span class="myshop_name">내 가게</span>
-                    <input type="button" class="myshop_edit" onclick="location.href='zzim_shop_func_edit.html'"
-                        value="정보수정">
                 </div>
-
                 <hr>
+                <input type="file" class="real-upload" accept="image/*" required multiple>
+                <div class="upload">메뉴 업로드</div>
+                <ul class="menu_img"></ul>
                 <div class="myshop_img-contain">
                     <img class="myshop_img" src="../index_markup/img/shop_cafeImg.png" alt="">
                 </div>
@@ -57,8 +58,54 @@
     </div>
 
 </body>
-<script type="text/javascript">
+<script>
+    function getImageFiles(e) {
+        const uploadFiles = [];
+        const files = e.currentTarget.files;
+        const imagePreview = document.querySelector('.menu_img');
+        const docFrag = new DocumentFragment();
 
+        if ([...files].length >= 7) {
+            alert('이미지는 최대 6개 까지 업로드가 가능합니다.');
+            return;
+        }
+
+        // 파일 타입 검사
+        [...files].forEach(file => {
+            if (!file.type.match("image/.*")) {
+                alert('이미지 파일만 업로드가 가능합니다.');
+                return
+            }
+
+            // 파일 갯수 검사
+            if ([...files].length < 7) {
+                uploadFiles.push(file);
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const preview = createElement(e, file);
+                    imagePreview.appendChild(preview);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    function createElement(e, file) {
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        img.setAttribute('src', e.target.result);
+        img.setAttribute('data-file', file.name);
+        li.appendChild(img);
+
+        return li;
+    }
+
+    const realUpload = document.querySelector('.real-upload');
+    const upload = document.querySelector('.upload');
+
+    upload.addEventListener('click', () => realUpload.click());
+
+    realUpload.addEventListener('change', getImageFiles);
 </script>
 
 </html>
