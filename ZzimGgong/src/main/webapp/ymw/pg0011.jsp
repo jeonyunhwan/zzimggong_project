@@ -101,8 +101,17 @@
 		font-weight: 600;
 		cursor:pointer;
 	}
-	.arrKind>ul>li{
-		cursor:pointer;
+	.arrKind{
+		display: flex;
+    	align-items: flex-end;
+	}
+	.arrKind>select{
+		width: 100px;
+	    font-size: 15px;
+	    font-weight: 900;
+	    border: 2px solid #601986;
+	    border-radius: 9px;
+	    height: 30px;
 	}
 	.storeInfo{
 		display: flex;
@@ -128,6 +137,10 @@
 	    padding-top: 14px;
 	    top: 46px;
 	    background: white;
+	}
+	.arr{
+		display:flex;
+		justify-content: space-between;
 	}
 </style>
 
@@ -160,19 +173,21 @@
 	        		</div>
 	        	</div>
         	</div>
-        	<div class="appKind">
-        		<ul>
-        			<li>전체</li>
-        			<li>원격줄서기</li>
-        			<li>즉시예약</li>
-        		</ul>
-        	</div>
-        	<div class="arrKind">
-        		<ul>
-        			<li>별점높은순</li>
-        			<li>가까운순</li>
-        			<li>신규매장순</li>
-        		</ul>
+        	<div class="arr">
+	        	<div class="appKind">
+	        		<ul>
+	        			<li>전체</li>
+	        			<li>원격줄서기</li>
+	        			<li>즉시예약</li>
+	        		</ul>
+	        	</div>
+	        	<div class="arrKind">
+	        		<select>
+	        			<option>별점높은순</option>
+	        			<option>가까운순</option>
+	        			<option>신규매장순</option>
+	        		</select>
+	        	</div>
         	</div>
         	<div class="storeInfo">
         		<div class="storeInfoDiv">
@@ -267,7 +282,7 @@
 <script type="text/javascript">
 var schInpOb2 = document.querySelector("[name=schContent2]")
 var appKindArr = document.querySelectorAll(".appKind li")
-var arrKindArr = document.querySelectorAll(".arrKind li")
+var arrKindSel = document.querySelector(".arrKind>select")
 var storeInfoDivs = document.querySelectorAll(".storeInfoDiv")
 var snums = document.querySelectorAll(".snum")
 snums.forEach(function(snum){
@@ -276,7 +291,7 @@ snums.forEach(function(snum){
 storeInfoDivs.forEach(function(inf,idx){
 	inf.style.cursor = "pointer";
 	if(inf.onclick = function(){
-		location.href = "./pg0012.jsp?snum="+snums[idx].innerText
+		location.href = "./pg0012.jsp?snum="+snums[idx].innerText+"&sch="+schInpOb2.value
 	}){
 	}
 })
@@ -287,11 +302,7 @@ function start(){
 		kind.style.color = "red";
 	}
 	})
-	arrKindArr.forEach(function(kind){
-	if(kind.innerText=="${param.arrKind}"){
-		kind.style.color = "red";
-	}
-	})
+	arrKindSel.value = "${param.arrKind}"
 }
 appKindArr.forEach(function(kind){
 	if(kind.innerText=="${param.appKind}"){
@@ -309,22 +320,16 @@ appKindArr.forEach(function(kind){
 		
 	}
 })
-arrKindArr.forEach(function(kind){
-	if(kind.innerText=="${param.arrKind}"){
-		kind.style.color = "red";
+arrKindSel.onchange = function(){
+	var arrKind = arrKindSel.value
+	if(schInpOb2.value==""){
+		alert("검색어를 입력해주세요.")
+		schInpOb2.focus()
 	}
-	kind.onclick = function(){
-		var arrKind = kind.innerText
-		if(schInpOb2.value==""){
-			alert("검색어를 입력해주세요.")
-			schInpOb2.focus()
-		}
-		else{
-			location.href="./pg0011.jsp?sch="+schInpOb2.value+"&appKind=${param.appKind}&arrKind="+arrKind
-		}
-		
+	else{
+		location.href="./pg0011.jsp?sch="+schInpOb2.value+"&appKind=${param.appKind}&arrKind="+arrKind
 	}
-})
+}
 schInpOb2.onkeyup = function(){
 	if(event.keyCode==13){
 		if(schInpOb2.value==""){
