@@ -12,6 +12,139 @@
 	    height: 500px;
 	    background-color: #fff;
 	}
+	
+	/* 지원 */   
+	nav.searchmenu{
+		width: 100%;
+		background-color: #fff;
+		display: block
+	}
+	
+	.search {
+		padding-top:20px;
+		display:flex;
+		width:60%;
+		margin:0 auto; /* 가운데정렬 */
+		justify-content: center; /* 가운데정렬 */
+	}
+	
+	
+	nav.searchmenu>.search>form>input[type=text]{
+		background-color:#E1E5F2;
+		height:40px;
+		border-radius:12px 0px 0px 12px;
+		border:none;
+		display:block;
+		padding-left:20px;
+	}
+	nav.searchmenu>.search>form>input[type=text]:click{
+		border:none;
+	}
+	nav.searchmenu>.search>form>button{
+		background-color:#E1E5F2;
+		height:40px;
+		width:40px;
+		border:none;
+		display:none;
+	}
+	nav.searchmenu>.search>div>button{
+		background-color:#E1E5F2;
+		height:40px;
+		width:40px;
+		border-radius:0px 12px 12px 0px;
+		border:none;
+	}
+	nav.searchmenu>.search>div>button>img{
+		height:20px;
+		width:20px;
+	}
+	nav.searchmenu>.menu{
+		display:flex;
+	    justify-content:center;
+	    gap:60px;
+	    padding-top:20px;
+	    padding-bottom:20px;
+	    font-size:18px;
+	    font-weight:800;
+	    color:#4C4C47;
+	}
+	nav.searchmenu>.menu>li:hover{
+		color:#601986;
+	}
+	
+	.content>.advertising{
+		height:140px;
+		background-color:#F1F3F9;
+	}
+	
+	.advertising>.banner{
+		display:flex;
+		justify-content: center; 
+	}
+	.banner>div{
+		display:inline-block;
+		
+	}
+	.banner>div>h3{
+		display:block;
+		gap:5px;
+	}
+	.banner>img{
+		display:inline-block;
+		height:140px;
+	}
+	
+	.content>h3{
+		display:flex;
+	    justify-content:center;
+	    padding-top:30px;
+	}
+	
+	.mpstores>.array{
+		display:flex;
+	    justify-content:center;
+	    gap:70px;
+	    padding-top:20px;
+	    padding-bottom:5px;
+	    font-size:15px;
+	    color:#4C4C47;
+	}
+	.mpstores>.array>li{
+		border:#601986;
+	}
+	.mpstores>.array>li:hover{
+		color:#601986;
+	}
+	.mpstores>hr{
+		width:80%;
+		color:#601986;
+		margin:0 auto; 
+	}
+	
+	.mpstores>.aryrange{
+		display:flex;
+	    justify-content:center;
+	    gap:57px;
+	    padding-top:5px;
+	    font-size:15px;
+	    color:#4C4C47;
+	}
+	.mpstores>.aryrange>li{
+		border:#601986 ;
+		border-radius:15px 15px 15px 15px;
+	}
+	.mpstores>.aryrange>li:hover{
+		color:#601986;
+	}
+	
+	/*
+	.bj-button i:before {
+	    display: block;
+	}
+	.icon--search:before {
+	    content: "\f1cb";
+	}
+	*/
 
 </style>
 </head>
@@ -60,9 +193,9 @@
 		    <h3>내 주변 맛집으로 찜꽁</h3>
 		    <div class="mpstores">
 		    	<ul class="array">
-		    		<li >가까운 순</li>
-		    		<li >평점높은 순</li>
-		    		<li >리뷰많은 순</li>
+		    		<li>가까운 순</li>
+		    		<li>평점높은 순</li>
+		    		<li>리뷰많은 순</li>
 		    	</ul>
 		    	<hr>
 		    	<ul class="aryrange">
@@ -73,8 +206,62 @@
 		    	</ul>
 		    	<ul class="arystores">
 		    		<li>
+		    			<img alt="" src="">
+		    			<div>
+		    				<h4></h4>
+		    				<h4></h4>
+		    				<h4></h4>
+		    			</div>
+		    		</li>
 		    		<li>
+		    			<img alt="" src="">
+		    			<div>
+		    				<h4></h4>
+		    				<h4></h4>
+		    				<h4></h4>
+		    			</div>
+		    		</li>
 		    		<li>
+		    			<img alt="" src="">
+		    			<div>
+		    				<h4></h4>
+		    				<h4></h4>
+		    				<h4></h4>
+		    			</div>
+		    		</li>
+		    		<li>
+		    			<img alt="" src="">
+		    			<div>
+		    				<h4></h4>
+		    				<h4></h4>
+		    				<h4></h4>
+		    			</div>
+		    		</li>
+		    		<li>
+		    			<img alt="" src="">
+		    			<div>
+		    				<h4></h4>
+		    				<h4></h4>
+		    				<h4></h4>
+		    			</div>
+		    		</li>
+		    		<li>
+		    			<img alt="" src="">
+		    			<div>
+		    				<h4></h4>
+		    				<h4></h4>
+		    				<h4></h4>
+		    			</div>
+		    		</li>
+		    		<li>
+		    			<img alt="" src="">
+		    			<div>
+		    				<h4></h4>
+		    				<h4></h4>
+		    				<h4></h4>
+		    			</div>
+		    		</li>
+
 		    	</ul>
 		    </div>
 		    
