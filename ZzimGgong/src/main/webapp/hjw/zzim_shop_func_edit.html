@@ -29,9 +29,22 @@
                     <span class="myshop_name">내 가게</span>
                 </div>
                 <hr>
-                <input type="file" class="real-upload" accept="image/*" required multiple>
-                <div class="upload">메뉴 업로드</div>
-                <ul class="menu_img"></ul>
+
+                <form action="zzim_shop_func.html">
+                    <input type="file" class="real-upload" accept="image/*" required multiple>
+                    <div class="upload">메뉴 업로드</div>
+                    <ul class="menu_img"></ul>
+                    <p>매장 pick</p>
+                    <div class="pick_contain">
+                        <label class="pick_label" for="pick1">아늑<input type="checkbox" id="pick1"></label>
+                        <label class="pick_label" for="pick2">데이트<input type="checkbox" id="pick2"></label>
+                        <label class="pick_label" for="pick3">파티<input type="checkbox" id="pick3"></label>
+                        <label class="pick_label" for="pick4">일식<input type="checkbox" id="pick4"></label>
+                        <label class="pick_label" for="pick5">양식<input type="checkbox" id="pick5"></label>
+                        <label class="pick_label" for="pick6">중식<input type="checkbox" id="pick6"></label>
+                    </div>
+                </form>
+
                 <div class="myshop_img-contain">
                     <img class="myshop_img" src="../index_markup/img/shop_cafeImg.png" alt="">
                 </div>
@@ -59,53 +72,13 @@
 
 </body>
 <script>
-    function getImageFiles(e) {
-        const uploadFiles = [];
-        const files = e.currentTarget.files;
-        const imagePreview = document.querySelector('.menu_img');
-        const docFrag = new DocumentFragment();
-
-        if ([...files].length >= 7) {
-            alert('이미지는 최대 6개 까지 업로드가 가능합니다.');
-            return;
+    var pickAll = document.querySelectorAll(".pick_label");
+    pickAll.forEach(function (pickAll) {
+        pickAll.onclick = function () {
+            this.style.background = "#995dbb"
+            this.style.color = "#f2ebf5"
         }
-
-        // 파일 타입 검사
-        [...files].forEach(file => {
-            if (!file.type.match("image/.*")) {
-                alert('이미지 파일만 업로드가 가능합니다.');
-                return
-            }
-
-            // 파일 갯수 검사
-            if ([...files].length < 7) {
-                uploadFiles.push(file);
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const preview = createElement(e, file);
-                    imagePreview.appendChild(preview);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    }
-
-    function createElement(e, file) {
-        const li = document.createElement('li');
-        const img = document.createElement('img');
-        img.setAttribute('src', e.target.result);
-        img.setAttribute('data-file', file.name);
-        li.appendChild(img);
-
-        return li;
-    }
-
-    const realUpload = document.querySelector('.real-upload');
-    const upload = document.querySelector('.upload');
-
-    upload.addEventListener('click', () => realUpload.click());
-
-    realUpload.addEventListener('change', getImageFiles);
+    })
 </script>
 
 </html>

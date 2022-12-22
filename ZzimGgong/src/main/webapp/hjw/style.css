@@ -92,15 +92,15 @@
     padding-top: 5%;
     padding-left: 5%;
 }
-li {
+.menu_img li {
     width: 100%;
     list-style: none;
     display: block;
 }
 
 .menu_img img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     display: block;
 }
 
@@ -116,4 +116,22 @@ li {
     background-color: #995dbb;
     color: #f2ebf5;
 }
-
+input[type=checkbox]{
+    display: none;
+}
+.pick_contain{
+    padding-top: 5%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.pick_label{
+    width: 60px;
+    height: 30px;
+    list-style: 30px;
+    border:1px solid #333;
+    border-radius: 5px;
+    color: #333;
+}
