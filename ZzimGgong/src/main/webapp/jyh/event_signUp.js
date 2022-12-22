@@ -3,19 +3,34 @@ var uid = document.querySelector("[name=uid]");
 const idCheck = document.querySelector("[name=idCheck]");
 var idReg = /^[A-Za-z]{1}[A-Za-z0-9]{4,12}$/;
 var idflag = false;
+var checkIDflag = false;
 uid.onkeyup = function(){
     if(!idReg.test(uid.value)){
         idCheck.innerText = "영문자로 시작하는 5~13자 영문자 또는 숫자이어야 합니다.";
-        idflag = false;
+        idflag = false;        
     }else{
         idCheck.innerText = "";
         idflag = true;
     }
+    
+}
+ var email = document.querySelector("[name=email]");
+ var emailReg = /^[A-Za-z]{1}[A-Za-z0-9]{5,18}$/;
+ var emailCheck = document.querySelector("[name = emailCheck]");
+ var emails = document.querySelector("[name=emails]");
+ var emailflag = false;
+ var sflag = false;
+ email.onkeyup = function(){
+	if(!emailReg.test(email.value)){
+		emailCheck.innerText = "영문자로 시작하는 6~19자 영문자 또는 숫자이어야 합니다."
+		emailflag = false;
+	}else{
+		emailCheck.innerText = "";
+		emailflag = true;
+	}
 }
 // 아이디 중복 체크 ajax
-const checkIDflag = false;
 function checkingId(){
-	console.log("밍밍");
 	var xhr = new XMLHttpRequest();
 	xhr.open("get","checkId.jsp?uid="+uid.value,true);
 	xhr.send();
@@ -34,6 +49,7 @@ function checkingId(){
 		}
 	}
 }
+
 	
 // 비밀번호 유효성 검사 기능 
 var pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
@@ -89,76 +105,47 @@ nik.onkeyup = function(){
     }
 }
 //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-function sample4_execDaumPostcode() {
-    new daum.Postcode({
+const addr = document.querySelector("[name=addr]");
+const detailaddr = document.querySelector("[name = detailaddr]");
+const addrCheck = document.querySelector("[name = addrCheck]");
+var addrflag = false;
+// 주소 입력 유효성 검사 
+detailaddr.onclick = function(){
+	if(detailaddr.value == ""){
+		addrCheck.innerText = "상세 주소 입력이 되지 않았습니다.";
+		addrflag = false;
+	}
+	else{
+		addrCheck.innerText = "";
+		addrflag = true;
+	}
+}
+function findAddr(){
+	new daum.Postcode({
         oncomplete: function(data) {
+        	
+        	console.log(data);
+        	
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
             // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             var roadAddr = data.roadAddress; // 도로명 주소 변수
-            var extraRoadAddr = ''; // 참고 항목 변수
-
-            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                extraRoadAddr += data.bname;
-            }
-            // 건물명이 있고, 공동주택일 경우 추가한다.
-            if(data.buildingName !== '' && data.apartment === 'Y'){
-               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-            }
-            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-            if(extraRoadAddr !== ''){
-                extraRoadAddr = ' (' + extraRoadAddr + ')';
-            }
-
+            var jibunAddr = data.jibunAddress; // 지번 주소 변수
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('sample4_postcode').value = data.zonecode;
-            document.getElementById("sample4_roadAddress").value = roadAddr;
-            document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-            
-            // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+            document.getElementById('member_post').value = data.zonecode;
             if(roadAddr !== ''){
-                document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-            } else {
-                document.getElementById("sample4_extraAddress").value = '';
-            }
-
-            var guideTextBox = document.getElementById("guide");
-            // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-            if(data.autoRoadAddress) {
-                var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-                guideTextBox.style.display = 'block';
-
-            } else if(data.autoJibunAddress) {
-                var expJibunAddr = data.autoJibunAddress;
-                guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-                guideTextBox.style.display = 'block';
-            } else {
-                guideTextBox.innerHTML = '';
-                guideTextBox.style.display = 'none';
+                document.getElementById("member_addr").value = roadAddr;
+            } 
+            else if(jibunAddr !== ''){
+                document.getElementById("member_addr").value = jibunAddr;
             }
         }
     }).open();
 }
-
 // 상세주소 유효성 검사 
 
-const s01 = document.querySelector("[name = s01]");
-const s02 = document.querySelector("[name = s02]");
-const s03 = document.querySelector("[name = s03]");
-const s04 = document.querySelector("[name = s04]");
-var addrflag = false;
-var addrCheck = document.querySelector("[name = addrCheck]");
-if(s01.value == "" || s02.value == "" || s03.value == ""){
-    addrCheck.innerText = "주소를 입력해주세요!"
-    addrflag = false;
-}else{
-    addrCheck.innerText = "";
-    addrflag = true;
-}
+
+
 
 // 전체 선택, 전체 선택 해제 
 const agreeChkAll = document.querySelector('input[name=check_all]');
@@ -201,17 +188,29 @@ function joinform_check(){
         return false;
     }
 
-    if(addrflag == false){
-        alert("주소 입력을 확인하세요");
-        s04.focus();
-        return false;
-    }
-
     if(!vital1.checked || !vital2.checked){
         alert("필수 항목을 체크하세요!");
         vital1.focus();
         return false; 
     }
+    if(checkIDflag==false){
+	alert("id = 중복검사 진행해주세요.");
+	return false;
+	}
+	if(addr.value == ""){
+	alert("주소 입력이 되지 않았습니다.");
+	return false;	
+	}	
+	// 상세주소 
+	if(addrflag == false){
+		alert("주소입력을 해주세요.");
+		return false;
+	}
+	// 이메일 주소 선택 
+	if(emails.value == "1" || emailflag == false){
+		alert("이메일 주소를 선택해주세요.\n 또는 이메일 입력을 확인하세요.");
+		return false;
+	}
+}
     
 
-}
