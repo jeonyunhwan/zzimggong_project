@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>노쇼패널티 고객 검색 및 해제</title>
+<title>예약 취소 및 노쇼 고객 등록</title>
 <link rel="stylesheet" href="../index_markup/reset.css">
 <style type="text/css">
 
@@ -45,7 +45,7 @@ form{
     position: relative;
 }
 
-[name="noshowSch"]{
+[name="resStoreSch"]{
     width: 267px; 
     padding: 7px 0 7px 42px; 
     border: 1px solid #601986;
@@ -62,8 +62,8 @@ form{
     border: none;
     cursor: pointer;
     margin-left: 7px;
-    font-weight: 600;
     font-size: 16px;
+    font-weight: 600;
 }
 
 form span{
@@ -89,27 +89,27 @@ form span{
         <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li class="adminLogo"><a href="#">ADMIN PAGE</a></li>
+                <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
     <section>
         <div class="content">
-            <h2>노쇼패널티 고객 검색 및 패널티 해제</h2>
+            <h2>예약 내역 취소 및 노쇼 고객 확인</h2>
             
             <form>
                 <span>회원아이디</span>
                 <div class="schImg">
                     <img src="../index_markup/img/sch_icom.png" alt="">
                 </div>
-                <input type="text" name="noshowSch" id="noshowSch">
+                <input type="text" name="resStoreSch" id="resStoreSch">
                 <input type="submit" value="검색">
             </form>
 
             <table>
                 <thead>
                     <tr>
-                        <th>선택</th><th>아이디</th><th>노쇼 횟수</th><th>패널티 여부</th>
+                        <th>선택</th><th>아이디</th><th>신청일시</th><th>요청사항</th>
                     </tr>
                 </thead>
                 <tbody>
