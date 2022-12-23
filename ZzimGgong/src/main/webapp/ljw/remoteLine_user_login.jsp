@@ -19,7 +19,7 @@
         background-color: #fff;
     }
     
-    /* 지원 */   
+    	/* 지원 */   
 	nav.searchmenu{
 		width: 100%;
 		background-color: #fff;
@@ -103,20 +103,8 @@
 		font-weight:400;
 		text-align:center;
 	}
-	.array{
-		display:flex;
-		flex-flow:row-reverse;
-		padding-top:10px;
-		gap:10px;
-	}
-	.array>select{
-		border: 2px solid #601986;
-		border-radius:16px;
-		color:#333;
-		font-size:12.5px;
-		text-align:center;
-		height:25px; 
-	}
+
+
 	
 	
 	.storeInfo2{
@@ -156,9 +144,63 @@
 	nav.searchmenu{
 		position:sticky;
 		top:46px;
+		z-index:999;
 		background-color:#fff;
 	}
+	
+	
+	/* select */
+	.array{
+		display:flex;
+		flex-flow:row-reverse;
+		padding-top:10px;
+		gap:10px;
+	}
+	.selectBox1 * { box-sizing:border-box;}
+	.selectBox1{
+		position:relative;
+		width: 110px;
+		height: 32px;
+		border-radius:16px;
+		border:2px solid #601986;
+		background: url('../index_markup/img/select_arrow.png') no-repeat 92% 50%;
+		background-size:12px;
+		margin-right:10px;
+	}
+	.selectBox1 .label{
+		border:none;
+		line-height:32px; /* 가로 정렬은 이게 제일 쉬운 듯 */
+		background:transparent;
+		margin-left:11px;
+		font-weight:600;
+	}
+	.selectBox1>.optionList{
+		position:absolute;
+		top:32px;
+		width:100%;
+		background:#601986;
+		color:#fff;
+		border-radius:16px;
+	}
+	
 
+	.selectBox1>.optionList>.option{
+ 		border-bottom:1px dashed #fff; 
+		padding: 5px 10px;
+		font-size:14px;
+	}
+	.selectBox1>.optionList>.option:last-child{
+		/* 마지막 줄은 삭제 */
+		border-bottom:none;
+	}
+	
+	
+	.selectBox1>.optionList>li:hover{
+		background:#ffd6df;
+		color:#fff;
+	}
+    
+    
 
 </style>
 </head>
@@ -195,21 +237,18 @@
 		    </nav>
 		    
 	    	<div class="myloc">
-	    		<input type="text" placeholder="현재위치를 입력하세요"/>
+	    		<input type="text" placeholder="현재 위치를 입력하세요"/>
 	    	</div>
 	    	
 	    	<div class="array">
-	    		<select>
-	    			<option>전체 거리</option>
-	    			<option>5km</option>
-	    			<option>10km</option>
-	    			<option>30km</option>
-	    		</select>
-	    		<select>
-	    			<option>가까운 순</option>
-	    			<option>평점 높은 순</option>
-	    			<option>리뷰 많은 순</option>
-	    		</select>
+				<div class="selectBox1">
+					<button class="label">가게 정렬</button>
+					<ul class="optionList">
+						<li class="option">별점 높은 순</li> <%-- 별점 높은 순으로 수정할 수도 有 --%>
+						<li class="option">리뷰 많은 순</li>
+						<li class="option">현재 위치와 가까운 순</li>
+					</ul>
+				</div>
 	    	</div>
 	    	
         	<div class="storeInfo2">
