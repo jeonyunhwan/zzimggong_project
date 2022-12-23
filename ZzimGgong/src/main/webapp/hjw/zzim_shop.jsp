@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import = "java.util.*"
+%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -19,17 +26,18 @@
 			<nav class="gnb">
 				<ul>
 					<li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
+					<li><button onclick="logout()">종료</button></li>
 				</ul>
 			</nav>
 		</header>
 		<section>
 			<div class="content">
 				<div class="shop_name">
-					<span class="shop_header_span">가게 이름</span>
+					<span class="shop_header_span">이름:${res.res_name}</span>
 				</div>
 				<div class="shop_option_contain">
 					<div class="shop_option">
-						<input type="button" onclick="location.href='zzim_shop_func.html'" class="shop_option_a"
+						<input type="button" onclick="location.href='zzim_shop_func.jsp'" class="shop_option_a"
 							id="option1" value="기능" disabled="true">
 					</div>
 					<div class="shop_option">

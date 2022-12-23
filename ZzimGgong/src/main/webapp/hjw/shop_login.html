@@ -1,3 +1,10 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import = "java.util.*"
+	import="jspexp.vo.*"  
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> -->
 <!DOCTYPE html>
 <html>
 
@@ -11,8 +18,7 @@
     <script type="text/javascript" src="./script/power.js"></script>
 </head>
 
-<body>
-
+<body style="background-color: #eeee;">
     <div class="wrapper">
         <header>
             <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
@@ -24,18 +30,11 @@
         </header>
         <section>
             <div class="content">
-                <div class="myshop_header">
-                    <span class="myshop_name">내 가게</span>
-                    <input type="button" class="myshop_edit" onclick="location.href='zzim_shop_func_edit.html'"
-                        value="정보수정">
-                </div>
-
-                <hr>
-                <div class="myshop_img-contain">
-                    <img class="myshop_img"
-                        src="https://github.com/jeonyunhwan/zzimggong_project/blob/main/ZzimGgong/src/main/webapp/index_markup/img/shop_cafeImg.png?raw=true"
-                        alt="">
-                </div>
+                <form action="zzim_shop.jsp" style="text-align: center; padding-top: 80px;">
+                    <p>사용자코드 입력</p>
+                    <input type="text" name="resnum">
+                    <input type="submit" value="확인">
+                </form>
             </div>
         </section>
         <footer>

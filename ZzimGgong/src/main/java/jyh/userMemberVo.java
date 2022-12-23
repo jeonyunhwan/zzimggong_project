@@ -4,10 +4,12 @@ public class userMemberVo {
 	private String userId;
 	private String password;
 	private String email;
+	private int emailCerticode;
 	private String nickName;
 	private String phoneNumber;
 	private String address;
 	private int noShowNum;
+	//토큰 빼도 됨.
 	private String accessToken;
 	/**
 	 * @param userId
@@ -28,15 +30,15 @@ public class userMemberVo {
 	 * @param noShowNum
 	 */
 	// 회원가입 요청값 insert
-	public userMemberVo(String userId, String password,String nickName, String address) {
+	public userMemberVo(String userId, String password,String email,String nickName, String address) {
 		this.userId = userId;
 		this.password = password;
+		this.email = email;
 		this.nickName = nickName;
 		this.address = address;
 	}
 	
 	
-
 	public String getNickName() {
 		return nickName;
 	}
@@ -54,6 +56,14 @@ public class userMemberVo {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public int getEmailCerticode() {
+		return emailCerticode;
+	}
+
+
+	public void setEmailCerticode(int emailCerticode) {
+		this.emailCerticode = emailCerticode;
 	}
 
 

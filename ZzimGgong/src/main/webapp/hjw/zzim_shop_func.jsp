@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import = "java.util.*"
+%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +16,7 @@
     <style type="text/css">
     </style>
     <script type="text/javascript" src="./script/power.js"></script>
+    <script type="text/javascript" src="./script/shop_loginJS.js"></script>
 </head>
 
 <body>
@@ -18,15 +26,17 @@
             <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
             <nav class="gnb">
                 <ul>
-                    <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
+                    <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt="" onclick="logout()"></a></li>
+                    <li><button onclick="logout()">종료</button></li>
                 </ul>
             </nav>
         </header>
         <section>
             <div class="content">
                 <div class="myshop_header">
-                    <span class="myshop_name">내 가게</span>
-                    <input type="button" class="myshop_edit" onclick="location.href='zzim_shop_func_edit.html'"
+                    <span class="myshop_name">${res.res_name }</span>
+                    
+                    <input type="button" class="myshop_edit" onclick="location.href='zzim_shop_func_edit.jsp'"
                         value="정보수정">
                 </div>
 

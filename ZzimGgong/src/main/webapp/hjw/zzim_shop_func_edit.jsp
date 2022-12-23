@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import = "java.util.*"
+%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -20,20 +27,18 @@
             <nav class="gnb">
                 <ul>
                     <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
+                    <li><button onclick="logout()">종료</button></li>
                 </ul>
             </nav>
         </header>
         <section>
             <div class="content">
                 <div class="myshop_header">
-                    <span class="myshop_name">내 가게</span>
+                    <span class="myshop_name">${res.res_name }</span>
                 </div>
                 <hr>
 
-                <form action="zzim_shop_func.html">
-                    <input type="file" class="real-upload" accept="image/*" required multiple>
-                    <div class="upload">메뉴 업로드</div>
-                    <ul class="menu_img"></ul>
+                <form action="zzim_shop_func.jsp">
                     <p>매장 pick</p>
                     <div class="pick_contain">
                         <label class="pick_label" for="pick1">아늑<input type="checkbox" id="pick1"></label>
@@ -42,12 +47,12 @@
                         <label class="pick_label" for="pick4">일식<input type="checkbox" id="pick4"></label>
                         <label class="pick_label" for="pick5">양식<input type="checkbox" id="pick5"></label>
                         <label class="pick_label" for="pick6">중식<input type="checkbox" id="pick6"></label>
+                    	<input class="upload" type="submit" value="저장">
                     </div>
                 </form>
-
                 <div class="myshop_img-contain">
                     <img class="myshop_img" src="../index_markup/img/shop_cafeImg.png" alt="">
-                </div>
+                </div>	
             </div>
         </section>
         <footer>

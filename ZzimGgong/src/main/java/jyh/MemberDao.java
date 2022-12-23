@@ -18,7 +18,7 @@ public class MemberDao {
     
     //회원등록 Dao
     public int SignUp(userMemberVo ins) {
-    	String query = "insert into user values(?,?,NULL,?,NULL,?,0,NULL)";
+    	String query = "insert into jjim_user values(?,?,?,0,?,NULL,?,0)";
     	int suIdx = 0;
     	try {
     		con = DB.con();
@@ -27,8 +27,9 @@ public class MemberDao {
     		
     		pstmt.setString(1,ins.getUserId());
     		pstmt.setString(2,ins.getPassword());
-    		pstmt.setString(3,ins.getNickName());
-    		pstmt.setString(4,ins.getAddress());
+    		pstmt.setString(3,ins.getEmail());
+    		pstmt.setString(4,ins.getNickName());
+    		pstmt.setString(5,ins.getAddress());
     		suIdx = pstmt.executeUpdate();
     		con.commit();
             pstmt.close();
