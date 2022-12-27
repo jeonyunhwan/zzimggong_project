@@ -49,6 +49,18 @@
 </script>
 </body>
 <script type ="text/javascript">
+function loginform(kakaoId){
+	var frm = document.createElement('form');
+	frm.setAttribute('method', 'post');
+	frm.setAttribute('action', 'sns_Session.jsp');
+	var hiddenInput = document.createElement('input');
+	hiddenInput.setAttribute('type','hidden');
+	hiddenInput.setAttribute('name','email');
+	hiddenInput.setAttribute('value',kakaoId);
+	frm.appendChild(hiddenInput);
+	document.body.appendChild(frm);
+	frm.submit();
+}
 
 </script>
 </html>

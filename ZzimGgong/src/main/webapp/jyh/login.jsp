@@ -22,7 +22,7 @@
     </header>
     <section>
         <div class="content">
-            <form action="checkLogin.jsp" method="POST">
+            <form action="checkLogin.jsp" method="POST" onsubmit= "return userLoginCheck()">
                 <div class="input-box">
                     <input id="username" type="text" name="email" placeholder="이메일">
                     <label for="username">이메일</label>
@@ -75,6 +75,21 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <script type = "text/javascript">
+var inputEmail = document.querySelector("[name = email]");
+var inputPass = document.querySelector("[name = password]");
+function userLoginCheck(){
+	if(inputEmail.value==""||inputEmail.value==null){
+		alert("아이디를 입력해주세요.");
+		inputEmail.focus();
+		return false;
+	}
+	if(inputPass.value==""||inputPass.value==null){
+		alert("비밀번호를 입력해주세요.");
+		inputPass.focus();
+		return false;
+	}
+}
+
 Kakao.init('e4257ea38bd8a9059dcbe7d97e0eaa9b'); // 카카오 javascript 인증키 
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
 
@@ -151,7 +166,7 @@ function createHiddenLoginForm(kakaoId,email,nik){
 	
 	var frm = document.createElement('form');
 	frm.setAttribute('method', 'post');
-	frm.setAttribute('action', 'snsInsert.jsp');
+	frm.setAttribute('action', 'kakaoInsert.jsp');
 	var hiddenInput = document.createElement('input');
 	hiddenInput.setAttribute('type','hidden');
 	hiddenInput.setAttribute('name','uid');
@@ -169,7 +184,6 @@ function createHiddenLoginForm(kakaoId,email,nik){
 	frm.appendChild(hiddenInput2);
 	document.body.appendChild(frm);
 	frm.submit();
-	
 }
 function createHiddenform(naverId,email,nik){	
 	var fm = document.createElement('form');

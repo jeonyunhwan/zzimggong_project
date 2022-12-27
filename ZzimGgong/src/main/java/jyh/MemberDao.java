@@ -2,7 +2,7 @@ package dao;
 
 import dbDriver.DB;
 import vo.userMember;
-
+import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -181,19 +181,19 @@ public class MemberDao {
 		return -2;
 
 	}
-	public String sessionNick(String userEmail) {
-		String nikname = "";
+	//세션 닉
+	public userMember sessionNick(userMember ins) {
+		userMember userInfo = null;
 		try {
-			
-			String query = "select NICKNAME from jjim_user where user_email = ?";
+			String query = "select user_email,emailAuth,NICKNAME,no_show from jjim_user where user_email = ?";
 			con = DB.con();
 
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1,userEmail);
+			pstmt.setString(1,ins.getEmail());
 			rs = pstmt.executeQuery();
-			rs.next();
-			nikname = rs.getString(1);
-			
+			if(rs.next()) {
+				userInfo = new userMember(rs.getString(1),rs.getInt(2),rs.getString(3),rs.getInt(4));
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -202,7 +202,7 @@ public class MemberDao {
 		} finally {
 			DB.close(rs, pstmt, con);
 		}
-		return nikname;
+		return userInfo;
 	}
      
 

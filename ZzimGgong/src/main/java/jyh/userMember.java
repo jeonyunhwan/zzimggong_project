@@ -8,6 +8,7 @@ public class userMember {
 	private String phoneNum;
 	private String address;
 	private int idAuth;
+	private int noshow;
 	private String nvrToken;
 	private String kkoToken;
 	/**
@@ -40,6 +41,33 @@ public class userMember {
 	}
 	
 	
+
+	
+	/**
+	 * 
+	 */
+	public userMember() {
+	
+	}
+	/**
+	 * @param email
+	 */
+	public userMember(String email) {
+		this.email = email;
+	}
+	/**
+	 * @param email
+	 * @param emailAuth
+	 * @param nickName
+	 * @param noshow
+	 */
+	//session 객체 
+	public userMember(String email, int emailAuth, String nickName, int noshow) {
+		this.email = email;
+		this.emailAuth = emailAuth;
+		this.nickName = nickName;
+		this.noshow = noshow;
+	}
 	/**
 	 * @param email
 	 * @param nickName
@@ -57,11 +85,17 @@ public class userMember {
 	 * @param nickName
 	 * @param address
 	 */
-
+	
 	public String getNvrToken() {
 		return nvrToken;
 	}
 
+	public int getNoshow() {
+		return noshow;
+	}
+	public void setNoshow(int noshow) {
+		this.noshow = noshow;
+	}
 	public String getKkoToken() {
 		return kkoToken;
 	}
