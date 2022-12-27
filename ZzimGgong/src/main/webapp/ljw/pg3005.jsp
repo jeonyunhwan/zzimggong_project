@@ -1,3 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="java.util.*"  
+    import="jspexp.vo.*"  
+    import="jspexp.a13_database.*"
+   %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:requestEncoding value="UTF-8" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +49,7 @@
 	div.crsmenu{
 		display:flex;
 		justify-content:center;
-		padding: 20px 50px;
+		padding: 0px 50px 10px;
 	}
 	div.crsmenu>div{
 		width:30%;
@@ -54,7 +64,12 @@
 	    justify-content:center;
 	    line-height:40px; 
 	}
-   
+   .crst{
+   		margin: 0px 50px;
+   		border: 2px solid #601986;
+   		padding-bottom:20px;
+   		border-radius: 40px;
+   }
    .crst01{
    		display:flex;
    		justify-content:center;
@@ -63,7 +78,8 @@
    }
    .crst01>#rstname{
   		display:block;
-   		margin:10px auto;
+   		margin:0px auto;
+   		padding:20px 0px 10px;
    		width:100%;
    		text-align:center;
    		font-size:30px;
@@ -71,9 +87,9 @@
    .crst01>div{
 		display:inline-flex;
 		margin:0px auto;
-		width:40%;
+		width:50%;
 		justify-content:space-between;
-		padding-bottom:20px;
+		padding-bottom:25px;
    }
    .crst01>div>div{
       	display:inline-flex;
@@ -96,11 +112,11 @@
    		justify-content:center;
    		color:#333;
    		flex-wrap:wrap;	
-   		padding:20px 0px;
+   		padding:0px 0px 20px;
    }
    .crst02>h2{
    		display:block;
-   		margin:0px auto 10px auto;
+   		margin:0px auto 5px auto;
    		text-align:center;
    		font-size:23px;
    		width:100%;
@@ -122,13 +138,16 @@
    		display:flex;
    		justify-content:center;
    		color:#333;
-   		flex-wrap:wrap;	
+   		flex-wrap:wrap;
+   		padding-bottom: 20px;	
    }
    .crst03>h4{
  		display:block;
-   		margin:10px auto;
+   		margin:0px auto;
+   		padding-bottom:5px;
    		text-align:center;
    		width:100%;
+   		font-size: 18px;
    }
     .crst03>h5{
  		display:block;

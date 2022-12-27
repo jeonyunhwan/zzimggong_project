@@ -19,7 +19,7 @@
         background-color: #fff;
     }
     
-    	/* 지원 */   
+    /* 지원 */   
 	nav.searchmenu{
 		width: 100%;
 		background-color: #fff;
@@ -105,8 +105,6 @@
 	}
 
 
-	
-	
 	.storeInfo2{
 		display:flex;
 		padding:20px;
@@ -134,7 +132,6 @@
 		padding-left:3px;
 	}
 	
-	
 	/* 상단 고정 */
 	header{
 		position:sticky;
@@ -148,60 +145,35 @@
 		background-color:#fff;
 	}
 	
-	
 	/* select */
+	select{
+		-webkit-appearance: none;
+ 		-moz-appearance: none;
+		appearance: none;
+	}
+	/* IE에서 화살표 제거 */
+	select::-ms-expand{
+		display:none;
+	}
 	.array{
 		display:flex;
 		flex-flow:row-reverse;
 		padding-top:10px;
 		gap:10px;
 	}
-	.selectBox1 * { box-sizing:border-box;}
-	.selectBox1{
-		position:relative;
-		width: 110px;
+	.selectBox * { box-sizing:border-box; color:#333;}
+	.selectBox{
+		width: 180px;
 		height: 32px;
 		border-radius:16px;
 		border:2px solid #601986;
 		background: url('../index_markup/img/select_arrow.png') no-repeat 92% 50%;
 		background-size:12px;
 		margin-right:10px;
-	}
-	.selectBox1 .label{
-		border:none;
-		line-height:32px; /* 가로 정렬은 이게 제일 쉬운 듯 */
-		background:transparent;
-		margin-left:11px;
-		font-weight:600;
-	}
-	.selectBox1>.optionList{
-		position:absolute;
-		top:32px;
-		width:100%;
-		background:#601986;
-		color:#fff;
-		border-radius:16px;
-	}
-	
-
-	.selectBox1>.optionList>.option{
- 		border-bottom:1px dashed #fff; 
-		padding: 5px 10px;
-		font-size:14px;
-	}
-	.selectBox1>.optionList>.option:last-child{
-		/* 마지막 줄은 삭제 */
-		border-bottom:none;
-	}
-	
-	
-	.selectBox1>.optionList>li:hover{
-		background:#ffd6df;
-		color:#fff;
+		text-align: center;
+		padding-right: 13px;
 	}
     
-    
-
 </style>
 </head>
 <body>
@@ -241,14 +213,11 @@
 	    	</div>
 	    	
 	    	<div class="array">
-				<div class="selectBox1">
-					<button class="label">가게 정렬</button>
-					<ul class="optionList">
-						<li class="option">별점 높은 순</li> <%-- 별점 높은 순으로 수정할 수도 有 --%>
-						<li class="option">리뷰 많은 순</li>
-						<li class="option">현재 위치와 가까운 순</li>
-					</ul>
-				</div>
+	    		<select class="selectBox">
+	    			<option class="option">별점 높은 순</option>
+	    			<option class="option">리뷰 많은 순</option>
+	    			<option class="option">현재 위치와 가까운 순</option>  		
+	    		</select>
 	    	</div>
 	    	
         	<div class="storeInfo2">
@@ -334,9 +303,8 @@
 
 </body>
 <script type="text/javascript">
-	var inputOb = document.querySelector("input[type=text]")
-	inputOb.onclick=function(){
-		inputOb.style.border="none"
-	}
+	
+
+	
 </script>
 </html>
