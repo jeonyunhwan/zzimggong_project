@@ -36,9 +36,9 @@
                 <form action ="insertMember.jsp" method = "post" onsubmit="return joinform_check()">
                     <div id = "e_form">
                     <div class="insert_form">
-                        <b>아이디</b><span name = "idCheck"></span><br>
-                        <input type = "text" name = "uid" maxlength="12" placeholder="영문자로 시작하는 5~13자 영문자 또는 숫자"/>
-                        <button type = "button" onclick = "checkingId()">중복확인</button>             
+                        <b>이메일</b><span name = "emailCheck"></span><br>
+                        <input type = "text" name = "email" maxlength="50" placeholder="이메일 형식에 맞게 작성해주세요."/>
+                        <button type = "button" onclick = "checkingEmail()">중복확인</button>             
                     </div>
                     <div class = "insert_form">
                         <b>비밀번호</b><span name = "pwCheck"></span><br>
@@ -54,22 +54,10 @@
                         <input type = "text" name = "nik" placeholder="2자 이상 8자 이하 영어,숫자,한글로 구성"/>
                     </div>
                     <div class = "s_form">
-                        <b>이메일</b><span name = "emailCheck"></span><br>
-                        <input type = "text" name = "email" placeholder="영문자로 시작하는 5~13자 영문자 또는 숫자"/>
-                        @
-                        <select style ="width:150px; height:30px;"
-                        name = "emails" id = "email-select">
-                        <option value = "1">이메일 선택하기</option>
-                        <option value = "@naver.com">naver.com</option>
-                        <option value = "@gmail.com">gmail.com</option>
-                        <option value = "@daum.net">daum.net</option>
-                        </select>
-                    </div>
-                    <div class = "s_form">
                         <b>주소입력</b><span name = "addrCheck"></span><br>
-                        <input id="member_post"  type="text" placeholder="Zip Code" readonly onclick="findAddr()">
-                        <input id="member_addr" type="text" name = "addr" placeholder="Address" readonly> <br>
-                        <input type="text" name = "detailaddr" placeholder="Detailed Address">
+                        <input id="member_post"  type="text" placeholder="우편번호 선택" readonly onclick="findAddr()">
+                        <input id="member_addr" type="text" name = "addr" placeholder="도로명주소 입력" readonly> <br>
+                        <input type="text" name = "detailaddr" placeholder="상세주소 입력">
                     </div>
                     <div class = "insert_form01">
                             <input type = "checkbox" id = "check_all" name = "check_all" value = "1">

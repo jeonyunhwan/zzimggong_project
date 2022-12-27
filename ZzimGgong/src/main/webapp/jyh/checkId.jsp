@@ -6,11 +6,9 @@
 <%
 request.setCharacterEncoding("utf-8");
 %>    
-
 <%
-String uids = request.getParameter("uid"); // 파라미터값 받아옴  
-if(uids == null) uids = "";
+String email = request.getParameter("email"); // 파라미터값 받아옴  
+if(email == null) email = "";
 MemberDao chIds = new MemberDao(); // dao 객체 연결 
 %>
-<!-- json을 통해서 가져옴 -->
-{"chId":<%=chIds.IdCheck(uids) %>} 
+{"chId":"<%=chIds.IdCheck(email) %>"} 

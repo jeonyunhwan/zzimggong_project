@@ -1,25 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import = "dao.MemberDao"
-    import = "vo.userMemberVo"
+    import = "vo.userMember"
     errorPage =""%>
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">    
+<jsp:useBean id="Mmgr" class = "dao.MemberDao"></jsp:useBean>
+
 <%
 request.setCharacterEncoding("utf-8");
-MemberDao insUser = new MemberDao();
 %> 
     
 <%
 // 입력받은 것 가져오기 
-String userid = request.getParameter("uid");
+String email = request.getParameter("email");
 String password = request.getParameter("pws");
 String nickname = request.getParameter("nik");
 String address1 = request.getParameter("addr");
 String address2 = request.getParameter("detailaddr");
-String email = request.getParameter("email");
-String emails = request.getParameter("emails");
 
 if(address2==null){
 	address2="";
@@ -30,19 +28,11 @@ StringBuilder sb = new StringBuilder();
 sb.append(address1);
 sb.append(" ");
 sb.append(address2);
-
 String address = new String(sb);
-
-//이메일 결합 
-StringBuilder eb = new StringBuilder();
-eb.append(email);
-eb.append(emails);
-
-String emailq = new String(eb);
-
 // DAO를 통해서 값 넣기 
 // 성공실패여부 로직 
-int check = insUser.SignUp(new userMemberVo(userid,password,emailq,nickname,address));
+
+int check = Mmgr.SignUp(new userMember(email,password,nickname,address));
 %>
 <script type = "text/javascript">
 // int 값 

@@ -1,50 +1,36 @@
-// 아이디 유효성 검사 기능 정규식을 통하여 test 진행 
-var uid = document.querySelector("[name=uid]");
-const idCheck = document.querySelector("[name=idCheck]");
-var idReg = /^[A-Za-z]{1}[A-Za-z0-9]{4,12}$/;
-var idflag = false;
-var checkIDflag = false;
-uid.onkeyup = function(){
-    if(!idReg.test(uid.value)){
-        idCheck.innerText = "영문자로 시작하는 5~13자 영문자 또는 숫자이어야 합니다.";
-        idflag = false;        
-    }else{
-        idCheck.innerText = "";
-        idflag = true;
-    }
-    
-}
+// 이메일 유효성 검사 기능 정규식을 통하여 test 진행 
  var email = document.querySelector("[name=email]");
- var emailReg = /^[A-Za-z]{1}[A-Za-z0-9]{5,18}$/;
+ var emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;;
  var emailCheck = document.querySelector("[name = emailCheck]");
- var emails = document.querySelector("[name=emails]");
  var emailflag = false;
  var sflag = false;
  email.onkeyup = function(){
 	if(!emailReg.test(email.value)){
-		emailCheck.innerText = "영문자로 시작하는 6~19자 영문자 또는 숫자이어야 합니다."
+		emailCheck.innerText = "이메일 형식에 맞게 작성해주세요.";
 		emailflag = false;
 	}else{
 		emailCheck.innerText = "";
 		emailflag = true;
 	}
 }
-// 아이디 중복 체크 ajax
-function checkingId(){
+// 이메일 중복 체크 ajax
+
+function checkingEmail(){
 	var xhr = new XMLHttpRequest();
-	xhr.open("get","checkId.jsp?uid="+uid.value,true);
+	xhr.open("get","checkId.jsp?email="+email.value,true);
 	xhr.send();
 	
 	xhr.onreadystatechange=function(){
 		if(xhr.readyState==4 && xhr.status==200){
-			 var ck = eval("("+xhr.responseText+")");
-			 if(ck.chId){
-				alert("등록한 아이디가 있습니다.\n다시 입력해주세요");
-				uid.value = "";
-				uid.focus();
-			}else{
+			 var ck = JSON.parse(xhr.responseText);
+			 if(ck.chId=="no_auth"){
 				alert("등록가능합니다.");
-			    checkIDflag = true;
+				sflag = true;
+			}else{
+				alert("등록한 이메일이 있습니다.\n다시 입력해주세요");
+			    email.value = "";
+				email.focus();
+				sflag = false;
 			}
 		}
 	}
@@ -164,9 +150,9 @@ function joinform_check(){
     const vital1 = document.getElementById("agree01");
     const vital2 = document.getElementById("agree02");
     //아이디 최종 유효성
-    if(uid.value == "" || idflag==false){
-        alert("아이디를 다시 확인하세요.");
-        uid.focus();
+    if(email.value == "" || idflag==false){
+        alert("이메일 다시 확인하세요.");
+        email.focus();
         return false;
     };
     //비밀번호 최종 유효성검사
@@ -194,7 +180,7 @@ function joinform_check(){
         return false; 
     }
     if(checkIDflag==false){
-	alert("id = 중복검사 진행해주세요.");
+	alert("이메일 중복검사 진행해주세요.");
 	return false;
 	}
 	if(addr.value == ""){
@@ -204,11 +190,6 @@ function joinform_check(){
 	// 상세주소 
 	if(addrflag == false){
 		alert("주소입력을 해주세요.");
-		return false;
-	}
-	// 이메일 주소 선택 
-	if(emails.value == "1" || emailflag == false){
-		alert("이메일 주소를 선택해주세요.\n 또는 이메일 입력을 확인하세요.");
 		return false;
 	}
 }
