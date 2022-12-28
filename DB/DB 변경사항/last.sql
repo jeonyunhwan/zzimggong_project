@@ -4,12 +4,15 @@
 --DROP TABLE resPick;
 --DROP TABLE menu;
 --DROP TABLE jjim_review;
+--DROP SEQUENCE review_code;
 --DROP TABLE reservation;
 --DROP TABLE res_user;
 --DROP TABLE access_Token;
---DROP TABLE jjim_user;
+--DROP TABLE jjim_user CASCADE constraint;
 --DROP TABLE sns_user;
---DROP TABLE restaurant;
+--DROP TABLE restaurant CASCADE constraint;
+--DROP TABLE TAKE_OUT;
+
 
 create table restaurant(--가게 테이블
     resNum varchar2(30) constraint restaurant_resNum_pk primary key,
@@ -116,7 +119,7 @@ CREATE TABLE reservation(
    -- 승인/거절 컬럼. 0이면 대기, 1이면 승인, 2면 대기
    reserve_state number
 );
-DROP TABLE reservation;
+
 INSERT INTO RESERVATION values('alsn0527@naver.com','123-45-67890',4,
 to_date('2023-01-06 14:00','YYYY-MM-DD HH24:MI'),'아기 의자 준비해주세요',0);
 
@@ -204,7 +207,7 @@ create table waiting
 (
     resNum varchar2(30) constraint waiting_resNum_fk references restaurant (resNum),
     user_email varchar2(30) constraint waiting_user_email_kf references jjim_user(user_email),
-    wStartTime varchar2(30),
+    wStartTime date,
     waiting_num number, --대기팀 수
     waiting_person number,
     cancel char check(cancel in('F','T')),
