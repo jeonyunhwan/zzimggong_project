@@ -49,6 +49,7 @@
                         <label class="pick_label" for="pick6">중식<input type="checkbox" id="pick6"></label>
                     	<input class="upload" type="submit" value="저장">
                     </div>
+                    <input type="checkbox">gd
                 </form>
                 <div class="myshop_img-contain">
                     <img class="myshop_img" src="../index_markup/img/shop_cafeImg.png" alt="">
@@ -77,13 +78,28 @@
 
 </body>
 <script>
-    var pickAll = document.querySelectorAll(".pick_label");
-    pickAll.forEach(function (pickAll) {
-        pickAll.onclick = function () {
-            this.style.background = "#995dbb"
-            this.style.color = "#f2ebf5"
-        }
-    })
+function is_checked() {
+	  
+	  // 1. checkbox element를 찾습니다.
+	  const checkbox = document.getElementById('pick3');
+	  // 2. checked 속성을 체크합니다.
+	  const is_checked = checkbox.checked;
+	  // 3. 결과를 출력합니다.
+	  document.getElementById('result').innerText = is_checked;
+	  
+	}
+
+
+	var pickAll = document.querySelectorAll(".pick_label");
+	pickAll.forEach(function (pickAll) {
+		pickAll.onclick = function () {
+			this.style.background = "#995dbb"
+			this.style.color = "#f2ebf5"
+			const checkbox = document.getElementById('pick3');
+			const is_checked = checkbox.checked;
+			console.log(is_checked)
+	    }
+	})
 </script>
 
 </html>

@@ -35,7 +35,7 @@
 	   location.href="shop_login.jsp"
 	}else if(isFail!=''){
 	   alert("가게정보를 불러오는데 성공했습니다.")
-	   location.href="zzim_shop.jsp"
+	   location.href="zzim_shop.jsp?resnum=${param.resnum}"
 	}
 /*
 
