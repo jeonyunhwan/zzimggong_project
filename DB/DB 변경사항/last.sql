@@ -1,3 +1,5 @@
+--DROP SEQUENCE review_code;
+--DROP TABLE TAKE_OUT ;
 --DROP TABLE JJIM_SCH;
 --DROP TABLE policy;
 --DROP TABLE waiting;
@@ -11,8 +13,11 @@
 --DROP TABLE jjim_user CASCADE constraint;
 --DROP TABLE sns_user;
 --DROP TABLE restaurant CASCADE constraint;
+<<<<<<< HEAD
 --DROP TABLE TAKE_OUT;
 
+=======
+>>>>>>> 6af74e24f4e707c5de2f47551cd5852bf720ef52
 
 create table restaurant(--가게 테이블
     resNum varchar2(30) constraint restaurant_resNum_pk primary key,
@@ -31,6 +36,7 @@ create table restaurant(--가게 테이블
     wating NUMBER,
     reservation NUMBER
 );
+SELECT * FROM RESTAURANT;
 INSERT INTO restaurant values('123-45-67890','연돈','alsn99@naver.com','서울특별시 마포구 서교동','010-8890-5234',
 'img','11:00-22:00','화요일','15:00-16:00','단체석 완비/주차 이용가능','매장 전화문의가 많아 전화응대가 어렵습니다.',5000,
 to_date('20221120','YYYY-MM-DD'),1,1);
@@ -119,7 +125,10 @@ CREATE TABLE reservation(
    -- 승인/거절 컬럼. 0이면 대기, 1이면 승인, 2면 대기
    reserve_state number
 );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6af74e24f4e707c5de2f47551cd5852bf720ef52
 INSERT INTO RESERVATION values('alsn0527@naver.com','123-45-67890',4,
 to_date('2023-01-06 14:00','YYYY-MM-DD HH24:MI'),'아기 의자 준비해주세요',0);
 
@@ -226,11 +235,11 @@ INSERT INTO WAITING VALUES('123-45-67895','jyh123@naver.com',
 to_date('2023-01-06 16:00','YYYY-MM-DD HH24:MI'),0,4,'F','F');
 
 INSERT INTO WAITING VALUES('123-45-67890','ljw123@naver.com',
-to_date('2023-01-06 15:00','YYYY-MM-DD HH24:MI'),0,4,'F','F');
+to_date('2023-01-05 15:00','YYYY-MM-DD HH24:MI'),0,4,'F','F');
 INSERT INTO WAITING VALUES('123-45-67890','hjw123@naver.com',
-to_date('2023-01-06 15:30','YYYY-MM-DD HH24:MI'),0,3,'F','F');
+to_date('2023-01-05 15:30','YYYY-MM-DD HH24:MI'),0,3,'F','F');
 INSERT INTO WAITING VALUES('123-45-67890','jyh123@naver.com',
-to_date('2023-01-06 16:00','YYYY-MM-DD HH24:MI'),0,2,'F','F');
+to_date('2023-01-05 16:00','YYYY-MM-DD HH24:MI'),0,2,'F','F');
 
 
 
