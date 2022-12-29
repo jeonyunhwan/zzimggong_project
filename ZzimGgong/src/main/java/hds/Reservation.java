@@ -1,4 +1,4 @@
-package hds.vo;
+package hds;
 
 public class Reservation {
 	private String user_email;

@@ -13,7 +13,7 @@ String requNote = request.getParameter("reserve_request");
 
 int intCnt = Integer.parseInt(cnt);
 
-dao.res_insert("test@email.com", "테스트-사업자번호", intCnt, startTime, requNote);
+dao.res_insert("hds123@naver.com", "123-45-67890", intCnt, startTime, requNote);
 
 %>
 <%--

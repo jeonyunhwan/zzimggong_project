@@ -19,7 +19,7 @@ public class DB {
 			System.out.println("드라이버 에러:"+e.getMessage());
 		}
 		// 2. 연결정보 처리.
-		String info = "jdbc:oracle:thin:@106.10.23.227:1521:xe";
+		String info = "jdbc:oracle:thin:@localhost:1521:xe";
 		con = DriverManager.getConnection(info,"scott","tiger");
 		//System.out.println("연결 성공");
 		return con;
