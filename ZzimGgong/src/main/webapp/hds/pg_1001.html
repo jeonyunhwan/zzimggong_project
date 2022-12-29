@@ -251,8 +251,6 @@
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 & xhr.status==200){
 				console.log("전송 완료");
-				var date = JSON.parse(xhr.responseText);
-				alert(data.test);
 			}
 		}
 	}

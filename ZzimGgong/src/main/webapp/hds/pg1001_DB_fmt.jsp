@@ -4,9 +4,22 @@
    %>
 
 <jsp:useBean id="dao" class="hds.reservation_Dao"/>
-{"test":${dao.res_insert("test@email.com", "테스트-사업자번호", param.reserve_apply_person, reserve_start_time, reserve_request)}}
 
+<%
+
+String cnt = request.getParameter("reserve_apply_person");
+String startTime = request.getParameter("reserve_start_time");
+String requNote = request.getParameter("reserve_request");
+
+int intCnt = Integer.parseInt(cnt);
+
+dao.res_insert("test@email.com", "테스트-사업자번호", intCnt, startTime, requNote);
+
+%>
 <%--
+
+?reserve_apply_person=3&reserve_start_time=2022-12-28 15:30&reserve_request=ssss
+
 	pstmt.setString(1, user_email);
 	pstmt.setString(2, resNum);
 	pstmt.setInt(3, reserve_apply_person);
