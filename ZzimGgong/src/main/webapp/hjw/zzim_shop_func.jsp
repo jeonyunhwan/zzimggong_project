@@ -41,11 +41,29 @@
                 </div>
 
                 <hr>
-                <div class="myshop_img-contain">
+                <div class="myshop_img_contain">
                     <img class="myshop_img"
-                        src="https://github.com/jeonyunhwan/zzimggong_project/blob/main/ZzimGgong/src/main/webapp/index_markup/img/shop_cafeImg.png?raw=true"
+                        src="${res.res_img }"
                         alt="">
+<%--                     <jsp:useBean id=resInfo class="hjw.ZzimDao"/>
+                    <c:set var="res" scope="session" value="${resInfo.getRestaurantInfo()}"/>  --%>
                 </div>
+                <div class="myshop_contain_info">
+                    <p>가게번호 : ${res.resnum }</p>
+                    <p>가게이름 : ${res.res_name }</p>
+                    <p>가게이메일 : ${res.res_email }</p>
+                    <p>가게주소 : ${res.res_addresss }</p>
+                    <p>가게 전화번호 :${res.res_phonenum }</p>
+                    <p>영업시간 : ${res.business_hours }</p>
+                    <p>휴무일 : ${res.day_off }</p>
+                    <p>편의시설 : ${res.convenient }</p>
+                    <p>소개 : ${res.introduce }</p>
+                    <p>보증금 : ${res.deposit }</p>
+                    <p>등록일 : ${res.enroll_date }</p>
+                    <p>웨이팅 : ${res.wating }</p>
+                    <p>예약 : ${res.reservation }</p>
+                </div>
+
             </div>
         </section>
         <footer>

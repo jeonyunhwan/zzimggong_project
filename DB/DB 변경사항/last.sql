@@ -14,10 +14,13 @@
 --DROP TABLE sns_user;
 --DROP TABLE restaurant CASCADE constraint;
 <<<<<<< HEAD
+<<<<<<< HEAD
 --DROP TABLE TAKE_OUT;
 
 =======
 >>>>>>> 6af74e24f4e707c5de2f47551cd5852bf720ef52
+=======
+>>>>>>> ca965223c51baf90a32ef2ffa162b7eb321b5527
 
 create table restaurant(--가게 테이블
     resNum varchar2(30) constraint restaurant_resNum_pk primary key,
@@ -126,9 +129,12 @@ CREATE TABLE reservation(
    reserve_state number
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 6af74e24f4e707c5de2f47551cd5852bf720ef52
+=======
+>>>>>>> ca965223c51baf90a32ef2ffa162b7eb321b5527
 INSERT INTO RESERVATION values('alsn0527@naver.com','123-45-67890',4,
 to_date('2023-01-06 14:00','YYYY-MM-DD HH24:MI'),'아기 의자 준비해주세요',0);
 
