@@ -10,10 +10,11 @@
 String cnt = request.getParameter("reserve_apply_person");
 String startTime = request.getParameter("reserve_start_time");
 String requNote = request.getParameter("reserve_request");
+String resNum = request.getParameter("resNum");
 
 int intCnt = Integer.parseInt(cnt);
 
-dao.res_insert("hds123@naver.com", "123-45-67890", intCnt, startTime, requNote);
+dao.res_insert("hds123@naver.com",resNum, intCnt, startTime, requNote);
 
 %>
 <%--
