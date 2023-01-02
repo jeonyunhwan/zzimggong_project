@@ -95,4 +95,43 @@ public class ZzimDao {
 	      
 	      return reslist;
 	   }
+	public List<ResPick> getPickList(ResPick pick){
+	      List<ResPick> picklist = new ArrayList<ResPick>();
+	      String sql = "SELECT * FROM RESPICK WHERE RESNUM = ?";
+	      try {
+	         con = DB.con();
+	         pstmt = con.prepareStatement(sql);
+	         // 위 sql의 ?에 해당하는 문자열을 mapping해서 데이터를 전달
+	         // 1. 위 형태로 ?로 설정하는 해당 데이터 형태만 입력이 되지,
+	         // sql injection이 처리되지 않는다.
+	         // 2. ?로 같은 유형을 sql을 먼저 서버에 전달되기에 한번 컴파일된 이후로는
+	         //    빠르게 수행될 수 있다.
+	         // pstmt.setString(1번부터 ?에 해당하는 순서, 데이터 );
+	         pstmt.setString(1, pick.getResnum()); //
+	         rs = pstmt.executeQuery(); // sql를 넣지 않는다.!!(주의)
+	         // select * ==> deptno, dname, loc
+	         while(rs.next()) {
+	            // select에 해당 컬럼에 맞는 컬럼명, 데이터유형에
+	            // 맞게 rs.get타입("컬럼명") 지정하여야 한다.
+	            picklist.add(new ResPick(
+	            			rs.getString(1),
+	            			rs.getString(2),
+	            			rs.getString(3),
+	            			rs.getString(4),
+	            			rs.getString(5)
+	                        )
+	                   );
+	         }
+	         System.out.println("데이터 건수:"+picklist.size());
+	         
+	      } catch (SQLException e) {
+	         System.out.println("DB에러:"+e.getMessage());
+	      } catch(Exception e) {
+	         System.out.println("일반 에러:"+e.getMessage());
+	      }finally {
+	         DB.close(rs, pstmt, con);
+	      }
+	      
+	      return picklist;
+	   }
 }
