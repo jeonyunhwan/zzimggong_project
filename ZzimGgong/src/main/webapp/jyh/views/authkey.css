@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -33,7 +34,7 @@
         background-color: #fff;
     }
     section{
-        height: 780px;
+        height: 500px;
        
     }
 
@@ -70,7 +71,7 @@
     }
     .content_form{
         width: 100%;
-        height:780px;
+        height:500px;
         background-color: white;
         
     }

@@ -1,16 +1,24 @@
-package vo;
+package model;
 
-public class userMember {
+public class memberDTO {
 	private String email;
 	private String pw;
 	private int emailAuth;
 	private String nickName;
 	private String phoneNum;
 	private String address;
-	private int idAuth;
 	private int noshow;
+	private int idAuth;
+	//token id 
 	private String nvrToken;
 	private String kkoToken;
+	/**
+	 * 
+	 */
+	public memberDTO() {
+		
+	}
+	
 	/**
 	 * @param email
 	 * @param pw
@@ -18,12 +26,12 @@ public class userMember {
 	 * @param nickName
 	 * @param phoneNum
 	 * @param address
+	 * @param noshow
 	 * @param idAuth
 	 */
-	//일반 회원 등록 
-	
-	public userMember(String email, String pw, int emailAuth, String nickName, String phoneNum, String address,
-			int idAuth) {
+	//회원 조회 
+	public memberDTO(String email, String pw, int emailAuth, String nickName, String phoneNum, String address,
+			int noshow, int idAuth) {
 		super();
 		this.email = email;
 		this.pw = pw;
@@ -31,83 +39,46 @@ public class userMember {
 		this.nickName = nickName;
 		this.phoneNum = phoneNum;
 		this.address = address;
+		this.noshow = noshow;
 		this.idAuth = idAuth;
 	}
-	public userMember(String email, String pw, String nickName, String address) {
+	//마이페이지 수정 
+	
+
+	// 회원가입 DTO 객체 // 회원정보수정객체 
+	public memberDTO(String email, String pw, String nickName,String phoneNum,String address) {
 		this.email = email;
 		this.pw = pw;
 		this.nickName = nickName;
+		this.phoneNum = phoneNum;
 		this.address = address;
 	}
-	
-	
-
-	
-	/**
-	 * 
-	 */
-	public userMember() {
-	
-	}
 	/**
 	 * @param email
-	 */
-	public userMember(String email) {
-		this.email = email;
-	}
-	/**
-	 * @param email
-	 * @param emailAuth
 	 * @param nickName
-	 * @param noshow
+	 * @param phoneNum
+	 * @param address
 	 */
-	//session 객체 
-	public userMember(String email, int emailAuth, String nickName, int noshow) {
+	// 세션 객체
+	public memberDTO(String email,String nickName,int noshow) {
 		this.email = email;
-		this.emailAuth = emailAuth;
 		this.nickName = nickName;
 		this.noshow = noshow;
 	}
+	
 	/**
 	 * @param email
 	 * @param nickName
+	 * @param idAuth
 	 */
-	public userMember(String email, String nickName) {
+	//sns 등록 
+	public memberDTO(String email, String nickName) {
 		super();
 		this.email = email;
 		this.nickName = nickName;
+		
 	}
-
-
-	/**
-	 * @param email
-	 * @param pw
-	 * @param nickName
-	 * @param address
-	 */
 	
-	public String getNvrToken() {
-		return nvrToken;
-	}
-
-	public int getNoshow() {
-		return noshow;
-	}
-	public void setNoshow(int noshow) {
-		this.noshow = noshow;
-	}
-	public String getKkoToken() {
-		return kkoToken;
-	}
-
-	public void setNvrToken(String nvrToken) {
-		this.nvrToken = nvrToken;
-	}
-
-	public void setKkoToken(String kkoToken) {
-		this.kkoToken = kkoToken;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -126,8 +97,17 @@ public class userMember {
 	public String getAddress() {
 		return address;
 	}
+	public int getNoshow() {
+		return noshow;
+	}
 	public int getIdAuth() {
 		return idAuth;
+	}
+	public String getNvrToken() {
+		return nvrToken;
+	}
+	public String getKkoToken() {
+		return kkoToken;
 	}
 	public void setEmail(String email) {
 		this.email = email;
@@ -147,10 +127,19 @@ public class userMember {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public void setNoshow(int noshow) {
+		this.noshow = noshow;
+	}
 	public void setIdAuth(int idAuth) {
 		this.idAuth = idAuth;
-	}	
+	}
+	public void setNvrToken(String nvrToken) {
+		this.nvrToken = nvrToken;
+	}
+	public void setKkoToken(String kkoToken) {
+		this.kkoToken = kkoToken;
+	}
+	
 	
 	
 }
-
