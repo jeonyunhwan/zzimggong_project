@@ -5,7 +5,7 @@
 <html>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="signUpCss.css">
+<link rel="stylesheet" href="/views/insertMember.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -17,7 +17,9 @@
 </style>
 </head>
 <body>
+<script>
 
+</script>
 <div class="wrapper">
     <header>
         <h1 class="logo"><img src="./img/main_logo.png" alt=""></h1>
@@ -33,12 +35,13 @@
                 <h2 id = "s01">회원가입</h2>
             </div>
             <div class = "content_form">
-                <form action ="insertMember.jsp" method = "post" onsubmit="return joinform_check()">
+                <form action ="/member/insert" method = "post" onsubmit="return joinform_check()">
                     <div id = "e_form">
                     <div class="insert_form">
                         <b>이메일</b><span name = "emailCheck"></span><br>
                         <input type = "text" name = "email" maxlength="50" placeholder="이메일 형식에 맞게 작성해주세요."/>
-                        <button type = "button" onclick = "checkingEmail()">중복확인</button>             
+                        <button type = "button" name = "checkBtn" onclick = "checkingEmail()">중복확인</button>     
+                        <button type = "button" name = "checkBtn" onclick = "new_window()">인증하기</button>         
                     </div>
                     <div class = "insert_form">
                         <b>비밀번호</b><span name = "pwCheck"></span><br>
@@ -52,6 +55,10 @@
                     <div class = "insert_form">
                         <b>닉네임</b><span name = "nikCheck"></span><br>
                         <input type = "text" name = "nik" placeholder="2자 이상 8자 이하 영어,숫자,한글로 구성"/>
+                    </div>
+                        <div class = "insert_form">
+                        <b>연락처</b><span name = "pCheck" ></span><br>
+                        <input type = "text" name = "pnum" placeholder="전화번호형식(-포함가능)"/>
                     </div>
                     <div class = "s_form">
                         <b>주소입력</b><span name = "addrCheck"></span><br>
@@ -98,7 +105,10 @@
 </div>
 
 </body>
-<script src = "event_signUp.js" type = "text/javascript"></script> 
+<script src = "/views/insertMember.js" type = "text/javascript"></script> 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type = "text/javascript">
 
+
+</script>
 </html>

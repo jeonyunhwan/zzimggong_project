@@ -13,17 +13,32 @@
 		emailflag = true;
 	}
 }
-// 이메일 중복 체크 ajax
 
+var openWin;
+ var new_window_width = 400;
+      var new_window_height = 300;
+      var positionX = ( window.screen.width / 2 ) - ( new_window_width / 2 );
+      var positionY = ( window.screen.height / 2 ) - ( new_window_height / 2 );
+     function new_window() {
+        openWin = window.open(
+          "authEmail.jsp",
+          "Child",
+          "width=" + new_window_width + ", height=" + new_window_height + ", top=" + positionY + ", left=" + positionX
+        );
+      }
+var openCheck = false;
+console.log(openCheck);
+
+// 이메일 중복 체크 ajax
+var checkBtn = document.querySelector("checkBtn");
 function checkingEmail(){
 	var xhr = new XMLHttpRequest();
-	xhr.open("get","checkId.jsp?email="+email.value,true);
+	xhr.open("get","/checkIDservice?email="+email.value,true);
 	xhr.send();
-	
 	xhr.onreadystatechange=function(){
 		if(xhr.readyState==4 && xhr.status==200){
-			 var ck = JSON.parse(xhr.responseText);
-			 if(ck.chId=="no_auth"){
+			 var ck = xhr.responseText;
+			 if(ck == "no_auth"){
 				alert("등록가능합니다.");
 				sflag = true;
 			}else{
@@ -35,7 +50,6 @@ function checkingEmail(){
 		}
 	}
 }
-
 	
 // 비밀번호 유효성 검사 기능 
 var pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
@@ -74,6 +88,21 @@ pwRe.onkeyup = function(){
         }
     }
 }
+//폰 유효성검사
+var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+var pnum = document.querySelector("[name=pnum]");
+var pCheck = document.querySelector("[name=pCheck]");
+var pflag = false;
+
+pnum.onkeyup = function(){
+	if(!regPhone.test(pnum.value)){
+		pCheck.innerText = "전화번호 형식으로 입력해주세요.(-없어도가능)";
+		pflag = false;
+	}else{
+		pCheck.innerText = "";
+		pflag = true;
+	}
+}
 
 // 닉네임 유효성 검사 
 // 3 이상 10 이하, 영어 또는 숫자 또는 한글 구성 
@@ -96,7 +125,7 @@ const detailaddr = document.querySelector("[name = detailaddr]");
 const addrCheck = document.querySelector("[name = addrCheck]");
 var addrflag = false;
 // 주소 입력 유효성 검사 
-detailaddr.onclick = function(){
+detailaddr.onkeyup = function(){
 	if(detailaddr.value == ""){
 		addrCheck.innerText = "상세 주소 입력이 되지 않았습니다.";
 		addrflag = false;
@@ -150,7 +179,7 @@ function joinform_check(){
     const vital1 = document.getElementById("agree01");
     const vital2 = document.getElementById("agree02");
     //아이디 최종 유효성
-    if(email.value == "" || idflag==false){
+    if(email.value == "" || emailflag==false){
         alert("이메일 다시 확인하세요.");
         email.focus();
         return false;
@@ -179,8 +208,18 @@ function joinform_check(){
         vital1.focus();
         return false; 
     }
-    if(checkIDflag==false){
+    if(pnum.value=="" || pflag == false){
+    	alert("핸드폰 입력을 확인하세요.");
+    	pnum.focus();
+    	return false;
+    }
+    
+    if(sflag==false){
 	alert("이메일 중복검사 진행해주세요.");
+	return false;
+	}
+	if(openCheck==false){
+	alert("이메일 인증 진행해주세요.");
 	return false;
 	}
 	if(addr.value == ""){
@@ -192,6 +231,7 @@ function joinform_check(){
 		alert("주소입력을 해주세요.");
 		return false;
 	}
+	return true;
 }
     
 
