@@ -2,6 +2,7 @@
 
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
             <!DOCTYPE html>
             <html>
 
@@ -41,8 +42,6 @@
                             <hr>
                             <div class="myshop_img_contain">
                                 <img class="myshop_img" src="${res.res_img }" alt="">
-                                <%-- <jsp:useBean id=resInfo class="hjw.ZzimDao" />
-                                <c:set var="res" scope="session" value="${resInfo.getRestaurantInfo()}" /> --%>
                             </div>
                             <div class="myshop_contain_info">
                                 <p>가게번호 : ${res.resnum }</p>
@@ -59,12 +58,16 @@
                                 <p>웨이팅 : ${res.wating }</p>
                                 <p>예약 : ${res.reservation }</p>
 
-                                <jsp:useBean id="pick" class="hjw.ResPick" />
-                                <jsp:setProperty property="*" name="pick" />
-                                <c:set var="pick" scope="session" value="${dao.getPickList }" />
-                                <p>매장픽 : ${pick.resnum }</p>
-                            </div>
+                                <p>Mood : ${pick.mood }</p>
+                                <p>Purpose : ${pick.purpose }</p>
+                                <p>FoodType : ${pick.food_type }</p>
+                                <p>TableType : ${pick.table_type }</p>
 
+                                <p>메뉴종류 : ${menu.mcategory }</p>
+                                <p>메뉴이름 : ${menu.menuname }</p>
+                                <p>가 격 : ${menu.price }</p>
+                                <p>음식사진 : ${menu.food_img }</p>
+                            </div>
                         </div>
                     </section>
                     <footer>
