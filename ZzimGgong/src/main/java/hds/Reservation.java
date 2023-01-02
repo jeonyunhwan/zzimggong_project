@@ -6,19 +6,21 @@ public class Reservation {
 	private int reserve_apply_person;
 	private String reserve_start_time;
 	private String reserve_request;
+	private int reserve_state;
 	
 	public Reservation() {
-		
+		// TODO Auto-generated constructor stub
 	}
 
 	public Reservation(String user_email, String resNum, int reserve_apply_person, String reserve_start_time,
-			String reserve_request) {
+			String reserve_request, int reserve_state) {
 		super();
 		this.user_email = user_email;
 		this.resNum = resNum;
 		this.reserve_apply_person = reserve_apply_person;
 		this.reserve_start_time = reserve_start_time;
 		this.reserve_request = reserve_request;
+		this.reserve_state = reserve_state;
 	}
 
 	public String getUser_email() {
@@ -60,7 +62,12 @@ public class Reservation {
 	public void setReserve_request(String reserve_request) {
 		this.reserve_request = reserve_request;
 	}
-	
-	
-	
+
+	public int getReserve_state() {
+		return reserve_state;
+	}
+
+	public void setReserve_state(int reserve_state) {
+		this.reserve_state = reserve_state;
+	}
 }
