@@ -5,6 +5,8 @@
    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -78,6 +80,10 @@
 	   	}
     </style>
     <section>
+    	<c:set var="moodArray" value="${fn:split(schList.StoreRespick(param.snum).mood,'/')}" />
+		<c:set var="purposeArray" value="${fn:split(schList.StoreRespick(param.snum).purpose,'/')}" />
+		<c:set var="food_typeArray" value="${fn:split(schList.StoreRespick(param.snum).food_type,'/')}" />
+		<c:set var="table_typeArray" value="${fn:split(schList.StoreRespick(param.snum).table_type,'/')}" />
         <div class="content">
         	<div class="sch_wrapper">
 	        	<div class="sch">
@@ -90,23 +96,30 @@
         	<div>
         		<h4>분위기</h4>
         		<div class="pick">
-        			<span>깔끔한</span><span>모던한</span>
+        			<c:forEach var="mood" items="${moodArray}">
+        				<span>${mood }</span>
+        			</c:forEach>
         		</div>
         		
         		<h4>목적</h4>
         		<div class="pick">
-        			<span>데이트하기 좋은</span><span>한잔하기 좋은집</span><span>2차하기 좋은집</span>
-        			<span>친구랑 같이 가기 좋은</span>
+        			<c:forEach var="purpose" items="${purposeArray}">
+        				<span>${purpose }</span>
+        			</c:forEach>
         		</div>
         		
         		<h4>음식</h4>
         		<div class="pick">
-        			<span>구이</span><span>양고기</span>
+        			<c:forEach var="food_type" items="${food_typeArray}">
+        				<span>${food_type }</span>
+        			</c:forEach>
         		</div>
         		
         		<h4>테이블</h4>
         		<div class="pick">
-        		<span>바테이블</span>
+        			<c:forEach var="table_type" items="${table_typeArray}">
+        				<span>${table_type }</span>
+        			</c:forEach>
         		</div>
         	</div>
    		</div>

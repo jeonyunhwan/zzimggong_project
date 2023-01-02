@@ -5,6 +5,8 @@
    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -86,8 +88,18 @@
         	<h3>제공되는 편의시설</h3>
         	<div class="pickList">
    				<ul>
-   					<li>주차 이용 가능</li>
-   					<li>남녀 화장실 구분</li>
+   					<c:set var="store" value="${schList.detailStore(param.snum) }"/>
+   					<c:set var="convenientArray" value="${fn:split(store.convenient,'/')}" />
+	        		<c:set var="doneLoop" value="false" />
+	
+	        		<c:forEach var="g" begin="0" end="${fn:length(convenientArray)-1}" varStatus="status">
+	        				<c:if test="${convenientArray[g].equals(\"-\") }">
+	        					<li>제공되는 서비스 없음</li>
+	        				</c:if>
+	        				<c:if test="${not convenientArray[g].equals(\"-\") }">
+	        					<li>${ convenientArray[g]}</li>
+	        				</c:if>
+	        		</c:forEach>
    				</ul>
    			</div>
    		</div>

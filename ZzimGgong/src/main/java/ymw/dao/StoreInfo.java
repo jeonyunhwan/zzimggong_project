@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import ymw.vo.Menu;
+import ymw.vo.Respick;
 import ymw.vo.Restaurant;
 import ymw.vo.Review;
 import ymw.vo.StoReview;
@@ -103,6 +107,99 @@ public class StoreInfo {
 						 rs.getString(5),
 						 rs.getString(6),
 						 rs.getString(7))
+							 ;
+				}
+	         
+	      }catch (SQLException e) {
+	         System.out.println("DB에러:"+e.getMessage());
+	      } catch(Exception e) {
+	         System.out.println("일반 에러:"+e.getMessage());
+	      }finally {
+	         DB.close(rs, pstmt, con);
+	      }
+	      
+	      return schList;
+	      
+	   }
+
+	public Menu StoreMenu(String resnum){
+		Menu schList = new Menu();
+	      String sql="SELECT * FROM menu WHERE resnum=?";
+	      try {
+	         con=DB.con();
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, resnum);
+	         rs=pstmt.executeQuery();
+	         while(rs.next()) {
+	        	 schList = new Menu(
+	        			 rs.getString(1),
+	        			 rs.getString(2),
+	        			 rs.getString(3),
+	        			 rs.getString(4),
+	        			 rs.getString(5))
+							 ;
+				}
+	         
+	      }catch (SQLException e) {
+	         System.out.println("DB에러:"+e.getMessage());
+	      } catch(Exception e) {
+	         System.out.println("일반 에러:"+e.getMessage());
+	      }finally {
+	         DB.close(rs, pstmt, con);
+	      }
+	      
+	      return schList;
+	      
+	   }
+
+	public List<Review> userReview(String resnum){
+		List<Review> schList = new ArrayList<Review>();
+	      String sql="SELECT jr.*, NICKNAME FROM JJIM_USER ju, JJIM_REVIEW jr WHERE ju.USER_EMAIL = jr.USER_EMAIL AND resnum = ?";
+	      try {
+	         con=DB.con();
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, resnum);
+	         rs=pstmt.executeQuery();
+	         while(rs.next()) {
+	        	 schList.add(new Review(
+	        			 rs.getString(1),
+	        			 rs.getString(2),
+	        			 rs.getString(3),
+	        			 rs.getDouble(4),
+	        			 rs.getString(5),
+	        			 rs.getString(6),
+	        			 rs.getString(7),
+	        			 rs.getString(8)))
+							 ;
+				}
+	         
+	      }catch (SQLException e) {
+	         System.out.println("DB에러:"+e.getMessage());
+	      } catch(Exception e) {
+	         System.out.println("일반 에러:"+e.getMessage());
+	      }finally {
+	         DB.close(rs, pstmt, con);
+	      }
+	      
+	      return schList;
+	      
+	   }
+
+	public Respick StoreRespick(String resnum){
+		Respick schList = new Respick();
+	      String sql="SELECT * FROM RESPICK r WHERE resnum=?";
+	      try {
+	         con=DB.con();
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, resnum);
+	         rs=pstmt.executeQuery();
+	         while(rs.next()) {
+	        	 schList = new Respick(
+			        	 rs.getString(1),
+						 rs.getString(2),
+						 rs.getString(3),
+						 rs.getString(4),
+						 rs.getString(5))
 							 ;
 				}
 	         

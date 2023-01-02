@@ -8,6 +8,19 @@ public class Review {
 	private String review_date;
 	private String review_content;
 	private String review_img;
+	private String nickname;
+	
+	public Review(String review_code, String user_email, String restaurant_num, double star_sco, String review_date,
+			String review_content, String review_img, String nickname) {
+		this.review_code = review_code;
+		this.user_email = user_email;
+		this.restaurant_num = restaurant_num;
+		this.star_sco = star_sco;
+		this.review_date = review_date;
+		this.review_content = review_content;
+		this.review_img = review_img;
+		this.nickname = nickname;
+	}
 	public Review() {
 		// TODO Auto-generated constructor stub
 	}
@@ -67,5 +80,12 @@ public class Review {
 	public void setReview_img(String review_img) {
 		this.review_img = review_img;
 	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
 	
 }
