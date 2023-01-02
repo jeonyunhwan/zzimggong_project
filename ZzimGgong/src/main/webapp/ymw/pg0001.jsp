@@ -100,6 +100,7 @@
             </ul>
          </nav>
     </header>
+    
     <section>
         <div class="content">
         	<div id="sch1">
@@ -115,28 +116,16 @@
 	        	<div>
 	        		<div>
 	        			<ul class="recKeyword">
-	        				<li>브런치</li>
-	        				<li>일식</li>
-	        				<li>해산물</li>
-	        				<li>아시아식</li>
-	        				<li>구이</li>
-	        				<li>주점</li>
 	        			</ul>
 	        		</div>
 	        	</div>
 	        	<h3>인기 검색어</h3>
 	        		<div>
 	        			<ul class="popSch">
-	        				<li>연돈</li>
-	        				<li>런던베이글</li>
-	        				<li>숙성도</li>
-	        				<li>톤쇼우</li>
-	        				<li>송계옥</li>
-	        				<li>해목</li>
-	        				<li>청와옥</li>
-	        				<li>오제제</li>
-	        				<li>난포</li>
-	        				<li>두루미</li>
+		        			<jsp:useBean id="schDao" class="ymw.dao.Sch"/>
+		        			<c:forEach var="pop" items="${schDao.pop()}">
+		        				<li>${pop.sch }</li>
+		        			</c:forEach>
 	        			</ul>
 	        		</div>
         	</div>
@@ -181,8 +170,26 @@
 	var backBtnOb = document.querySelector("#backBtn")
 	var sch1 = document.querySelector("#sch1")
 	var sch2 = document.querySelector("#sch2")
-	var recKeywords = document.querySelectorAll(".recKeyword>li")
+	
 	var popSchs = document.querySelectorAll(".popSch>li")
+	var recKeyword = document.querySelector(".recKeyword")
+	
+	var rKey = ["한식", "브런치", "아시아식", "해산물", "뷔페", "일식", "구이", "주점", "양식", "중식"]
+	var ranNums = [];
+	for (i = 1; i <= 5; i += 1) {
+	  var ranNum = Math.floor(Math.random() * rKey.length);
+	  if (ranNums.indexOf(ranNum) === -1) {
+		  ranNums.push(ranNum);
+	  } else {
+	    i--
+	  }
+	}
+	ranNums.forEach(function(num){
+		recKeyword.innerHTML += "<li>"+rKey[num]+"</li>"
+	})
+	var recKeywords = document.querySelectorAll(".recKeyword>li")
+	
+	
 	recKeywords.forEach(function(keyword){
 		keyword.onclick = function(){
 			location.href="./pg0011.jsp?sch="+keyword.innerText+"&appKind=전체&arrKind=별점높은순"
