@@ -173,6 +173,9 @@
 		text-align: center;
 		padding-right: 13px;
 	}
+	
+	input:focus {outline: none};
+	select:focus {outline: none};
     
 </style>
 </head>
@@ -183,7 +186,8 @@
         <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
             </ul>
          </nav>
     </header>
@@ -192,7 +196,7 @@
         <div class="content">
         
         	<nav class="searchmenu">
-		    	<div class="search" onclick="location.href='../ymw/pg0001.html';"> <!-- .search onclick>>link -->
+		    	<div class="search" onclick="location.href='../ymw/pg0001.jsp';"> <!-- .search onclick>>link -->
 		    		<form>
 		    			<input type="text" placeholder="매장이름을 검색하세요" >
 		    			<button type="button"></button>
@@ -202,9 +206,9 @@
 		    		</div>
 		    	</div>
 		    	<ul class="menu">
-		    		<li>즉시예약</li>
-		    		<li id="choice">원격줄서기</li>
-		    		<li>주문현황</li>
+		    		<li >즉시예약</li>
+		    		<li id="choice" onclick="location.href='../ljw/pg3001_logout.jsp';">원격줄서기</li>
+		    		<li onclick="location.href='../ljw/pg3005.jsp';">주문현황</li>
 		    	</ul>
 		    </nav>
 		    

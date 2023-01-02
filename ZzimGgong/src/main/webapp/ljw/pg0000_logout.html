@@ -164,6 +164,7 @@
 		top:46px;
 		background-color:#fff;
 	}
+	input:focus {outline: none;}
 	
 </style>
 </head>
@@ -186,7 +187,7 @@
         <div class="content">
         
 		    <nav class="searchmenu">
-		    	<div class="search" onclick="location.href='../ymw/pg0001.html';"> <!-- .search onclick>>link -->
+		    	<div class="search" onclick="location.href='../ymw/pg0001.jsp';"> <!-- .search onclick>>link -->
 		    		<form>
 		    			<input type="text" name="search" placeholder="매장이름을 검색하세요" >
 		    			<button type="button"></button>
@@ -197,8 +198,8 @@
 		    	</div>
 		    	<ul class="menu">
 		    		<li>즉시예약</li>
-		    		<li onclick="location.href='../ljw/remoteLine_user_login.jsp';">원격줄서기</li>
-		    		<li onclick="location.href='../ljw/currentSituation_user.jsp';">주문현황</li>
+		    		<li onclick="location.href='../ljw/pg3001_logout.jsp';">원격줄서기</li>
+		    		<li onclick="noEntry()">주문현황</li>
 		    	</ul>
 		    </nav>
 		    
@@ -312,18 +313,14 @@
 
 </body>
 <script type="text/javascript">
-	var lis = document.querySelectorAll(".mpstores li");
-	var inputOb = document.querySelector("[name=search]")
-	lis.forEach(function(li){
-		li.onclick=function(){
-			li.style.color="#601986";
-			li.style.fontWeight="600"
+
+	var stores = document.querySelectorAll(".storeInfoDiv_main");
+	stores.forEach(function(store){
+		store.onclick=function(){
+			store.style.border="#601986";
 		}
 	})
-	
-	inputOb.onclick=function(){
-		inputOb.style.border="none"
-	}
+
 
 </script>
 </html>

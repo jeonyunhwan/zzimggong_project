@@ -70,10 +70,11 @@
 	}
 	nav.searchmenu>.menu>li:hover{
 		color:#601986;
+	    cursor:pointer;
 	}
 	
 	.content>.advertising{
-		height: 200px;
+		height:140px;
 		background-color:#F1F3F9;
 	}
 	
@@ -83,6 +84,8 @@
 	}
 	.banner>div{
 		display:inline-block;
+		padding-top:40px;
+		
 	}
 	.banner>div>h3{
 		display:block;
@@ -164,6 +167,8 @@
 		background-color:#fff;
 	}
 	
+	input:focus {outline: none;}
+	
 	/*
 	.bj-button i:before {
 	    display: block;
@@ -191,7 +196,7 @@
         <div class="content">
         
 		    <nav class="searchmenu">
-		    	<div class="search" onclick="location.href='../ymw/pg0001.html';"> <!-- .search onclick>>link -->
+		    	<div class="search" onclick="location.href='../ymw/pg0001.jsp';"> <!-- .search onclick>>link -->
 		    		<form>
 		    			<input type="text" name="search" placeholder="매장이름을 검색하세요" >
 		    			<button type="button"></button>
@@ -209,9 +214,11 @@
 		    
 		    <div class="advertising">
 		    	<div class="banner">
-					<div class="slide01"><img src="../index_markup/img/mainBanner01.png" alt=""></div>
-					<div class="slide02"></div>
-					<div class="slide03"></div>
+		    		<div>
+		    			<h3>찜해서</h3>
+		    			<h3>&nbsp;&nbsp;&nbsp;꼭먹자</h3>
+		    		</div>
+		    		<img alt="" src="../index_markup/img/main_banner.png">
 		    	</div>
 		    </div>
 		    

@@ -173,6 +173,9 @@
 		text-align: center;
 		padding-right: 13px;
 	}
+	
+	
+	input:focus {outline: none;}
     
 </style>
 </head>
@@ -192,7 +195,7 @@
         <div class="content">
         
         	<nav class="searchmenu">
-		    	<div class="search" onclick="location.href='../ymw/pg0001.html';"> <!-- .search onclick>>link -->
+		    	<div class="search" onclick="location.href='../ymw/pg0001.jsp';"> <!-- .search onclick>>link -->
 		    		<form>
 		    			<input type="text" placeholder="매장이름을 검색하세요" >
 		    			<button type="button"></button>

@@ -64,11 +64,51 @@
 	    justify-content:center;
 	    line-height:40px; 
 	}
-   .crst{
+	
+	.crst{
    		margin: 0px 50px;
    		border: 2px solid #601986;
    		padding-bottom:20px;
    		border-radius: 40px;
+   		height:380px;
+   		width:80%;
+   		position:absolute;
+   		display:block;
+   		/*
+   		right:0px;
+   		top:157px;
+		*/
+   }
+	.crst>h1 {
+		display:flex;
+   		justify-content:center;
+   		padding-top: 170px;
+   		color:#601986;
+	}
+	
+   .crst_rsv{
+   		margin: 0px 50px;
+   		border: 2px solid #601986;
+   		padding-bottom:20px;
+   		border-radius: 40px;
+   		height:380px;
+   		width:80%;
+   		position:absolute;
+   		display:none;
+   		right:0px;
+   		top:157px;
+   }
+   .crst_rmt{
+   		margin: 0px 50px;
+   		border: 2px solid #601986;
+   		padding-bottom:20px;
+   		border-radius: 40px;
+   		height:380px;
+   		width:80%;
+   		position:absolute;
+   		display:none;
+   		right:0px;
+   		top:157px;
    }
    .crst01{
    		display:flex;
@@ -194,15 +234,22 @@
 		    <nav class="searchmenu">
 		    	<ul class="menu">
 		    		<li>즉시예약</li>
-		    		<li>원격줄서기</li>
-		    		<li id="choice">주문현황</li>
+		    		<li onclick="location.href='../ljw/pg3001_logout.jsp';">원격줄서기</li>
+		    		<li id="choice" onclick="location.href='../ljw/pg3005.jsp';">주문현황</li>
 		    	</ul>
 		    	<div class="crsmenu">
 					<div class="crstRsrv">즉시예약</div>
 		    		<div class="crstRmln">원격줄서기</div>
 		    	</div>
 		    </nav>
-		    <div class="crst">
+			<div class="crst">
+				<h1>사용하시는 서비스가 없습니다</h1>
+		    </div>
+		    <div class="crst_rsv">
+				<!-- 즉시 예약 -->
+				<h1>즉시 예약 칸</h1>
+		    </div>
+		    <div class="crst_rmt">
 			    <div class="crst01">
 			    	<h1 id="rstname">상호명</h1>
 			    	<div>
@@ -222,6 +269,7 @@
 			    </div>
 			    <div class="crst04">대기 취소하기</div>
 		    </div>
+
 		    
 		    
 		    
@@ -248,18 +296,45 @@
     </footer>
 </div>
 
+
 </body>
 <script type="text/javascript">
-	var crsmenuOb = document.querySelectorAll(".crsmenu div");
 	
-	crsmenuOb.forEach(function(crsmenu){
-		crsmenu.onclick=function(){
-			crsmenu.style.color="#f6f6f6"
-			crsmenu.style.background="#601986"
-		}
+	var crstRsvButtonOb = document.querySelector(".crstRsrv")
+	var crstRmtButtonOb = document.querySelector(".crstRmln")
+	
+	var crstBlankOb = document.querySelector(".crst")
+	var crstRsvOb = document.querySelector(".crst_rsv")
+	var crstRmtOb = document.querySelector(".crst_rmt")
+	
+	//실시간예약 버튼 클릭 시
+	crstRsvButtonOb.addEventListener("click", function(){
+		crstRsvButtonOb.style.color="#f6f6f6"
+		crstRsvButtonOb.style.background="#601986"
+		crstRsvOb.style.display="block"
+		
+		crstRmtButtonOb.style.color="#333"
+		crstRmtButtonOb.style.background="#E1E5F2"
+		crstRmtOb.style.display="none"
+		crstBlankOb.style.display="none"
 	})
+	
+	// onload : 문서나 객체가 로딩되었을 때
+	// ondblclick : 더블클릭했을 때
 
 
+	//원격줄서기 버튼
+	crstRmtButtonOb.addEventListener("click", function(){
+		crstRmtButtonOb.style.color="#f6f6f6"
+		crstRmtButtonOb.style.background="#601986"
+		crstRmtOb.style.display="block"
+			
+		crstRsvButtonOb.style.color="#333"
+		crstRsvButtonOb.style.background="#E1E5F2"
+		crstRsvOb.style.display="none"
+		crstBlankOb.style.display="none"
+		
+	})
 	
 </script>
 </html>
