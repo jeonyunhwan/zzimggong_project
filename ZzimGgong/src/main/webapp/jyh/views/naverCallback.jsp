@@ -10,7 +10,7 @@
 </head>
 <body>
 <script type="text/javascript">
-  var naver_id_login = new naver_id_login("s6PmXM2Nj4oevJcuSwpd", "http://localhost:9080/ZzimGgong/naverCallback.jsp");
+  var naver_id_login = new naver_id_login("b06toaGrqKSfcX7fTe6V", "http://localhost:7008/views/naverCallback.jsp");
   // 접근 토큰 값 출력
   // alert(naver_id_login.oauthParams.access_token);
   // 네이버 사용자 프로필 조회
@@ -20,23 +20,27 @@
     var id = naver_id_login.getProfileData('id');
     var nik = naver_id_login.getProfileData('nickname');
     var email = naver_id_login.getProfileData("email");
+    console.log(id);
+    console.log(nik);
+    console.log(email);
     var xhr = new XMLHttpRequest();
     //아이디값으로 바꾸기 ㅇㅋ? 
-		xhr.open("get","checkId.jsp?email="+email,true);
+		xhr.open("get","/checkIDservice?email="+email,true);
 		xhr.send();
+		
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 && xhr.status==200){
-				var ck = JSON.parse(xhr.responseText);
-					if(ck.chId =="naver_auth"){
+				var ck = xhr.responseText;
+					if(ck =="naver_auth"){
 						 //만약 DB 아이디 설정이 있을 때 카카오 아이디가 바뀔수 있어서 
 						 //db 값을 불러옴 ㅇㅋ? 
 						 alert("네이버 인증되었습니다.");
-						 window.opener.loginform(email);
+						 window.opener.nloginform(email);
 						 window.close();
-					}else if(ck.chId == "kakao_auth"||ck.chId == "zzim_auth"){
+					}else if(ck == "kakao_auth"||ck.chId == "zzim_auth"){
 						alert("다른 연동 계정이 있습니다.");
 						window.close();
-						location.href = "login.jsp";
+						location.href = "/view/login.jsp";
 					}else{
 						alert("네이버 인증 회원가입 실행");
 						opener.createHiddenform(id,email,nik);
@@ -49,18 +53,5 @@
 </script>
 </body>
 <script type ="text/javascript">
-function loginform(kakaoId){
-	var frm = document.createElement('form');
-	frm.setAttribute('method', 'post');
-	frm.setAttribute('action', 'sns_Session.jsp');
-	var hiddenInput = document.createElement('input');
-	hiddenInput.setAttribute('type','hidden');
-	hiddenInput.setAttribute('name','email');
-	hiddenInput.setAttribute('value',kakaoId);
-	frm.appendChild(hiddenInput);
-	document.body.appendChild(frm);
-	frm.submit();
-}
-
 </script>
 </html>
