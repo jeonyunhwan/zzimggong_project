@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.*"  
-    import="jspexp.vo.*"  
-    import="jspexp.a13_database.*"
+	import="ymw.*"
+    import="jyh.model.*"
+    import="jds.*"
+    import="hjw.*"
+    import="ljw.*"
    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -12,7 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <title>즉시 예약 신청</title>
-<link rel="stylesheet" href="../index_markup/reset.css">
+<link rel="stylesheet" href="/index_markup/reset.css">
 <style type="text/css">
 
     section{
@@ -157,14 +160,30 @@
 	String resNum = request.getParameter("resNum");
 %>
 <div class="wrapper">
-    <header>
-        <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
+<%
+      memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+   %>
+   <c:if test="${empty sesID }">
+       <header class="head1">
+           <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+            <nav class="gnb">
+               <ul>
+                   <li><a href="/jyh/views/login.jsp">로그인</a></li>
+                   <li><a href="/jyh/views/insertMember.jsp">회원가입</a></li>
+               </ul>
+            </nav>
+       </header>
+    </c:if>
+    <c:if test="${not empty sesID }">
+       <header class="head2">
+        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
+    </c:if>
     <section>
         <div class="res_info">
             <form>
@@ -174,7 +193,7 @@
             </p>
 
             <div class="cnt_wrapper">
-                <img src="../index_markup/img/myPageImg.png" alt="">
+                <img src="/index_markup/img/myPageImg.png" alt="">
                 <input type="number" id="resCnt" name="resCnt"  min="1" max="10" step="1" value="1"/>
             </div>
 
@@ -182,7 +201,7 @@
             <div class="date_input_wrapper">
                 <img src="../index_markup/img/date_icon.png" alt="">
                 <input type="date" name="resDate" id="resDate"><br>
-                <img class="img02" src="../index_markup/img/clock_icon.png" alt="">
+                <img class="img02" src="/index_markup/img/clock_icon.png" alt="">
                 <select name="resTime" id="resTime">
                     <option value="11:30">11 : 30</option>
                     <option value="12:00">12 : 00</option>
