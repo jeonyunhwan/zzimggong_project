@@ -17,7 +17,7 @@
 <meta charset="UTF-8">
 <title>찜꽁</title>
 
-<link rel="stylesheet" href="/index_markup/reset.css"/>
+<link rel="stylesheet" href="../index_markup/reset.css"/>
 <style type="text/css">
 
  	/* ㅇㅇ */
@@ -202,7 +202,7 @@
 %>
    <c:if test="${empty sesID }">
        <header class="head1">
-           <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
+           <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
             <nav class="gnb">
                <ul>
                    <li><a href="/jyh/views/login.jsp">로그인</a></li>
@@ -213,7 +213,7 @@
     </c:if>
     <c:if test="${not empty sesID }">
        <header class="head2">
-        <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
+        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
                 <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
@@ -236,7 +236,7 @@
 		    		</div>
 		    	</div>
 		    	<ul class="menu">
-		    		<li onclick="location.href='/hds/res_index.html';">즉시예약</li>
+		    		<li onclick="location.href='/hds/res_index.jsp';">즉시예약</li>
 		    		<li onclick="location.href='/ljw/pg3001.jsp';">원격줄서기</li>
 		    		<li onclick="location.href='/ljw/pg3005.jsp';">주문현황</li>
 		    	</ul>
