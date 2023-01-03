@@ -1,4 +1,4 @@
-package com.controller;
+package jyh.com.controller;
 
 import java.io.IOException;
 import java.util.Properties;

@@ -1,4 +1,4 @@
-package com.controller;
+package jyh.com.controller;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.memberDAO;
-import model.memberDTO;
+import jyh.model.memberDAO;
+import jyh.model.memberDTO;
 
 /**
  * Servlet implementation class insertSevice
@@ -63,7 +63,7 @@ memberDTO member = new memberDTO();
 			return;
 		}else {
 			request.setAttribute("joinResult","0");
-			request.getRequestDispatcher("/views/insertMember.jsp").forward(request, response);
+			request.getRequestDispatcher("/jyh/views/insertMember.jsp").forward(request, response);
 			return;
 		}
 	}

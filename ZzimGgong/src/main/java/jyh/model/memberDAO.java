@@ -1,12 +1,13 @@
-package model;
+package jyh.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.DB;
-import model.memberDTO;
+
+import ymw.dao.DB;
+import jyh.model.memberDTO;
 
 
 

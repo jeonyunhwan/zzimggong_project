@@ -1,4 +1,5 @@
-package com.controller;
+package jyh.com.controller;
+import jyh.model.memberDAO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.memberDAO;
+
 
 /**
  * Servlet implementation class checkEmail
@@ -34,21 +35,21 @@ public class checkEmail extends HttpServlet {
 		if(email.equals(null)||email.equals("")) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('이메일이 없습니다.'); location.href='/views/authkey.jsp';</script>"); 
+			writer.println("<script>alert('이메일이 없습니다.'); location.href='/jyh/views/authkey.jsp';</script>"); 
 			//close하면 sendRedirect 불가 
 			writer.close();
 			return;
 		}else if(check.equals("no_auth")) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('이메일이 없습니다.'); location.href='/views/authkey.jsp';</script>"); 
+			writer.println("<script>alert('이메일이 없습니다.'); location.href='/jyh/views/authkey.jsp';</script>"); 
 			//close하면 sendRedirect 불가 
 			writer.close();
 			return;
 		}else if(check.equals("kakao_auth") || check.equals("naver_auth")) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('SNS 연동계정입니다.'); location.href='/views/login.jsp';</script>"); 
+			writer.println("<script>alert('SNS 연동계정입니다.'); location.href='/jyh/views/login.jsp';</script>"); 
 			//close하면 sendRedirect 불가 
 			writer.close();
 			return;

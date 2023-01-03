@@ -1,4 +1,4 @@
-package model;
+package jyh.model;
 
 public class memberDTO {
 	private String email;

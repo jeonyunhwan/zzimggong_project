@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import = "model.memberDTO"%>
+    import = "jyh.model.memberDTO"%>
     
 <!DOCTYPE html>
 <html>
@@ -114,7 +114,7 @@ if(idAuth==2){
                 <button type="button" class="w-btn w-btn-indigo" onclick="updatefunction();">수정하기</button>
                     <button type="button" class="w-btn w-btn-indigo" onclick="goPass();">비밀번호변경</button>
                     <button type="button" class="w-btn w-btn-indigo" onclick="logOut();">로그아웃</button>
-                    <button type="button" class="w-btn w-btn-indigo" onclick="updatefunction();">회원삭제</button>
+                    <button type="button" class="w-btn w-btn-indigo" onclick="view();">회원삭제</button>
                 </div>
             </div>
         </div>
@@ -147,7 +147,7 @@ var pnum = "<%=pNum%>";
 function updateform(email,nickname,pnum){
 	var frm = document.createElement('form');
 	frm.setAttribute('method', 'post');
-	frm.setAttribute('action', '/views/myInfoUpdate.jsp');
+	frm.setAttribute('action', '/jyh/views/myInfoUpdate.jsp');
 	var hiddenInput = document.createElement('input');
 	hiddenInput.setAttribute('type','hidden');
 	hiddenInput.setAttribute('name','email');
@@ -180,7 +180,10 @@ function logOut(){
 }
 //비밀번호 변경 
 function goPass(){
-	location.href = "/views/emailAuth.jsp";
+	location.href = "/jyh/views/emailAuth.jsp";
+}
+function view(){
+	location.href = "/jyh/views/paging.jsp";
 }
 </script>
 </body>

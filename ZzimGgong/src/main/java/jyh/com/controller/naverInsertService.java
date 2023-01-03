@@ -1,4 +1,4 @@
-package com.controller;
+package jyh.com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.memberDAO;
-import model.memberDTO;
+import jyh.model.memberDAO;
+import jyh.model.memberDTO;
 
 /**
  * Servlet implementation class naverInsertService

@@ -4,7 +4,7 @@
 <html>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="/views/authkey.css">
+<link rel="stylesheet" href="/jyh/views/authkey.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -23,10 +23,10 @@ String email = request.getParameter("email");
 
 <div class="wrapper">
     <header>
-        <h1 class="logo"><img src="./img/main_logo.png" alt=""></h1>
+        <h1 class="logo"><img src="/jyh/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="./img/myPageImg.png" alt=""></a></li>
+                <li><a href="#"><img src="/jyh/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
@@ -50,7 +50,7 @@ String email = request.getParameter("email");
                     <div class = "insert_form">
                         <b>비밀번호 재입력</b><span name = "reCheck"></span><br>
                         <input type = "password" name = "repw" minlength="8" placeholder="(최소8자)1개 이상 숫자,문자포함 특수문자 1개 포함"/>
-                        <button type = "submit">인증하기</button> 
+                        <button type = "submit">변경하기</button> 
                     </div>
                      </div>
                     </form>
