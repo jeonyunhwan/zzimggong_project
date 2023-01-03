@@ -1,6 +1,5 @@
 package hds;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -77,6 +76,48 @@ public class reservation_Dao {
 		}finally {
 			DB.close(rs, pstmt, con);
 		}
+		
+	}
+
+	// 고객 현재 내 예약
+	public List<Reservation> showCurrentRes(String user_email, String resNum){
+		List<Reservation> alist = new ArrayList<Reservation>();
+		String sql = "SELECT r2.RES_NAME, r2.RES_PHONENUM, r.*\r\n"
+				+ "FROM RESERVATION r, RESTAURANT r2\r\n"
+				+ "WHERE r.RESNUM = r2.RESNUM \r\n"
+				+ "AND USER_EMAIL LIKE '%'||?||'%'\r\n"
+				+ "AND r2.RESNUM LIKE '%'||?||'%'";
+		try {
+			con = DB.con();
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_email);
+			pstmt.setString(2, resNum);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				alist.add(new Reservation(rs.getString("RES_NAME"),
+						rs.getString("RES_PHONENUM"),
+						rs.getString("user_email"),
+						rs.getString("resNum"),
+						rs.getInt("reserve_apply_person"),
+						rs.getString("reserve_start_time"),
+						rs.getString("reserve_request"),
+						rs.getInt("reserve_state"))
+						);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("DB 에러 : "+e.getMessage());
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("에러 : "+e.getMessage());
+		}finally {
+			DB.close(rs, pstmt, con);
+		}
+		
+		return alist;
 		
 	}
 
