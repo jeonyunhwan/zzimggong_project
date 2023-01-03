@@ -230,7 +230,7 @@
 		    		</div>
 		    	</div>
 		    	<ul class="menu">
-		    		<li onclick="location.href='/hds/res_index.html';">즉시예약</li>
+		    		<li onclick="location.href='/hds/res_index.jsp';">즉시예약</li>
 		    		<li id="choice" onclick="location.href='/ljw/pg3001.jsp';">원격줄서기</li>
 		    		<li onclick="location.href='/ljw/pg3005.jsp';">주문현황</li>
 		    	</ul>

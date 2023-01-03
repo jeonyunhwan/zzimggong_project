@@ -88,14 +88,11 @@
 	}
 	
 	.content>.advertising{
-		height:140px;
+		height:200px;
 		background-color:#F1F3F9;
 	}
 	
-	.advertising>.banner{
-		display:flex;
-		justify-content: center; 
-	}
+
 	.banner>div{
 		display:inline-block;
 		padding-top:40px;
@@ -243,13 +240,7 @@
 		    </nav>
 		    
 		    <div class="advertising">
-		    	<div class="banner">
-		    		<div>
-		    			<h3>찜해서</h3>
-		    			<h3>&nbsp;&nbsp;&nbsp;꼭먹자</h3>
-		    		</div>
-		    		<img alt="" src="/index_markup/img/main_banner.png">
-		    	</div>
+				<img alt="" src="/index_markup/img/mainBanner01.png">
 		    </div>
 		    
 		    <h3>내 주변 맛집으로 찜꽁</h3>
