@@ -116,10 +116,9 @@ function eventclick(){
 	if(auth.value==keys){
 		alert("인증되었습니다.");
 		emailform2(emails);
+		<%session.removeAttribute("AuthenticationKey");%>
 	}else{
 		alert("인증실패");
-		<%session.invalidate();%>
-		location.href = "/views/emailAuth.jsp";
 	}
 }
 //계정이 있는지 없는지 확인

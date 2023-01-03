@@ -90,7 +90,7 @@ var auth = document.querySelector("[name = auth]");
 var keys = "<%=key%>";
 function eventclick(){	
 	if(auth.value==keys){
-		<%session.invalidate();%>
+		<%session.removeAttribute("AuthenticationKey");%>
 		opener.openCheck = true;
 		window.close();
 		alert("인증되었습니다.");		
