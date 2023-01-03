@@ -1,8 +1,10 @@
+<%@page import="hds.Reservation"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.*"  
-    import="jspexp.vo.*"  
-    import="jspexp.a13_database.*"
+    import="java.util.*"
+    import="jyh.model.*"
+    import="hds.*"
+    import="ymw.*"
    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -13,7 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="../index_markup/reset.css">
+<link rel="stylesheet" href="/index_markup/reset.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -207,8 +209,34 @@
 	    margin:0px auto;
 	    line-height:40px; 
    }
+   
+   /*
+   솜 css
+   */
 
+	.res_wrapper{
+		border-bottom: 2px solid #601986;
+	    width: 365px;
+	    margin: auto;
+	    padding: 10px;
+	}
+	
+	.res_wrapper p{
+		line-height: 28px;
+	}
 
+	.crst_rsv h2{
+		font-size: 23px;
+	    text-align: center;
+	    line-height: 60px;
+	}
+	
+	.res_state_text{
+		color: #601986;
+		font-size: 20px;
+		padding-left: 15px;
+		font-weight: 700;
+	}
 
 </style>
 
@@ -217,16 +245,37 @@
 </script>
 </head>
 <body>
+<jsp:useBean id="dao" class="hds.reservation_Dao"/>
+<%
+	String user_email = "hds123@naver.com";
+	String resNum = "";
+%>
 
 <div class="wrapper">
-    <header>
-        <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
+    <%
+      memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+   %>
+   <c:if test="${empty sesID }">
+       <header class="head1">
+           <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+            <nav class="gnb">
+               <ul>
+                   <li><a href="/jyh/views/login.jsp">로그인</a></li>
+                   <li><a href="/jyh/views/insertMember.jsp">회원가입</a></li>
+               </ul>
+            </nav>
+       </header>
+    </c:if>
+    <c:if test="${not empty sesID }">
+       <header class="head2">
+        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
+    </c:if>
     
     <section>
         <div class="content">
@@ -247,7 +296,29 @@
 		    </div>
 		    <div class="crst_rsv">
 				<!-- 즉시 예약 -->
-				<h1>즉시 예약 칸</h1>
+				<h2>나의 즉시 예약 현황</h2>
+<%
+for(Reservation r : dao.showCurrentRes(user_email, resNum)) {
+
+	String state="";
+	if(r.getReserve_state()==1){
+		state="예약 확정";
+	}else if(r.getReserve_state()==2){
+		state="가게측 예약 거절";
+	}else{
+		state="가게 승인 대기 중";
+	}
+	
+%>
+
+			<div class="res_wrapper">
+				<p>
+					방문 식당 : <%=r.getRes_name() %><span class="res_state_text"><%=state%></span><br>
+					식당 연락처 : <%=r.getRes_phoneNum() %><br>
+					방문 일시 : <%=r.getReserve_start_time() %><br>
+				</p>
+			</div>
+<%} %>
 		    </div>
 		    <div class="crst_rmt">
 			    <div class="crst01">
