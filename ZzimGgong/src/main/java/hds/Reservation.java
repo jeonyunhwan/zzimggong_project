@@ -11,6 +11,10 @@ public class Reservation {
 	private String res_name;
 	private String res_phoneNum;
 	
+	private String nickName;
+	private String phoneNum;
+	
+	
 	public Reservation() {
 		// TODO Auto-generated constructor stub
 	}
@@ -27,6 +31,32 @@ public class Reservation {
 	}
 	
 
+
+	public Reservation(String nickName, String phoneNum, int reserve_apply_person, String reserve_start_time, int reserve_state, String user_email ) {
+		super();
+		this.reserve_apply_person = reserve_apply_person;
+		this.reserve_start_time = reserve_start_time;
+		this.reserve_state = reserve_state;
+		this.nickName = nickName;
+		this.phoneNum = phoneNum;
+		this.user_email = user_email;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public String getPhoneNum() {
+		return phoneNum;
+	}
+
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
 
 	public Reservation(String res_name, String res_phoneNum, String user_email, String resNum, int reserve_apply_person, String reserve_start_time,
 			String reserve_request, int reserve_state) {

@@ -161,11 +161,12 @@
 %>
 <div class="wrapper">
 <%
-      memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+    memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+	String user_email = loginUser.getEmail();
    %>
    <c:if test="${empty sesID }">
        <header class="head1">
-           <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+           <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
             <nav class="gnb">
                <ul>
                    <li><a href="/jyh/views/login.jsp">로그인</a></li>
@@ -176,7 +177,7 @@
     </c:if>
     <c:if test="${not empty sesID }">
        <header class="head2">
-        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+        <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
          <nav class="gnb">
             <ul>
                 <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
@@ -270,7 +271,7 @@
 			var addReqVal = addReqOb.value;
 			var qstr = "?reserve_apply_person="+resCntVal
 					+"&reserve_start_time="+resDateVal+" "+resTimeVal
-					+"&reserve_request="+addReqVal+"&resNum="+"<%=resNum%>";
+					+"&reserve_request="+addReqVal+"&resNum="+"<%=resNum%>"+"&userEmail="+"<%=user_email%>";
 			
 			console.log(qstr);
 			callAjax(qstr);
@@ -283,7 +284,7 @@
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 & xhr.status==200){
 				console.log("전송 완료");
-                location.href="pg_1001_2.html"
+                location.href="pg_1001_2.jsp"
 			}
 		}
 	}

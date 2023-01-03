@@ -98,42 +98,32 @@
 
 <%
 
-String user_email = "hds123@naver.com";
+String user_email = request.getParameter("user_email");
 String resNum = "123-45-67890";
-String reserve_start_time = "2023-01-05 17:00";
+String reserve_start_time = request.getParameter("reserve_start_time");
+String nickName = request.getParameter("nickName");
+String phoneNum = request.getParameter("phoneNum");
+
+reserve_start_time = reserve_start_time.replace("%", " ");
+
 %>
 
 
 
 <div class="wrapper">
-<%
-      memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
-   %>
-   <c:if test="${empty sesID }">
-       <header class="head1">
-           <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
-            <nav class="gnb">
-               <ul>
-                   <li><a href="/jyh/views/login.jsp">로그인</a></li>
-                   <li><a href="/jyh/views/insertMember.jsp">회원가입</a></li>
-               </ul>
-            </nav>
-       </header>
-    </c:if>
-    <c:if test="${not empty sesID }">
-       <header class="head2">
-        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+      <header>
+         <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
+               <li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
+               <li><button onclick="logout()">종료</button></li>
             </ul>
          </nav>
-    </header>
-    </c:if>
+      </header>
     <section>
         <div class="content">
             <h3>예약 승인 및 거절</h3>
-            <p>* 예약 신청 정보</p>
+            <p><b>* 예약 신청 정보</b></p>
 <%
 for(Reservation r : dao.showApproval(user_email, reserve_start_time, resNum)) {
 %>
@@ -145,13 +135,34 @@ for(Reservation r : dao.showApproval(user_email, reserve_start_time, resNum)) {
                 <img src="/index_markup/img/date_icon.png" alt="">
                 방문일시 : <span class="get_font"><%=r.getReserve_start_time()%></span>
             </div>
-<%
-}
-%>
+           <p><b>* 고객 정보</b></p>
+            <div class="info_wrap">
+               고객 닉네임 : <span class="get_font"><%=nickName%></span><br>
+               고객 연락처 : <span class="get_font"><%=phoneNum%></span>
+            </div>
+            
+            <%if(r.getReserve_state()==1){
+            	%>
+            <div class="btn_wrapper">
+                이미 승인된 예약건입니다.
+            </div>
+            <%}else if(r.getReserve_state()==0) {%>
+            
             <div class="btn_wrapper">
                 <div class="btn" id="addBtn">승인</div>
                 <div class="btn" onclick="location.href='pg_1004.html'">거절</div>
             </div>
+            
+            <%}else{ %>
+            
+           <div class="btn_wrapper">
+                이미 거절한 예약건입니다.
+            </div>
+            
+<%
+            }
+		}
+%>
         </div>
     </section>
     <footer>

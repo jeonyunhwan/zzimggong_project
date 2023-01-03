@@ -79,14 +79,14 @@ public class reservation_Dao {
 		
 	}
 
-	// 고객 현재 내 예약
-	public List<Reservation> showCurrentRes(String user_email, String resNum){
+	// 가게 현재 내 예약
+	public List<Reservation> showResList(String user_email, String resNum){
 		List<Reservation> alist = new ArrayList<Reservation>();
-		String sql = "SELECT r2.RES_NAME, r2.RES_PHONENUM, r.*\r\n"
-				+ "FROM RESERVATION r, RESTAURANT r2\r\n"
-				+ "WHERE r.RESNUM = r2.RESNUM \r\n"
-				+ "AND USER_EMAIL LIKE '%'||?||'%'\r\n"
-				+ "AND r2.RESNUM LIKE '%'||?||'%'";
+		String sql = "SELECT j.NICKNAME, j.PHONE_NUMBER, r.RESERVE_APPLY_PERSON, r.RESERVE_START_TIME, r.RESERVE_STATE, r.USER_EMAIL \r\n"
+				+ "FROM RESERVATION r, jjim_user j\r\n"
+				+ "WHERE r.USER_EMAIL = j.USER_EMAIL\r\n"
+				+ "AND j.USER_EMAIL LIKE '%'||?||'%'\r\n"
+				+ "AND r.RESNUM LIKE '%'||?||'%'";
 		try {
 			con = DB.con();
 			
@@ -96,14 +96,12 @@ public class reservation_Dao {
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				alist.add(new Reservation(rs.getString("RES_NAME"),
-						rs.getString("RES_PHONENUM"),
-						rs.getString("user_email"),
-						rs.getString("resNum"),
-						rs.getInt("reserve_apply_person"),
-						rs.getString("reserve_start_time"),
-						rs.getString("reserve_request"),
-						rs.getInt("reserve_state"))
+				alist.add(new Reservation(rs.getString("NICKNAME"),
+						rs.getString("PHONE_NUMBER"),
+						rs.getInt("RESERVE_APPLY_PERSON"),
+						rs.getString("RESERVE_START_TIME"),
+						rs.getInt("RESERVE_STATE"),
+						rs.getString("USER_EMAIL"))
 						);
 			}
 			
@@ -127,9 +125,8 @@ public class reservation_Dao {
 		String sql = "SELECT *\r\n"
 				+ "FROM reservation\r\n"
 				+ "WHERE user_email = ?\r\n"
-				+ "AND reserve_start_time = TO_DATE(?,'YYYY-MM-DD HH24:MI')\r\n"
-				+ "AND RESNUM = ?\r\n"
-				+ "AND reserve_state = 0";
+				+ "AND reserve_start_time = TO_DATE(?,'YYYY-MM-DD HH24:MI:SS')\r\n"
+				+ "AND RESNUM = ?\r\n";
 		try {
 			con = DB.con();
 			
@@ -142,6 +139,48 @@ public class reservation_Dao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				alist.add(new Reservation(rs.getString("user_email"),
+						rs.getString("resNum"),
+						rs.getInt("reserve_apply_person"),
+						rs.getString("reserve_start_time"),
+						rs.getString("reserve_request"),
+						rs.getInt("reserve_state"))
+						);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("DB 에러 : "+e.getMessage());
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("에러 : "+e.getMessage());
+		}finally {
+			DB.close(rs, pstmt, con);
+		}
+		
+		return alist;
+		
+	}
+
+	// 고객 현재 내 예약
+	public List<Reservation> showCurrentRes(String user_email, String resNum){
+		List<Reservation> alist = new ArrayList<Reservation>();
+		String sql = "SELECT r2.RES_NAME, r2.RES_PHONENUM, r.*\r\n"
+				+ "FROM RESERVATION r, RESTAURANT r2\r\n"
+				+ "WHERE r.RESNUM = r2.RESNUM \r\n"
+				+ "AND USER_EMAIL LIKE '%'||?||'%'\r\n"
+				+ "AND r2.RESNUM LIKE '%'||?||'%'";
+		try {
+			con = DB.con();
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_email);
+			pstmt.setString(2, resNum);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				alist.add(new Reservation(rs.getString("RES_NAME"),
+						rs.getString("RES_PHONENUM"),
+						rs.getString("user_email"),
 						rs.getString("resNum"),
 						rs.getInt("reserve_apply_person"),
 						rs.getString("reserve_start_time"),
