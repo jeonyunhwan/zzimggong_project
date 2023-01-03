@@ -233,9 +233,9 @@
         
 		    <nav class="searchmenu">
 		    	<ul class="menu">
-		    		<li>즉시예약</li>
-		    		<li onclick="location.href='../ljw/pg3001_logout.jsp';">원격줄서기</li>
-		    		<li id="choice" onclick="location.href='../ljw/pg3005.jsp';">주문현황</li>
+		    		<li onclick="location.href='/hds/res_index.html';">즉시예약</li>
+		    		<li onclick="location.href='/ljw/pg3001.jsp';">원격줄서기</li>
+		    		<li id="choice" onclick="location.href='/ljw/pg3005.jsp';">주문현황</li>
 		    	</ul>
 		    	<div class="crsmenu">
 					<div class="crstRsrv">즉시예약</div>
@@ -253,14 +253,14 @@
 			    <div class="crst01">
 			    	<h1 id="rstname">상호명</h1>
 			    	<div>
-			    		<div id="phonecall"><img src="../index_markup/img/phonecall_icon.png" alt="">전화</div>
-			    		<div id="location"><img src="../index_markup/img/locationpin_icon.png" alt="">위치</div>
+			    		<div id="phonecall"><img src="/index_markup/img/phonecall_icon.png" alt="">전화</div>
+			    		<div id="location"><img src="/index_markup/img/locationpin_icon.png" alt="">위치</div>
 			    	</div>
 			    </div>
 			    <div class="crst02">
 			    	<h2>현재 내 입장 순서는</h2>
 			    	<h1>3번</h1>
-			    	<img src="../index_markup/img/circlearrow_icon.png" alt=""/>
+			    	<img src="/index_markup/img/circlearrow_icon.png" alt=""/>
 			    </div>
 			    <div class="crst03">
 			    	<h4>대기번호 3</h4>

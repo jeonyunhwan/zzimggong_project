@@ -1,8 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="java.util.*" 
+    
+    import="ymw.*"
+    import="jyh.model.*"
+    import="jds.*"
+    import="hjw.*"
+    import="ljw.*" 
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:requestEncoding value="UTF-8" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>찜꽁</title>
+
 <link rel="stylesheet" href="../index_markup/reset.css"/>
 <style type="text/css">
 
@@ -183,32 +197,48 @@
 <body>
 
 <div class="wrapper">
-    <header>
-        <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
+<%
+      memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+%>
+   <c:if test="${empty sesID }">
+       <header class="head1">
+           <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+            <nav class="gnb">
+               <ul>
+                   <li><a href="/jyh/views/login.jsp">로그인</a></li>
+                   <li><a href="/jyh/views/insertMember.jsp">회원가입</a></li>
+               </ul>
+            </nav>
+       </header>
+    </c:if>
+    <c:if test="${not empty sesID }">
+       <header class="head2">
+        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
+    </c:if>
     
     <section>
         <div class="content">
         
 		    <nav class="searchmenu">
-		    	<div class="search" onclick="location.href='../ymw/pg0001.jsp';"> <!-- .search onclick>>link -->
+		    	<div class="search" onclick="location.href='/ymw/pg0001.jsp';"> <!-- .search onclick>>link -->
 		    		<form>
 		    			<input type="text" name="search" placeholder="매장이름을 검색하세요" >
 		    			<button type="button"></button>
 		    		</form>	
 		    		<div>
-		    			<button type="button"><img src="../index_markup/img/search_icon.png" alt=""></button>
+		    			<button type="button"><img src="/index_markup/img/search_icon.png" alt=""></button>
 		    		</div>
 		    	</div>
 		    	<ul class="menu">
-		    		<li>즉시예약</li>
-		    		<li onclick="location.href='../ljw/remoteLine_user_login.jsp';">원격줄서기</li>
-		    		<li onclick="location.href='../ljw/currentSituation_user.jsp';">주문현황</li>
+		    		<li onclick="location.href='/hds/res_index.html';">즉시예약</li>
+		    		<li onclick="location.href='/ljw/pg3001.jsp';">원격줄서기</li>
+		    		<li onclick="location.href='/ljw/pg3005.jsp';">주문현황</li>
 		    	</ul>
 		    </nav>
 		    
@@ -218,7 +248,7 @@
 		    			<h3>찜해서</h3>
 		    			<h3>&nbsp;&nbsp;&nbsp;꼭먹자</h3>
 		    		</div>
-		    		<img alt="" src="../index_markup/img/main_banner.png">
+		    		<img alt="" src="/index_markup/img/main_banner.png">
 		    	</div>
 		    </div>
 		    
