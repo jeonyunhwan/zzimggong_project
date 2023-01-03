@@ -63,7 +63,7 @@ memberDTO member = new memberDTO();
 			return;
 		}else {
 			request.setAttribute("joinResult","0");
-			request.getRequestDispatcher("/views/insertMember.jsp").forward(request, response);
+			request.getRequestDispatcher("/jyh/views/insertMember.jsp").forward(request, response);
 			return;
 		}
 	}

@@ -6,7 +6,7 @@
 <html>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="/views/myInfoUpdate.css">
+<link rel="stylesheet" href="/jyh/views/myInfoUpdate.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -31,10 +31,10 @@ String userpnum = request.getParameter("pNum");
 </script>
 <div class="wrapper">
     <header>
-        <h1 class="/views/loginOkIndex.jsp"><img src="/views/index.markup/img/main_logo.png" alt=""></h1>
+        <h1 class="/jyh/views/loginOkIndex.jsp"><img src="/jyh/views/index.markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="/myInfoController"><img src="/views/index.markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/jyh/views/index.markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>

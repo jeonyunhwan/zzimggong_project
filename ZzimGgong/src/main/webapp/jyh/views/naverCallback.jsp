@@ -40,7 +40,7 @@
 					}else if(ck == "kakao_auth"||ck.chId == "zzim_auth"){
 						alert("다른 연동 계정이 있습니다.");
 						window.close();
-						location.href = "/view/login.jsp";
+						location.href = "/jyh/view/login.jsp";
 					}else{
 						alert("네이버 인증 회원가입 실행");
 						opener.createHiddenform(id,email,nik);
