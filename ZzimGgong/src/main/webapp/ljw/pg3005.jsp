@@ -221,6 +221,10 @@
 	    padding: 10px;
 	}
 	
+	.res_wrapeer:last-child{
+		border-bottom: none;
+	}
+	
 	.res_wrapper p{
 		line-height: 28px;
 	}
@@ -246,18 +250,15 @@
 </head>
 <body>
 <jsp:useBean id="dao" class="hds.reservation_Dao"/>
-<%
-	String user_email = "hds123@naver.com";
-	String resNum = "";
-%>
-
 <div class="wrapper">
-    <%
-      memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+<%
+	String resNum = "";
+    memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+	String userEmail = loginUser.getEmail();
    %>
    <c:if test="${empty sesID }">
        <header class="head1">
-           <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+           <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
             <nav class="gnb">
                <ul>
                    <li><a href="/jyh/views/login.jsp">로그인</a></li>
@@ -268,7 +269,7 @@
     </c:if>
     <c:if test="${not empty sesID }">
        <header class="head2">
-        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+        <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
          <nav class="gnb">
             <ul>
                 <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
@@ -282,8 +283,8 @@
         
 		    <nav class="searchmenu">
 		    	<ul class="menu">
-		    		<li onclick="location.href='/hds/res_index.html';">즉시예약</li>
-		    		<li onclick="location.href='/ljw/pg3001.jsp';">원격줄서기</li>
+		    		<li onclick="location.href='/hds/res_index.jsp';">즉시예약</li>
+		    		<li onclick="location.href='/ljw/pg3001_logout.jsp';">원격줄서기</li>
 		    		<li id="choice" onclick="location.href='/ljw/pg3005.jsp';">주문현황</li>
 		    	</ul>
 		    	<div class="crsmenu">
@@ -298,7 +299,7 @@
 				<!-- 즉시 예약 -->
 				<h2>나의 즉시 예약 현황</h2>
 <%
-for(Reservation r : dao.showCurrentRes(user_email, resNum)) {
+for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 
 	String state="";
 	if(r.getReserve_state()==1){
