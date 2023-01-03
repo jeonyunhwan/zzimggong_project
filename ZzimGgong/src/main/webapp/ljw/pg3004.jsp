@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.*"  
+    
+    import="ymw.*"
+    import="jyh.model.*"
+    import="jds.*"
+    import="hjw.*"
+    import="ljw.*"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -92,14 +98,30 @@
 <body>
 
 <div class="wrapper">
-    <header>
-        <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
+<%
+      memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+   %>
+   <c:if test="${empty sesID }">
+       <header class="head1">
+           <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+            <nav class="gnb">
+               <ul>
+                   <li><a href="/jyh/views/login.jsp">로그인</a></li>
+                   <li><a href="/jyh/views/insertMember.jsp">회원가입</a></li>
+               </ul>
+            </nav>
+       </header>
+    </c:if>
+    <c:if test="${not empty sesID }">
+       <header class="head2">
+        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
+    </c:if>
     
     <section>
         <div class="content">
@@ -112,11 +134,22 @@
     		    		<h3>방문하시는 인원을 선택하세요</h3>
     		   	  	</div>	
 					<div class="rmt_cnt_wrapper">
-                		<img src="../index_markup/img/myPageImg.png" alt="">
-						<input type="number" id="resCnt" min="1" max="10" step="1" value="1"/>
+                		<img src="/index_markup/img/myPageImg.png" alt="">
+						<input type="number" name="resCnt" min="1" max="10" step="1" value="1"/>
             		</div>
-   		    		<div class="rmt_wt">예상 대기시간 출력</div>
-   		    		<div class="rmt_confirm">대기 신청하기</div>
+	
+   		    		
+   		    		<div class="rmt_wt">시간출력</div>
+   		    		<input type="submit" class="rmt_confirm">대기 신청하기</input>
+   		    		
+   		    		<%--
+   		    		form에
+   		    			대기 신청 인원
+   		    			회사 번호
+   		    			
+   		    		
+   		    		
+   		    		--%>
    		    	</form>
    		    </div>
    		        
@@ -144,14 +177,29 @@
     </footer>
 </div>
 
-
+	
 	<%-- DB로딩 --%>
 	<jsp:useBean id="dao" class="ljw.WaitingDao"/>
-	<jsp:useBean id="wcount" class="vo.Waiting"/>
-	<jsp:setProperty property="*" name="wcount"/>
-
+	
+	<%
+		memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+		String loginUserEmail = loginUser.getEmail();
+		
+		String personNum = request.getParameter("resCnt");
+		int personNumInt = Integer.parseInt(personNum);
+	
+		dao.insertWaiting(new Waiting(${param.resnum},${loginUser} ,0,personNum,'F','F'));
+		
+		dao.updWaitingNum(new Waiting("시간",${param.resnum}, ${loginUser}));
+	%>
 </body>
 <script>
+	
+	var confirmButton = document.querySelector(".rmt_confirm");
+	
+	confirmButton.addEventListener("click", function(){
+		
+	})
 	
 </script>
 </html>

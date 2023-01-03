@@ -282,9 +282,9 @@
         
 		    <nav class="searchmenu">
 		    	<ul class="menu">
-		    		<li>즉시예약</li>
-		    		<li onclick="location.href='../ljw/pg3001_logout.jsp';">원격줄서기</li>
-		    		<li id="choice" onclick="location.href='../ljw/pg3005.jsp';">주문현황</li>
+		    		<li onclick="location.href='/hds/res_index.html';">즉시예약</li>
+		    		<li onclick="location.href='/ljw/pg3001.jsp';">원격줄서기</li>
+		    		<li id="choice" onclick="location.href='/ljw/pg3005.jsp';">주문현황</li>
 		    	</ul>
 		    	<div class="crsmenu">
 					<div class="crstRsrv">즉시예약</div>
