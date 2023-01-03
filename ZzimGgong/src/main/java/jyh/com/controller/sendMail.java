@@ -103,7 +103,7 @@ public class sendMail extends HttpServlet {
 		saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
 		request.setAttribute("email", email);
 	  
-		request.getRequestDispatcher("/views/emailAuth.jsp").forward(request, response);
+		request.getRequestDispatcher("/jyh/views/emailAuth.jsp").forward(request, response);
         
     }
 	

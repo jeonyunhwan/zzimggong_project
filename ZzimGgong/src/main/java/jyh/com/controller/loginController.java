@@ -25,7 +25,7 @@ public class loginController extends HttpServlet {
 		String pws = request.getParameter("pws");
 		if(id==""||id==null) {
 			if(pws==""||pws==null) {
-				request.getRequestDispatcher("/login.jsp").forward(request, response);
+				request.getRequestDispatcher("/jyh/views/login.jsp").forward(request, response);
 				return;
 			}
 		}

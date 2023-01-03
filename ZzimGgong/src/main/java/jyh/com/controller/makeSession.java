@@ -40,7 +40,7 @@ public class makeSession extends HttpServlet {
 		HttpSession session = request.getSession();
 		memberDTO sessionid = insert.sessionNick(email);
 		session.setAttribute("sesID",sessionid);
-		request.getRequestDispatcher("/ymw/pg0001.jsp").forward(request, response);
+		request.getRequestDispatcher("/ljw/pg0000.jsp").forward(request, response);
 		System.out.println(sessionid.getEmail());
 		return;
 		

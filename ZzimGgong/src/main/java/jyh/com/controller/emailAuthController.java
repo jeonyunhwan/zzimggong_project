@@ -102,7 +102,7 @@ public class emailAuthController extends HttpServlet {
 		saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
 		request.setAttribute("email", email);
 	  
-		request.getRequestDispatcher("/views/authEmail.jsp").forward(request, response);
+		request.getRequestDispatcher("/jyh/views/authEmail.jsp").forward(request, response);
         
     }
 

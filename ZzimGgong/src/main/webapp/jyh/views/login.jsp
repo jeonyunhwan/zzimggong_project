@@ -20,7 +20,7 @@
 <body>
 <div class="wrapper">
     <header>
-        <a href = "#" class="logo"><img src="/views/index_markup/img/main_logo.png" alt="#"></a>
+        <a href = "#" class="logo"><img src="/index_markup/img/main_logo.png" alt="#"></a>
     </header>
     <section>
         <div class="content">
@@ -71,7 +71,7 @@
     </footer>
 </div>
 </body>
-<script type = "text/javascript" src  ="/views/login.js"></script>
+<script type = "text/javascript" src  ="/jyh/views/login.js"></script>
 <!-- 카카오로그인  -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type = "text/javascript">

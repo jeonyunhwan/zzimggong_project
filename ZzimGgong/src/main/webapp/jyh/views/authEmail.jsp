@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/views/authkey.css" rel="stylesheet">
+<link href="/jyh/views/authkey.css" rel="stylesheet">
 <%
 //받을 세션을 설정해준다. 
 request.setCharacterEncoding("UTF-8");

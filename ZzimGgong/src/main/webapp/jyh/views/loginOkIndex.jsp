@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import = "model.memberDTO"%>
+    import = "jyh.model.memberDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="/views/index_markup/reset.css">
+<link rel="stylesheet" href="/jyh/views/index_markup/reset.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -30,10 +30,10 @@ memberDTO lists = (memberDTO)session.getAttribute("sesID");
 %>
 <div class="wrapper">
     <header>
-        <h1 class="logo"><img src="/views/index_markup/img/main_logo.png" alt=""></h1>
+        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="/myInfoController"><img src="/views/index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>

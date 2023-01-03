@@ -3,7 +3,7 @@
  */
 //로그인 유효성 체크 
 var inputEmail = document.querySelector("[name = email]");
-var inputPass = document.querySelector("[name = password]");
+var inputPass = document.querySelector("[name = pws]");
 function userLoginCheck(){
 	if(inputEmail.value==""||inputEmail.value==null){
 		alert("이메일을 입력해주세요.");

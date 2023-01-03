@@ -6,7 +6,7 @@
 <html>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="/views/myInfo.css">
+<link rel="stylesheet" href="/jyh/views/myInfo.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -55,10 +55,10 @@ if(idAuth==2){
 %>
 <div class="wrapper">
     <header>
-        <a class="logo" href = "/views/loginOkIndex.jsp"><img src="/views/index_markup/img/main_logo.png" alt=""></a>
+        <a class="logo" href = "/jyh/views/loginOkIndex.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a>
          <nav class="gnb">
             <ul>
-                <li><a href="/myInfoController"><img src="/views/index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>

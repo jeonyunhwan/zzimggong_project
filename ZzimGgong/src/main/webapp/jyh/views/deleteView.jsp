@@ -19,7 +19,7 @@
 <body>
 <div class="wrapper">
     <header>
-        <a href = "#" class="logo"><img src="/views/index_markup/img/main_logo.png" alt="#"></a>
+        <a href = "#" class="logo"><img src="/jyh/views/index_markup/img/main_logo.png" alt="#"></a>
     </header>
     <section>
         <div class="content">

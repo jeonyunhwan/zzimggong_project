@@ -23,10 +23,10 @@ String email = request.getParameter("email");
 
 <div class="wrapper">
     <header>
-        <h1 class="logo"><img src="/jyh/img/main_logo.png" alt=""></h1>
+        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="/jyh/img/myPageImg.png" alt=""></a></li>
+                <li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>

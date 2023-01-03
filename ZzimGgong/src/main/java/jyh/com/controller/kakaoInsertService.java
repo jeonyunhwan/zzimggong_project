@@ -47,7 +47,7 @@ public class kakaoInsertService extends HttpServlet {
 		}else {
 			// 이메일 동의를 하지 않은 경우. 
 			request.setAttribute("error","SNS 인증 동의 확인 후 \n 다시 한번 로그인해주세요.");
-			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/jyh/views/login.jsp").forward(request, response);
 			return;
 		}
 				

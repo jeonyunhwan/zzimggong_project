@@ -26,7 +26,7 @@ public class logOutService extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.getAttribute("sesID");
 		session.invalidate();
-		response.sendRedirect("/index.jsp");
+		response.sendRedirect("/jyh/index.jsp");
 		
 	}
 

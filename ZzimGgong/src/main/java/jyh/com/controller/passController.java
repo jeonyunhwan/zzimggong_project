@@ -48,7 +48,7 @@ public class passController extends HttpServlet {
 		if(newpass.equals("") || newpass.equals(null)) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('비밀번호 작성이 이루어지지 않았습니다.'); location.href='/views/updatePass.jsp';</script>"); 
+			writer.println("<script>alert('비밀번호 작성이 이루어지지 않았습니다.'); location.href='/jyh/views/updatePass.jsp';</script>"); 
 			//close하면 sendRedirect 불가 
 			writer.close();
 			return;

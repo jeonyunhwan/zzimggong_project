@@ -4,7 +4,7 @@
 <html>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="/views/authkey.css">
+<link rel="stylesheet" href="/jyh/views/authkey.css">
 <style type="text/css">
 
 /* ㅇㅇ */
@@ -54,11 +54,11 @@ var x = setInterval(function() {
 	<div class="wrapper">
 		<header>
 			<h1 class="logo">
-				<img src="./img/main_logo.png" alt="">
+				<img src="/index_markup/img/main_logo.png" alt="">
 			</h1>
 			<nav class="gnb">
 				<ul>
-					<li><a href="#"><img src="./img/myPageImg.png" alt=""></a></li>
+					<li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
 				</ul>
 			</nav>
 		</header>
@@ -137,7 +137,7 @@ function checkingEmail(){
 				alert("계정이 없습니다.");
 			}else if(ck == "kakao_auth" || ck =="naver_auth"){
 				alert("sns 연동 계정이 있습니다.");
-			    location.href = "/views/login.jsp";
+			    location.href = "/jyh/views/login.jsp";
 			}else{
 				alert("이메일전송완료")
 				emailform(email.value);

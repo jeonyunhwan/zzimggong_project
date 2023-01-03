@@ -62,7 +62,7 @@ public class myInfoUpdate extends HttpServlet {
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('회원 수정을 실패하였습니다.'); location.href='/views/myInfo.jsp';</script>");
+			writer.println("<script>alert('회원 수정을 실패하였습니다.'); location.href='/jyh/views/myInfo.jsp';</script>");
 		}
 		
 	}

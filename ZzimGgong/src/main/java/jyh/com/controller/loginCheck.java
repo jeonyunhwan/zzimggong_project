@@ -49,7 +49,7 @@ public class loginCheck extends HttpServlet {
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('sns 연동계정입니다.'); location.href='/ymw/pg0001.jsp';</script>"); 
+			writer.println("<script>alert('sns 연동계정입니다.'); location.href='/jyh/views/login.jsp';</script>"); 
 			//close하면 sendRedirect 불가 
 			writer.close();
 			return;
