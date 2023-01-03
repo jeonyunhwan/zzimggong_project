@@ -1,4 +1,4 @@
-package com.controller;
+package jyh.com.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.memberDAO;
-import model.memberDTO;
+import jyh.model.memberDAO;
+import jyh.model.memberDTO;
 
 /**
  * Servlet implementation class makeSession
@@ -40,7 +40,7 @@ public class makeSession extends HttpServlet {
 		HttpSession session = request.getSession();
 		memberDTO sessionid = insert.sessionNick(email);
 		session.setAttribute("sesID",sessionid);
-		request.getRequestDispatcher("/views/loginOkIndex.jsp").forward(request, response);
+		request.getRequestDispatcher("/ymw/pg0001.jsp").forward(request, response);
 		System.out.println(sessionid.getEmail());
 		return;
 		

@@ -8,29 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class loginController
+ * Servlet implementation class EmailAuthServiece
  */
-@WebServlet("/loginController")
-public class loginController extends HttpServlet {
+@WebServlet("/emailAuthServiece")
+public class emailAuthServiece extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
        
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//로그인 체크 하기 위해서 
-		String id = request.getParameter("id");
-		String pws = request.getParameter("pws");
-		if(id==""||id==null) {
-			if(pws==""||pws==null) {
-				request.getRequestDispatcher("/login.jsp").forward(request, response);
-				return;
-			}
-		}
-		request.getRequestDispatcher("/loginCheck").forward(request, response);
-		return;
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

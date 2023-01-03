@@ -1,4 +1,4 @@
-package com.controller;
+package jyh.com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.memberDAO;
+import jyh.model.memberDAO;
 
 
 /**
@@ -35,21 +35,21 @@ public class loginCheck extends HttpServlet {
 		}else if(result ==0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('이메일과 비밀번호를 확인하세요.'); location.href='/views/login.jsp';</script>"); 
+			writer.println("<script>alert('이메일과 비밀번호를 확인하세요.'); location.href='/jyh/views/login.jsp';</script>"); 
 			//close하면 sendRedirect 불가 
 			writer.close();
 			return;
 		}else if(result == (-1)){
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('이메일과 비밀번호가 없습니다.'); location.href='/views/login.jsp';</script>"); 
+			writer.println("<script>alert('이메일과 비밀번호가 없습니다.'); location.href='/jyh/views/login.jsp';</script>"); 
 			//close하면 sendRedirect 불가 
 			writer.close();
 			return;
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('sns 연동계정입니다.'); location.href='/views/login.jsp';</script>"); 
+			writer.println("<script>alert('sns 연동계정입니다.'); location.href='/ymw/pg0001.jsp';</script>"); 
 			//close하면 sendRedirect 불가 
 			writer.close();
 			return;

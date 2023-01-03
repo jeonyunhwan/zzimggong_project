@@ -1,4 +1,4 @@
-package com.controller;
+package jyh.com.controller;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.memberDAO;
-import model.memberDTO;
+import jyh.model.memberDAO;
+import jyh.model.memberDTO;
 
 /**
  * Servlet implementation class myInfoController
@@ -36,10 +36,10 @@ public class myInfoController extends HttpServlet {
 		String page = null;
 		//유효성 체크 
 		if(memInfo != null) {
-			page = "/views/myInfo.jsp";
+			page = "/jyh/views/myInfo.jsp";
 			request.setAttribute("memInfo", memInfo);
 		}else {
-			page = "/views/error.jsp";
+			page = "/jyh/views/error.jsp";
 			request.setAttribute("msg","회원조회 실패.");
 		}
 		RequestDispatcher view = request.getRequestDispatcher(page);

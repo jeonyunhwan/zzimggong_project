@@ -117,6 +117,7 @@ function eventclick(){
 		<%session.removeAttribute("AuthenticationKey");%>
 		alert("인증되었습니다.");		
 		emailform2(emails);
+		<%session.removeAttribute("AuthenticationKey");%>
 	}else{
 		alert("인증실패");
 	}
