@@ -47,7 +47,7 @@ function kakaoLogin(){
 	  							 loginform(email);
 	  						}else if(ck == "naver_auth" || ck == "zzim_auth"){
 	  							alert("다른 연동 계정이 있습니다.");
-	  							location.href = "/views/login.jsp";
+	  							location.href = "/jyh/views/login.jsp";
 	  						}else{
 	  							alert("회원가입 실행");
 	  							createHiddenLoginForm(uid,email,nik);

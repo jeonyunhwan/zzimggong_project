@@ -20,7 +20,7 @@
 <body>
 <div class="wrapper">
     <header>
-        <a href = "#" class="logo"><img src="/index_markup/img/main_logo.png" alt="#"></a>
+        <a href = "/jyh/index.jsp" class="logo"><img src="/jyh/views/index_markup/img/main_logo.png" alt="#"></a>
     </header>
     <section>
         <div class="content">
@@ -46,7 +46,7 @@
                 <input id = "kakao" type = "button" value = "카카오톡으로 시작하기" class = "btnK01" onclick = "kakaoLogin();"/>
                 <div id="naver_id_login"></div>
               <!--  <input id="naverIdLogin" type = "button" value = "페이스북으로 시작하기" class = "btnK"/> -->  
-                <p id = "insert01">회원이 아니신가요? <a href = "insertMember.jsp">회원가입 하러가기</a></p>
+                <p id = "insert01">회원이 아니신가요? <a href = "/jyh/views/insertMember.jsp">회원가입 하러가기</a></p>
             </div>
             
             </div>
@@ -89,7 +89,7 @@ console.log(Kakao.isInitialized()); // sdk초기화여부판단
 var naver_id_login = new naver_id_login("b06toaGrqKSfcX7fTe6V", "http://localhost:7008/views/naverCallback.jsp");
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("white", 2,40);
-  	naver_id_login.setDomain("http://localhost:7008/login.jsp");
+  	naver_id_login.setDomain("http://localhost:7008/jyh/login.jsp");
   	naver_id_login.setState(state);
   	naver_id_login.setPopup();
   	naver_id_login.init_naver_id_login();

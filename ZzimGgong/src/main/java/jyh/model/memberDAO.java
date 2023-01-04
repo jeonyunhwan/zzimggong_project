@@ -5,8 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-import ymw.dao.DB;
+import jyh.model.DB;
 import jyh.model.memberDTO;
 
 
@@ -137,6 +136,24 @@ public class memberDAO {
         }
     	return result;
     }
+    //계정 삭제 
+    public int deleteAccount(String email) {
+		int num = 0;
+		String query = "delete from JJIM_USER where user_email = ?";
+		try {
+			con = DB.con();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, email);
+		    num = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(rs, pstmt, con);
+		}
+		return num;
+	}
   //비밀번호변경
 	public int passUpdate(String newpass, String email) {
 		int num = 0;

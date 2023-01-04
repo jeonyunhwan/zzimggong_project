@@ -5,7 +5,7 @@
 <html>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="/jyh/views/insertMember.css">
+<link rel="stylesheet" href="/views/insertMember.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -22,10 +22,10 @@
 </script>
 <div class="wrapper">
     <header>
-        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+        <h1 class="logo"><img src="/index.markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="#"><img src="/index.markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
@@ -105,7 +105,7 @@
 </div>
 
 </body>
-<script src = "/views/insertMember.js" type = "text/javascript"></script> 
+<script src = "/jyh/views/insertMember.js" type = "text/javascript"></script> 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type = "text/javascript">
 
