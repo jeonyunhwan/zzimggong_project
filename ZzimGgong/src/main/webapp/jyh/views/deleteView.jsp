@@ -12,14 +12,14 @@
         background-color: #fff;
     }
 </style>
-<link href="login_css.css" rel="stylesheet">
+<link href="/jyh/views/login_css.css" rel="stylesheet">
 </head>
 <script type="text/javascript">
 </script>
 <body>
 <div class="wrapper">
     <header>
-        <a href = "#" class="logo"><img src="/jyh/views/index_markup/img/main_logo.png" alt="#"></a>
+        <a href = "#" class="logo"><img src="/views/index_markup/img/main_logo.png" alt="#"></a>
     </header>
     <section>
         <div class="content">

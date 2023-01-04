@@ -28,10 +28,10 @@
 </head>
 <body>
 <%
+memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
 memberDTO mem = (memberDTO)request.getAttribute("memInfo");
 String eAuth = "";
 String iAuth = "";
-
 String userEmail = mem.getEmail();
 String userPw = mem.getPw() != null ? mem.getPw() : "";
 int emailAuth = mem.getEmailAuth();
@@ -55,10 +55,10 @@ if(idAuth==2){
 %>
 <div class="wrapper">
     <header>
-        <a class="logo" href = "/jyh/views/loginOkIndex.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a>
+        <a class="logo" href = "/views/loginOkIndex.jsp"><img src="/views/index_markup/img/main_logo.png" alt=""></a>
          <nav class="gnb">
             <ul>
-                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/views/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
@@ -68,7 +68,7 @@ if(idAuth==2){
            <div class = "myPage1">
              <h4>내정보 관리</h4>
            </div>
-           <div class = "myPage2">
+           <div class = "myPage2" onclick = "view();" >
              <h4>리뷰 관리</h4>
            </div>
             </div>
@@ -114,7 +114,7 @@ if(idAuth==2){
                 <button type="button" class="w-btn w-btn-indigo" onclick="updatefunction();">수정하기</button>
                     <button type="button" class="w-btn w-btn-indigo" onclick="goPass();">비밀번호변경</button>
                     <button type="button" class="w-btn w-btn-indigo" onclick="logOut();">로그아웃</button>
-                    <button type="button" class="w-btn w-btn-indigo" onclick="view();">회원삭제</button>
+                    <button type="button" class="w-btn w-btn-indigo" onclick="deleteAccount();">회원탈퇴</button>
                 </div>
             </div>
         </div>
@@ -182,9 +182,17 @@ function logOut(){
 function goPass(){
 	location.href = "/jyh/views/emailAuth.jsp";
 }
+//리뷰 페이지로 고고 
 function view(){
-	location.href = "/jyh/views/paging.jsp";
+	location.href = "/jyh/views/reviewList.jsp";
 }
+
+function deleteAccount(){
+	if(confirm("탈퇴하면 모든 정보가 날아갑니다. 그래도 탈퇴하시겠습니까?")==true){
+		location.href = "/deleteController";
+	}
+}
+
 </script>
 </body>
 </html>

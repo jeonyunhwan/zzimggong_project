@@ -54,11 +54,11 @@ var x = setInterval(function() {
 	<div class="wrapper">
 		<header>
 			<h1 class="logo">
-				<img src="/index_markup/img/main_logo.png" alt="">
+				<img src="/jyh/img/main_logo.png" alt="">
 			</h1>
 			<nav class="gnb">
 				<ul>
-					<li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
+					<li><a href="#"><img src="/jyh/img/myPageImg.png" alt=""></a></li>
 				</ul>
 			</nav>
 		</header>
@@ -117,7 +117,6 @@ function eventclick(){
 		<%session.removeAttribute("AuthenticationKey");%>
 		alert("인증되었습니다.");		
 		emailform2(emails);
-		<%session.removeAttribute("AuthenticationKey");%>
 	}else{
 		alert("인증실패");
 	}
@@ -165,7 +164,7 @@ function emailform(email){
 function emailform2(email){
 	var frm2 = document.createElement('form');
 	frm2.setAttribute('method', 'get');
-	frm2.setAttribute('action', '/views/updatePass.jsp');
+	frm2.setAttribute('action', '/jyh/views/updatePass.jsp');
 	var hiddenInput5 = document.createElement('input');
 	hiddenInput5.setAttribute('type','hidden');
 	hiddenInput5.setAttribute('name','email');
