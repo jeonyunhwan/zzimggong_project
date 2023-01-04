@@ -69,6 +69,7 @@ public class WaitingStoreDao {
 					+ "AND cancel='F' 		\r\n"
 					+ "AND enter_check='F'\r\n"
 					+ "ORDER BY wstarttime";
+			System.out.println(resnum);
 			try {
 				con = DB.con();
 				
@@ -174,7 +175,37 @@ public class WaitingStoreDao {
 				DB.close(rs, pstmt, con);
 			}
 		}
-	
+		public Waiting getWaitingInfo(Waiting wait){
+			Waiting resNum =null;
+		  	String sql = "SELECT * FROM WAITING WHERE resnum=?";
+		  	try {
+			     con = DB.con();
+			     pstmt = con.prepareStatement(sql);
+			     pstmt.setString(1, wait.getResnum()); //
+			     rs = pstmt.executeQuery();
+			     System.out.println("waiting 정보");
+			     if(rs.next()) {
+			    	 resNum = new Waiting(
+		        			 rs.getString(1),
+		        			 rs.getString(2),
+		        			 rs.getString(3),
+		        			 rs.getInt(4),
+		        			 rs.getInt(5),
+		        			 rs.getString(6),
+		        			 rs.getString(7)
+			    	 );
+			    	 System.out.println("waiting 정보");
+			     }
+			 // 해당 id, pass로 조회 될 때만 true, 그 외는 false
+			  }catch (SQLException e) {
+			     System.out.println("DB에러:"+e.getMessage());
+			  }catch(Exception e) {
+			     System.out.println("일반 에러:"+e.getMessage());
+			  }finally {
+			         DB.close(rs, pstmt, con);
+			  } 
+			      return resNum;
+		}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

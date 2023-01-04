@@ -15,6 +15,7 @@ public class ZzimDao {
 	public  Restaurant login(Restaurant res){
 		  	Restaurant resNum =null;
 		  	String sql = "SELECT * FROM RESTAURANT WHERE resnum=?";
+		  	System.out.println(res.getResnum());
 		  	try {
 			     con = DB.con();
 			     pstmt = con.prepareStatement(sql);
@@ -38,7 +39,6 @@ public class ZzimDao {
 		        			 rs.getInt(14),
 		        			 rs.getInt(15)
 			    	 );
-			    	 resNumber=rs.getString(1);
 			    	 System.out.println("로그인성공");
 			     }
 			 // 해당 id, pass로 조회 될 때만 true, 그 외는 false
@@ -144,5 +144,34 @@ public class ZzimDao {
 		         DB.close(rs, pstmt, con);
 		  } 
 	  	return resSuccess;
+	}
+	public int updateResPick(ResPick pick){
+	  	String sql = "UPDATE RESPICK \r\n"
+	  			+ "SET MOOD =?, PURPOSE =?, FOOD_TYPE =?, TABLE_TYPE =?\r\n"
+	  			+ "WHERE RESNUM =?";
+	  	int pickSuccess = 0;
+	  	try {
+			con=DB.con();
+			con.setAutoCommit(false);
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,pick.getMood());
+			pstmt.setString(2,pick.getPurpose());
+			pstmt.setString(3,pick.getFood_type());
+			pstmt.setString(4,pick.getTable_type());
+			pstmt.setString(5,pick.getResnum());
+			pickSuccess=pstmt.executeUpdate();
+			 if (pickSuccess>0) {
+				System.out.println("매장픽이 변경되었습니다.");
+			}
+			con.commit();
+		 // 해당 id, pass로 조회 될 때만 true, 그 외는 false
+		  }catch (SQLException e) {
+		     System.out.println("DB에러:"+e.getMessage());
+		  }catch(Exception e) {
+		     System.out.println("일반 에러:"+e.getMessage());
+		  }finally {
+		         DB.close(rs, pstmt, con);
+		  } 
+	  	return pickSuccess;
 	}
 }

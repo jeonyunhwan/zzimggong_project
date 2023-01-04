@@ -21,8 +21,6 @@
 </script>
 </head>
 <jsp:useBean id="dao" class="hjw.ZzimDao"/>
-<jsp:useBean id="res" class="hjw.Restaurant"/>
-<jsp:setProperty property="*" name="res"/>
 <jsp:useBean id="pick" class="hjw.ResPick"/>
 <jsp:setProperty property="*" name="pick"/>
 
@@ -31,6 +29,10 @@
 	<c:set var="res" scope="session" value="${dao.login(res)}"/>
 </c:if>
 
+<c:set var="updatePick" value="${dao.updateResPick(pick)}"/>
+<c:if test="${updatePick>0}">
+	<c:set var="pick" scope="session" value="${dao.getPickInfo(pick) }"/>
+</c:if>
 <body>
 
 <%--
@@ -38,16 +40,7 @@
 --%>
 </body>
 <script>
-/* var updateRes="${updateRes}";
-var updatePick="${updatePick}";
-if(updateRes>0 || updatePick>0){
-	alert("변경을 완료 했습니다.")
-	location.href="zzim_shop_func.jsp?resnum=${param.resnum}"
-}else{
-	alert("변경을 실패했습니다.")
-	location.href="zzim_shop_func_edit.jsp"
-} */
-alert("${updateRes>0?'수정 성공':'수정안됨'}")
+alert("${updatePick>0?'수정 성공':'수정안됨'}")
 location.href="zzim_shop_func.jsp?resnum=${param.resnum}"
 /*
 
