@@ -9,13 +9,16 @@ public class SchList {
 	private String mcategory;
 	private double sco;
 	private int cnt;
+	private String res_img;
 	
 	public SchList() {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
 	public SchList(String resnum, String res_name, String res_address, int wating, int reservation, String mcategory,
-			double sco,int cnt) {
+			double sco, int cnt, String res_img) {
 		this.resnum = resnum;
 		this.res_name = res_name;
 		this.res_address = res_address;
@@ -24,8 +27,11 @@ public class SchList {
 		this.mcategory = mcategory;
 		this.sco = sco;
 		this.cnt = cnt;
+		this.res_img = res_img;
 	}
-	
+
+
+
 	public String getResnum() {
 		return resnum;
 	}
@@ -88,6 +94,13 @@ public class SchList {
 
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+
+	public String getRes_img() {
+		return res_img;
+	}
+	public void setRes_img(String res_img) {
+		this.res_img = res_img;
 	}
 	
 	

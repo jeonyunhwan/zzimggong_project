@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"
     import="java.util.*"
     import="ymw.*"
+    import="jyh.model.*"
+    import="hds.*"
+    import="hjw.*"
+    import="ljw.*"
    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -13,7 +17,7 @@
 <head>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="../index_markup/reset.css">
+<link rel="stylesheet" href="/index_markup/reset.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -81,6 +85,17 @@
    	#sch2{
 		display: none;
 	}
+	.recSch>ul{
+		display: flex;
+	    flex-wrap: nowrap;
+	    flex-direction: column;
+	    gap: 20px;
+	    padding-left: 10px;
+	    padding-top: 10px;
+	}
+	.recSch>ul li{
+		cursor:pointer;
+	}
 
 </style>
 
@@ -91,16 +106,30 @@
 <body>
 
 <div class="wrapper">
-    <header>
-        <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
+	<%
+		memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+	%>
+	<c:if test="${empty sesID }">
+       <header class="head1">
+           <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
+            <nav class="gnb">
+               <ul>
+                   <li><a href="/jyh/views/login.jsp">로그인</a></li>
+                   <li><a href="/jyh/views/insertMember.jsp">회원가입</a></li>
+               </ul>
+            </nav>
+       </header>
+    </c:if>
+    <c:if test="${not empty sesID }">
+       <header class="head2">
+        <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
-    
+    </c:if>
     <section>
         <div class="content">
         	<div id="sch1">
@@ -140,6 +169,18 @@
 	        		</div>
 	        	</div>
 	        	<h3>최근 검색어</h3>
+	        	<c:if test="${empty sesID }">
+			       <div>로그인을 했을 경우에만 보입니다.</div>
+			    </c:if>
+			    <c:if test="${not empty sesID }">
+			       <div class="recSch">
+			       		<ul>
+			       			<c:forEach var="recSch" begin="0" end="4" items="${schDao.recSch(sesID.email) }">
+			       				<li><span>${recSch }</span></li>
+			       			</c:forEach>
+			       		</ul>
+			       </div>
+			    </c:if>
         	</div>
         </div>
     </section>
@@ -165,6 +206,12 @@
 
 </body>
 <script type="text/javascript">
+	var recSchs = document.querySelectorAll(".recSch>ul>li")
+	recSchs.forEach(function(recSch){
+		recSch.onclick = function(){
+			location.href="/ymw/pg0011.jsp?sch="+recSch.innerText+"&appKind=전체&arrKind=별점높은순"
+		}
+	})
 	var schInpOb1 = document.querySelector("[name=schContent1]")
 	var schInpOb2 = document.querySelector("[name=schContent2]")
 	var backBtnOb = document.querySelector("#backBtn")
@@ -192,12 +239,12 @@
 	
 	recKeywords.forEach(function(keyword){
 		keyword.onclick = function(){
-			location.href="./pg0011.jsp?sch="+keyword.innerText+"&appKind=전체&arrKind=별점높은순"
+			location.href="/ymw/pg0011.jsp?sch="+keyword.innerText+"&appKind=전체&arrKind=별점높은순"
 		}
 	})
 	popSchs.forEach(function(pop){
 		pop.onclick = function(){
-			location.href="./pg0011.jsp?sch="+pop.innerText+"&appKind=전체&arrKind=별점높은순"
+			location.href="/ymw/pg0011.jsp?sch="+pop.innerText+"&appKind=전체&arrKind=별점높은순"
 		}
 	})
 	function schFocus(){

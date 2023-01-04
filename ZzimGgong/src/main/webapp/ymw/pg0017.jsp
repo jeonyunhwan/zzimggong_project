@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"
     import="java.util.*"
     import="ymw.*"
+    import="jyh.model.*"
+    import="hds.*"
+    import="hjw.*"
+    import="ljw.*"
    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -15,7 +19,7 @@
 <head>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="../index_markup/reset.css">
+<link rel="stylesheet" href="/index_markup/reset.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -35,15 +39,30 @@
 <body>
 
 <div class="wrapper">
-    <header>
-        <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
+    <%
+		memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+	%>
+	<c:if test="${empty sesID }">
+       <header class="head1">
+           <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
+            <nav class="gnb">
+               <ul>
+                   <li><a href="/jyh/views/login.jsp">로그인</a></li>
+                   <li><a href="/jyh/views/insertMember.jsp">회원가입</a></li>
+               </ul>
+            </nav>
+       </header>
+    </c:if>
+    <c:if test="${not empty sesID }">
+       <header class="head2">
+        <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
+    </c:if>
     <style>
     	.content{
         width: 100%;
@@ -88,7 +107,7 @@
         	<h3>제공되는 편의시설</h3>
         	<div class="pickList">
    				<ul>
-   					<c:set var="store" value="${schList.detailStore(param.snum) }"/>
+   					<c:set var="store" value="${schList.detailStore(param.resnum) }"/>
    					<c:set var="convenientArray" value="${fn:split(store.convenient,'/')}" />
 	        		<c:set var="doneLoop" value="false" />
 	

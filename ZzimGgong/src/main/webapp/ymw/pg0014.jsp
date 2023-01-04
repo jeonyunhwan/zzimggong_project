@@ -2,9 +2,15 @@
     pageEncoding="UTF-8"
     import="java.util.*"
     import="ymw.*"
+    import="jyh.model.*"
+    import="hds.*"
+    import="hjw.*"
+    import="ljw.*"
    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -13,7 +19,7 @@
 <head>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="../index_markup/reset.css">
+<link rel="stylesheet" href="/index_markup/reset.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -33,15 +39,30 @@
 <body>
 
 <div class="wrapper">
-    <header>
-        <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
+    <%
+		memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+	%>
+	<c:if test="${empty sesID }">
+       <header class="head1">
+           <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
+            <nav class="gnb">
+               <ul>
+                   <li><a href="/jyh/views/login.jsp">로그인</a></li>
+                   <li><a href="/jyh/views/insertMember.jsp">회원가입</a></li>
+               </ul>
+            </nav>
+       </header>
+    </c:if>
+    <c:if test="${not empty sesID }">
+       <header class="head2">
+        <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
+    </c:if>
     <style>
     	.content{
         width: 100%;
@@ -73,6 +94,29 @@
 	   		flex-direction: column;
     		gap: 5px;
 	   	}
+	   	.reviews{
+			display: flex;
+			flex-direction: column;
+		}
+		.reviews>div{
+			display: flex;
+			flex-direction: column;
+			padding: 15px 0;
+			gap: 3px;
+		}
+		.reviews span{
+			font-size: 14px;
+			color: darkgray;
+		}
+		.star{
+			display:flex;
+			gap:2px;
+		}
+		.star img{
+			width:15px;
+			height:15px;
+			margin-top:1px;
+		}
     </style>
     <section>
         <div class="content">
@@ -83,23 +127,41 @@
 	        		</div>
 	        	</div>
         	</div>
-        	<h3>리뷰 <span>83건</span></h3>
-        	<div class="AllReview">
-        		<div class="review">
-	        		<div>★★★★★ 5.0</div>
-	        		
-	        		<div>전윤환<span>·</span>1일 전</div>
-	        		
-	        		<div>정말 느낌이 있습니다.</div>
-        		</div>
-        		<div class="review">
-	        		<div>★★★★★ 5.0</div>
-	        		
-	        		<div>전윤환<span>·</span>1일 전</div>
-	        		
-	        		<div>정말 느낌이 있습니다.</div>
-        		</div>
-        	</div>
+        	<c:set var="storeR" value="${schList.StoreReview(param.resnum) }"/>
+        	<h3>리뷰 <span>${storeR.cnt}</span></h3>
+        	<div class="reviews">
+       			<c:set var="reviews" value="${schList.userReview(param.resnum)}" />
+        		<c:set var="doneLoop" value="false" />
+				<c:if test="${fn:length(reviews)>0}">
+        		<c:forEach var="g" begin="0" end="${fn:length(reviews)-1}" varStatus="status">
+        				<div class="menu">
+		        			<div>
+		       					<div class="star">
+		       						<c:if test="${fn:length(reviews)>0}">
+		       						<c:set var="starCnt" value="0"/>
+				        				<c:forEach var="i" begin="1" end="${reviews[g].star_sco }">
+				        					<c:set var="starCnt" value="${i }"/>
+				        					<span><img src="https://cdn-icons-png.flaticon.com/512/956/956100.png"></span>
+				        				</c:forEach>
+				        				<c:forEach var="i" begin="1" end="${5-starCnt }">
+				        					<c:set var="starCnt" value="${i }"/>
+				        					<span><img src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png"></span>
+				        				</c:forEach>
+			       						 ${reviews[g].star_sco }
+			       					</c:if>
+		       					</div>
+		       					<div>
+		       						<span>${reviews[g].nickname }</span>
+		       					</div>
+		       					<div>
+		       						${reviews[g].review_content }
+		       					</div>
+		       				</div>
+		        		</div>
+        		</c:forEach>
+        		</c:if>
+        		
+       			</div>
    		</div>
     </section>
     <footer>
