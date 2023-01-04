@@ -7,6 +7,7 @@
     import="jds.*"
     import="hjw.*"
     import="ljw.*"
+    import="ljw.vo.*"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -16,7 +17,7 @@
 <head>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="../index_markup/reset.css">
+<link rel="stylesheet" href="/index_markup/reset.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -100,10 +101,10 @@
 <div class="wrapper">
 <%
       memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
-   %>
-   <c:if test="${empty sesID }">
+%>
+	<c:if test="${empty sesID }">
        <header class="head1">
-           <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+           <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
             <nav class="gnb">
                <ul>
                    <li><a href="/jyh/views/login.jsp">로그인</a></li>
@@ -114,7 +115,7 @@
     </c:if>
     <c:if test="${not empty sesID }">
        <header class="head2">
-        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+        <h1 class="logo"><a href="/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
          <nav class="gnb">
             <ul>
                 <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
@@ -137,19 +138,29 @@
                 		<img src="/index_markup/img/myPageImg.png" alt="">
 						<input type="number" name="resCnt" min="1" max="10" step="1" value="1"/>
             		</div>
+            		
+	<%-- DB로딩 --%>
+	<jsp:useBean id="dao" class="ljw.WaitingDao"/>
 	
-   		    		
-   		    		<div class="rmt_wt">시간출력</div>
-   		    		<input type="submit" class="rmt_confirm">대기 신청하기</input>
-   		    		
-   		    		<%--
-   		    		form에
-   		    			대기 신청 인원
-   		    			회사 번호
-   		    			
-   		    		
-   		    		
-   		    		--%>
+	<%
+		//String loginUserEmail = loginUser.getEmail();
+		
+		String resnum = request.getParameter("resnum"); //parameter로 가게 번호
+		String countResnum = request.getParameter("countResnum"); //parameter로 시간
+		int countResnumInt = Integer.parseInt(countResnum);
+				
+		String personNum = request.getParameter("resCnt");
+		int personNumInt = Integer.parseInt(personNum);
+		// http://localhost:7080/ljw/pg3004.jsp?resCnt=5&resnum=123-45-67895
+
+		//"${loginUser}"
+		dao.insertWaiting(new Waiting(resnum,"jyh123@naver.com", personNumInt,"F","F"));
+		dao.updWaitingNum(new Waiting(resnum, "jyh123@naver.com"));
+		
+	%>
+
+   		    		<div class="rmt_wt">대기예상시간 <%=5+countResnumInt*5 %>분</div>
+   		    		<input type="submit" class="rmt_confirm" value="대기신청하기"/>
    		    	</form>
    		    </div>
    		        
@@ -178,27 +189,15 @@
 </div>
 
 	
-	<%-- DB로딩 --%>
-	<jsp:useBean id="dao" class="ljw.WaitingDao"/>
-	
-	<%
-		memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
-		String loginUserEmail = loginUser.getEmail();
-		
-		String personNum = request.getParameter("resCnt");
-		int personNumInt = Integer.parseInt(personNum);
-	
-		dao.insertWaiting(new Waiting(${param.resnum},${loginUser} ,0,personNum,'F','F'));
-		
-		dao.updWaitingNum(new Waiting("시간",${param.resnum}, ${loginUser}));
-	%>
+
 </body>
 <script>
 	
 	var confirmButton = document.querySelector(".rmt_confirm");
 	
 	confirmButton.addEventListener("click", function(){
-		
+		alert("원격줄서기 신청완료");
+		location.href="/ljw/pg0000.jsp";
 	})
 	
 </script>
