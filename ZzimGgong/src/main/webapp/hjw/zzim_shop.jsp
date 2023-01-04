@@ -51,7 +51,7 @@
 							id="option2" value="줄서기" disabled="true">
 					</div>
 					<div class="shop_option">
-						<input type="button" onclick="location.href='zzim_shop_reserve.jsp?resnum=${param.resnum}'" class="shop_option_a"
+						<input type="button" onclick="location.href='/hds/pg_1007.jsp?resnum=${param.resnum}'" class="shop_option_a"
 							id="option3" value="예약" disabled="true">
 					</div>
 					<div class="shop_option">

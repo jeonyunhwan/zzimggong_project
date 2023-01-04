@@ -99,7 +99,7 @@
 <%
 
 String user_email = request.getParameter("user_email");
-String resNum = "123-45-67890";
+String resnum = request.getParameter("resnum");
 String reserve_start_time = request.getParameter("reserve_start_time");
 String nickName = request.getParameter("nickName");
 String phoneNum = request.getParameter("phoneNum");
@@ -125,7 +125,7 @@ reserve_start_time = reserve_start_time.replace("%", " ");
             <h3>예약 승인 및 거절</h3>
             <p><b>* 예약 신청 정보</b></p>
 <%
-for(Reservation r : dao.showApproval(user_email, reserve_start_time, resNum)) {
+for(Reservation r : dao.showApproval(user_email, reserve_start_time, resnum)) {
 %>
             <div class="info_wrap">
                 <img src="/index_markup/img/myPageImg.png" alt="">
@@ -203,7 +203,7 @@ pg1003_DB.jsp?user_email=hds123@naver.com&resNum=2023-01-05 17:00&reserve_start_
 	
 	 function res_approval() {
 		var qstr = "?user_email="+"<%=user_email%>"
-				+"&resNum="+"<%=resNum%>"
+				+"&resNum="+"<%=resnum%>"
 				+"&reserve_start_time="+"<%=reserve_start_time%>";
 			console.log(qstr);
 			callAjax(qstr)
@@ -219,7 +219,7 @@ pg1003_DB.jsp?user_email=hds123@naver.com&resNum=2023-01-05 17:00&reserve_start_
 				console.log("전송 완료!");
 				var go_page = confirm("승인이 완료되었습니다. 예약 내역 확인 페이지로 가시겠습니까?");
 				if(go_page){
-					location.href="pg_1007.jsp"
+					location.href="/hds/pg_1007.jsp?resnum=${param.resnum}"
 				}
 			}
 		}
@@ -231,7 +231,7 @@ pg1003_DB.jsp?user_email=hds123@naver.com&resNum=2023-01-05 17:00&reserve_start_
 	
 	 function res_deny() {
 		var qstr = "?user_email="+"<%=user_email%>"
-				+"&resNum="+"<%=resNum%>"
+				+"&resNum="+"<%=resnum%>"
 				+"&reserve_start_time="+"<%=reserve_start_time%>";
 			console.log(qstr);
 			callAjax02(qstr)
@@ -247,7 +247,7 @@ pg1003_DB.jsp?user_email=hds123@naver.com&resNum=2023-01-05 17:00&reserve_start_
 				console.log("전송 완료!");
 				var go_page = confirm("예약 거절이 완료되었습니다. 예약 내역 확인 페이지로 가시겠습니까?");
 				if(go_page){
-					location.href="pg_1007.jsp"
+					location.href="/hds/pg_1007.jsp?resnum=${param.resnum}"
 				}
 			}
 		}
