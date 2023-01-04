@@ -5,7 +5,7 @@
 <html>
 <meta charset="UTF-8">
 <title>찜꽁</title>
-<link rel="stylesheet" href="/views/insertMember.css">
+<link rel="stylesheet" href="/jyh/views/insertMember.css">
 <style type="text/css">
 
     /* ㅇㅇ */
@@ -25,7 +25,8 @@
         <h1 class="logo"><img src="/index.markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="/index.markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/jyh/views/login.jsp">로그인</a></li>
+                <li><a href="/jyh/views/insertMember.jsp">회원가입</a></li>
             </ul>
          </nav>
     </header>

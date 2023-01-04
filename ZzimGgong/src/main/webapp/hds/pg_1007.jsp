@@ -76,12 +76,16 @@
 }
 	
 </style>
+<script type="text/javascript" src="./script/power.js"></script>
+<script type="text/javascript" src="./script/shop_loginJS.js"></script>
 </head>
 <body>
+
 <jsp:useBean id="dao" class="hds.reservation_Dao"/>
+
 <%
 	String user_email = "";
-	String resNum = "123-45-67890";
+	String resnum = request.getParameter("resnum");
 %> 
 <div class="wrapper">
       <header>
@@ -97,10 +101,10 @@
         <div class="content">
             <h3>예약 내역 확인하기</h3>
 <%
-for(Reservation r : dao.showResList(user_email, resNum)) {
+for(Reservation r : dao.showResList(user_email, resnum)) {
 	String state="";
 	if(r.getReserve_state()==1){
-		state="신청 완료된 ";
+		state="신청 완료 ";
 	}
 %>
             <div class="info_wrap">
@@ -112,7 +116,7 @@ for(Reservation r : dao.showResList(user_email, resNum)) {
 	            	</ul>
             	</div>
             </div>
-            <button onclick="location.href='pg_1003.jsp?user_email=<%=r.getUser_email()%>&reserve_start_time=<%=r.getReserve_start_time()%>&nickName=<%= r.getNickName()%>&phoneNum=<%=r.getPhoneNum()%>'">
+            <button onclick="location.href='pg_1003.jsp?user_email=<%=r.getUser_email()%>&reserve_start_time=<%=r.getReserve_start_time()%>&nickName=<%= r.getNickName()%>&phoneNum=<%=r.getPhoneNum()%>&resnum=<%=resnum%>'">
 	            <%=r.getNickName() %>님의 예약 승인/거절
             </button>
 <%} %>

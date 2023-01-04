@@ -68,7 +68,7 @@ public class naverInsertService extends HttpServlet {
 			script.println("<script>");
 			script.println("history.go(-1)");
 			script.println("</script>");
-			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/jyh/views/login.jsp").forward(request, response);
 			return;
 		}
 				

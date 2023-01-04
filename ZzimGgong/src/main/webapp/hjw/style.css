@@ -115,11 +115,11 @@ p{
     flex-wrap: wrap;
     gap: 20px;
     padding-top: 5%;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 .shop_menu_img{
 	width: 160px;
-    height: 160px;
+    height: 120px;
     display: block;
     border-radius: 10px;
 }
@@ -128,17 +128,31 @@ p{
 	color:#333;
 	font-weight: 550;
 }
+.shop_menu_contain_price{
+	font-size: 20px;
+	color:#ff3e4b;
+	font-weight: 550;
+}
 /* 가게 기능 페이지_정보수정 */
 .myshop_edit_myshop{
 	display:flex;
 	flex-direction: row;
 }
 .myshop_edit_myshop_left{
-	display:flex;
-	flex-direction: column;
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:10px;
 }
-.myshop_edit_myshop_right > input {
-	display:block;
+.myshop_edit_myshop_right{
+	display:flex;
+	flex-wrap:wrap;
+	width: 75%;
+	gap:10px;
+}
+.myshop_text{
+	width: 325px;
 }
 .menu_img {
     width: 100%;

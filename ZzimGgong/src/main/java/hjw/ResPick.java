@@ -4,17 +4,16 @@ public class ResPick {
 	private String resnum;
 	private String mood;
 	private String purpose;
-	private String foody_type;
+	private String food_type;
 	private String table_type;
 	public ResPick() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public ResPick(String resnum, String mood, String purpose, String foody_type, String table_type) {
+	public ResPick(String resnum, String mood, String purpose, String food_type, String table_type) {
 		this.resnum = resnum;
 		this.mood = mood;
 		this.purpose = purpose;
-		this.foody_type = foody_type;
+		this.food_type = food_type;
 		this.table_type = table_type;
 	}
 	public String getResnum() {
@@ -35,11 +34,11 @@ public class ResPick {
 	public void setPurpose(String purpose) {
 		this.purpose = purpose;
 	}
-	public String getFoody_type() {
-		return foody_type;
+	public String getFood_type() {
+		return food_type;
 	}
-	public void setFoody_type(String foody_type) {
-		this.foody_type = foody_type;
+	public void setFood_type(String food_type) {
+		this.food_type = food_type;
 	}
 	public String getTable_type() {
 		return table_type;

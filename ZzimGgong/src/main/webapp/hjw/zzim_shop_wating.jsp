@@ -1,30 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+   	import = "java.util.*"
+    import="ymw.*"
+    import="jyh.model.*"
+    import="hds.*"
+    import="hjw.*"
+    import="ljw.*"
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <title>찜꽁</title>
-    <link rel="stylesheet" href="../index_markup/reset.css">
+    <link rel="stylesheet" href="/index_markup/reset.css">
     <link rel="stylesheet" href="./style.css">
     <style type="text/css">
     </style>
     <script type="text/javascript" src="./script/power.js"></script>
+    <script type="text/javascript" src="./script/shop_loginJS.js"></script>
 </head>
 
 <body>
 
     <div class="wrapper">
         <header>
-            <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
-            <nav class="gnb">
-                <ul>
-                    <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
-                </ul>
-            </nav>
+			<h1 class="logo"><a href="/hjw/zzim_shop.jsp?resnum=${param.resnum}"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
+			<nav class="gnb">
+				<ul>
+					<li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
+					<li><button onclick="logout()">종료</button></li>
+				</ul>
+			</nav>
         </header>
         <section>
             <div class="content">
-                <h1>예약</h1>
+                <h1>줄서기</h1>
             </div>
         </section>
         <footer>

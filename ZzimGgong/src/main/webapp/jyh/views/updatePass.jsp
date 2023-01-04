@@ -23,10 +23,12 @@ String email = request.getParameter("email");
 
 <div class="wrapper">
     <header>
-        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+        <h1 class="logo">
+        <a href = "/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a>
+        </h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>

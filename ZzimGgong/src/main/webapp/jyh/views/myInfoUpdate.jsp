@@ -31,10 +31,10 @@ String userpnum = request.getParameter("pNum");
 </script>
 <div class="wrapper">
     <header>
-        <h1 class="/jyh/views/loginOkIndex.jsp"><img src="/jyh/views/index.markup/img/main_logo.png" alt=""></h1>
+        <h1 class="/ljw/pg0000.jsp"><img src="/index.markup/img/main_logo.png" alt=""></h1>
          <nav class="gnb">
             <ul>
-                <li><a href="/myInfoController"><img src="/jyh/views/index.markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/index.markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>

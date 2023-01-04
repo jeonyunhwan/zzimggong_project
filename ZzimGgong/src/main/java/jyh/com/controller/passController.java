@@ -59,13 +59,13 @@ public class passController extends HttpServlet {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer1 = response.getWriter();
 				writer1.print(
-						"<script>alert('비밀번호 변경되었습니다. 로그인을해주세요.'); location.href='/views/login.jsp';</script>");
+						"<script>alert('비밀번호 변경되었습니다!'); location.href='/myInfoController';</script>");
 				writer1.close();
 			} else {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer2 = response.getWriter();
 				writer2.println(
-						"<script>alert('비밀번호 변경이 실패하였습니다 다시한번 시도해주세요.'); location.href='/views/login.jsp';</script>");
+						"<script>alert('비밀번호 변경이 실패하였습니다 다시한번 시도해주세요.'); location.href='/jyh/views/updatePass.jsp';</script>");
 				writer2.close();
 			}
 		}

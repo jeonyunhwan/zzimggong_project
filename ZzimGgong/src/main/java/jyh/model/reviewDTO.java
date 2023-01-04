@@ -19,8 +19,9 @@ public class reviewDTO {
 	 * @param reviewImg
 	 */
 	
-	public reviewDTO(String resName,String resnum,String reviewDate,int starScore, String content,
+	public reviewDTO(int rnum,String resName,String resnum,String reviewDate,int starScore, String content,
 			String reviewImg) {
+		this.rnum = rnum;
 		this.resName = resName;
 		this.resnum = resnum;
 		this.reviewDate = reviewDate;

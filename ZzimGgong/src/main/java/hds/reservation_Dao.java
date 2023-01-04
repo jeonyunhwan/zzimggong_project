@@ -56,7 +56,7 @@ public class reservation_Dao {
 				+ "SET RESERVE_STATE = 1\r\n"
 				+ "WHERE USER_EMAIL = ?\r\n"
 				+ "AND RESNUM = ?\r\n"
-				+ "AND RESERVE_START_TIME = TO_DATE(?,'YYYY-MM-DD HH24:MI')";
+				+ "AND RESERVE_START_TIME = TO_DATE(?,'YYYY-MM-DD HH24:MI:SS')";
 		try {
 			con = DB.con();
 			con.setAutoCommit(false);
@@ -200,6 +200,35 @@ public class reservation_Dao {
 		}
 		
 		return alist;
+		
+	}
+
+	// 즉시예약 거절
+	public void res_deny(String user_email, String resNum,String reserve_start_time) {
+		String sql="UPDATE reservation\r\n"
+				+ "SET RESERVE_STATE = 2\r\n"
+				+ "WHERE USER_EMAIL = ?\r\n"
+				+ "AND RESNUM = ?\r\n"
+				+ "AND RESERVE_START_TIME = TO_DATE(?,'YYYY-MM-DD HH24:MI:SS')";
+		try {
+			con = DB.con();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_email);
+			pstmt.setString(2, resNum);
+			pstmt.setString(3, reserve_start_time);	
+	
+			rs = pstmt.executeQuery();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("DB 에러 : "+e.getMessage());
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("에러 : "+e.getMessage());
+		}finally {
+			DB.close(rs, pstmt, con);
+		}
 		
 	}	
 

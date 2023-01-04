@@ -20,7 +20,7 @@
 <body>
 <div class="wrapper">
     <header>
-        <a href = "/jyh/index.jsp" class="logo"><img src="/jyh/views/index_markup/img/main_logo.png" alt="#"></a>
+        <a href = "/ljw/pg0000.jsp" class="logo"><img src="/index_markup/img/main_logo.png" alt="#"></a>
     </header>
     <section>
         <div class="content">
@@ -86,10 +86,10 @@ console.log(Kakao.isInitialized()); // sdk초기화여부판단
 <script type = "text/javascript"> 
 
 // 네이버 로그인 부분 
-var naver_id_login = new naver_id_login("b06toaGrqKSfcX7fTe6V", "http://localhost:7008/views/naverCallback.jsp");
+var naver_id_login = new naver_id_login("b06toaGrqKSfcX7fTe6V", "http://localhost:7008/jyh/views/naverCallback.jsp");
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("white", 2,40);
-  	naver_id_login.setDomain("http://localhost:7008/jyh/login.jsp");
+  	naver_id_login.setDomain("http://localhost:7008/jyh/views/login.jsp");
   	naver_id_login.setState(state);
   	naver_id_login.setPopup();
   	naver_id_login.init_naver_id_login();
