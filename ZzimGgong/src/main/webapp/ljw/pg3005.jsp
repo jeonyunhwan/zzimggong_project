@@ -45,6 +45,7 @@
 	}
 	nav.searchmenu>.menu>li:hover{
 		color:#601986;
+		cursor:pointer;
 	}
 	#choice{
 		color:#601986;
@@ -144,6 +145,7 @@
 	    height:33px;
 	    font-size:18px;
 	    line-height:33px;
+	    cursor:pointer;
    }
    .crst01>div>div>img{
 		height:20px;
@@ -165,13 +167,13 @@
    		font-size:23px;
    		width:100%;
    }
-   .crst02>h1{
+   #printNum{
    		display:inline-flex;
    		text-align:center;
    		font-size:45px;
    		color:#da6e85;
    }
-   .crst02>img{
+   #rfsh{
    		display:inline-flex;
    		align-self: center;
 		height:20px;
@@ -211,6 +213,11 @@
 	    margin:0px auto;
 	    line-height:40px; 
    }
+   	.crst04:hover{
+		cursor:pointer;
+		background-color:#601986;
+		color:#fff;
+	}
    
    /*
    솜 css
@@ -255,7 +262,7 @@
 <div class="wrapper">
 <%
 	String resNum = "";
-    memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+	memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
 	String userEmail = loginUser.getEmail();
 %>
    <c:if test="${empty sesID }">
@@ -324,12 +331,14 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 <%} %>
 		    </div>
 		    
+	<!-- 원격줄서기 -->	    
+	<%-- waitingcurrent ${loginUser}--%>
+	<jsp:useBean id="daoo" class="ljw.WaitingCrDao"/>
+	<c:set var="waiting" value="${daoo.curntSitu( ${loginUser} )}"/> 	 <%-- 가게/신청정보 출력 --%>
 		    
 		    <div class="crst_rmt">
-		    <!-- 원격줄서기 -->
-	 
 			    <div class="crst01">
-			    	<h1 id="rstname">상호명</h1>
+			    	<h1 id="rstname">${waiting.resName}</h1>
 			    	<div>
 			    		<div id="phonecall"><img src="/index_markup/img/phonecall_icon.png" alt="">전화</div>
 			    		<div id="location"><img src="/index_markup/img/locationpin_icon.png" alt="">위치</div>
@@ -337,20 +346,17 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 			    </div>
 			    <div class="crst02">
 			    	<h2>현재 내 입장 순서는</h2>
-			    	<h1>3번</h1>
-			    	<img src="/index_markup/img/circlearrow_icon.png" alt=""/>
+			    	<h1 id="printNum"></h1>
+			    	<img id="rfsh" src="/index_markup/img/circlearrow_icon.png" alt=""/>
 			    </div>
 			    <div class="crst03">
-			    	<h4>대기번호 3</h4>
-			    	<h5>인원 3명</h5>
-			    	<h5>접수일시 2222년 2월 2일 2시 2분 </h5>
+			    	<h4>대기번호 ${waiting.waitingNum}</h4>
+			    	<h5>인원 ${waiting.waitingPerson }명</h5>
+			    	<h5>접수일시 ${waiting.wstarttime } </h5>
 			    </div>
-			    <div class="crst04">대기 취소하기</div>
+			    <button type="button" class="crst04">대기 취소하기</button>
 		    </div>
-
-		    
-		    
-		    
+    
         </div>
     </section>
     
@@ -385,6 +391,45 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 	var crstRsvOb = document.querySelector(".crst_rsv")
 	var crstRmtOb = document.querySelector(".crst_rmt")
 	
+	//전화,위치버튼
+	var callOb = document.querySelector("#phonecall")
+	var locOb = document.querySelector("#location")
+	// waitingCurrent
+	var currentNumOb = document.querySelector("#printNum")
+	// 순번새로고침
+	var refreshOb = document.querySelector("#rfsh")
+	//원격줄서기 버튼 //현재날짜
+	var today = new Date();
+	var wdate = today.getFullYear()+"/"+(today.getMonth()+1)+"/"+(today.getDate())
+	// waitingCancelEnter //원격줄서기 취소하기
+	var cancelButton = document.querySelector(".crst04");
+	
+	//전화,위치 alert창
+	callOb.onclick = function(){
+		alert("가게 전화번호\n${waiting.resPhoneNum}")
+	}
+	locOb.onclick = function(){
+		alert("가게 주소\n${waiting.resAddress}")
+	}
+	
+	// 순번새로고침
+	refreshOb.onclick=function(){
+		location.href = location.href;
+	}
+	// waitingCancelEnter //원격줄서기 취소하기
+	cancelButton.onclick=function(){
+		var xhr = new XMLHttpRequest()
+		xhr.open("get", "pg3005_wcancel.jsp?wstarttimeS="+wdate, true)
+		xhr.send()
+		
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				alert("원격줄서기가 취소되었습니다")
+				location.href="/ljw/pg0000.jsp"
+			}
+		}
+	}
+	
 	//실시간예약 버튼 클릭 시
 	crstRsvButtonOb.addEventListener("click", function(){
 		crstRsvButtonOb.style.color="#f6f6f6"
@@ -402,7 +447,7 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 
 
 	//원격줄서기 버튼
-	crstRmtButtonOb.addEventListener("click", function(){
+	crstRmtButtonOb.onclick = function(){
 		crstRmtButtonOb.style.color="#f6f6f6"
 		crstRmtButtonOb.style.background="#601986"
 		crstRmtOb.style.display="block"
@@ -412,7 +457,17 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 		crstRsvOb.style.display="none"
 		crstBlankOb.style.display="none"
 		
-	})
+		var xhr = new XMLHttpRequest()
+		xhr.open("get", "pg3005_wcrprint.jsp?wstarttimeS="+wdate, true)
+		xhr.send()
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				console.log(xhr.responseText)
+				currentNumOb.innerHTML=xhr.responseText+"번"
+				// xhr.responseText : <.% %>여기서 출력된 값을 가져오는 거
+			}
+		}
+	}
 	
 </script>
 </html>

@@ -14,23 +14,18 @@
 <fmt:requestEncoding value="UTF-8" />
 
 <%
-	// String resNum = "";
-    // memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
-	// String userEmail = loginUser.getEmail();
+	String resNum = "";
+    memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+	String userEmail = loginUser.getEmail();
 %>
  
  	<jsp:useBean id ="ccdao" class="ljw.WaitingCcEntDao"/>
 	<jsp:useBean id ="cc" class="ljw.vo.WaitingCancelEnter"/>
 	
-	${cc.setUserEmail("alsn0527@naver.com") } <%--세션값 넣ㄴ기 --%>
+	${cc.setUserEmail(${loginUser}) } 
 	${cc.setWstarttimeS(param.wstarttimeS) }
 	
 	${ccdao.cancelWCustomer(cc) }
-	<script>
-	function abc(){
-		
-	}
-	
-	</script>
+
 	
 	

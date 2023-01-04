@@ -13,12 +13,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:requestEncoding value="UTF-8" />
 	
+	<%
+	String resNum = "";
+    memberDTO loginUser = (memberDTO)session.getAttribute("sesID");
+	String userEmail = loginUser.getEmail();
+	%>
 
 	<jsp:useBean id ="wndao" class="ljw.WaitingCrDao"/>
 	<jsp:useBean id ="wn" class="ljw.vo.WaitingCurrent"/>
 	<%--<jsp:setProperty property="*" name="wn"/>--%>
 	<%-- <c:set var="a" value="${wndao.currentNum() }"/>--%>
-	${wn.setUserEmail("alsn0527@naver.com") } <%--세션값 넣ㄴ기 --%>
+	${wn.setUserEmail(${loginUser}) } 
 	${wn.setWstarttimeS(param.wstarttimeS) }
 	
 	${wndao.currentNum(wn) } 
