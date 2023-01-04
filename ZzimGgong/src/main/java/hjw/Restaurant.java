@@ -19,6 +19,7 @@ public class Restaurant {
 	private String enroll_dateS;
 	private int wating;
 	private int reservation;
+
 	public Restaurant() {
 		// TODO Auto-generated constructor stub
 	}
@@ -127,6 +128,14 @@ public class Restaurant {
 		this.enroll_date = enroll_date;
 	}
 
+	public String getEnroll_dateS() {
+		return enroll_dateS;
+	}
+
+	public void setEnroll_dateS(String enroll_date) {
+		this.enroll_dateS = enroll_date;
+	}
+
 	public int getWating() {
 		return wating;
 	}
@@ -167,5 +176,5 @@ public class Restaurant {
 		this.wating = wating;
 		this.reservation = reservation;
 	}
-	
+
 }
