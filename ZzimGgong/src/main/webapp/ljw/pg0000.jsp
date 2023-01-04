@@ -17,7 +17,7 @@
 <meta charset="UTF-8">
 <title>찜꽁</title>
 
-<link rel="stylesheet" href="../index_markup/reset.css"/>
+<link rel="stylesheet" href="/index_markup/reset.css"/>
 <style type="text/css">
 
  	/* ㅇㅇ */
@@ -189,6 +189,26 @@
 	}
 	*/
 
+
+#container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.img {
+  display: none;
+  width: 100%;
+  height: 200px;
+}
+
+.img.on {
+  display: block;
+}
+
+
+
 </style>
 </head>
 <body>
@@ -239,9 +259,11 @@
 		    	</ul>
 		    </nav>
 		    
-		    <div class="advertising">
-				<img alt="" src="/index_markup/img/mainBanner01.png">
-		    </div>
+		<div id="container">
+		  <img class="img" src="/index_markup/img/mainBanner01.png" />
+		  <img class="img" src="/index_markup/img/mainBanner02.png" />
+		  <img class="img" src="/index_markup/img/mainBanner03.png" />
+		</div>
 		    
 		    <h3>내 주변 맛집으로 찜꽁</h3>
 		    
@@ -358,5 +380,24 @@
 	}
 
 
+	
+	const images = document.querySelectorAll('.img');
+	let current = 0;
+
+	function showSlide() {
+	  for(let i=0; i<images.length; i++) {
+	    images[i].classList.remove('on');
+	  }
+	  current++;
+	  if(current > images.length) {
+	    current = 1;
+	  }
+	  images[current - 1].classList.add('on');
+	  setTimeout(showSlide, 2000);
+	}
+
+	showSlide();
+	
+	
 </script>
 </html>
