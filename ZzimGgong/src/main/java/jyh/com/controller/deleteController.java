@@ -42,7 +42,7 @@ public class deleteController extends HttpServlet {
 			session.invalidate();
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('성공적으로 탈퇴되었습니다.'); location.href='/jyh/index.jsp';</script>"); 
+			writer.println("<script>alert('성공적으로 탈퇴되었습니다.'); location.href='/ljw/pg0000.jsp';</script>"); 
 			//close하면 sendRedirect 불가 
 			writer.close();
 			return;

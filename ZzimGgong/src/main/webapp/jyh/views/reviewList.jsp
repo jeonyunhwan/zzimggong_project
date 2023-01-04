@@ -47,10 +47,12 @@
 <body>
 <div class="wrapper">
     <header>
-        <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+        <h1 class="logo">
+        <a href = "/ljw/pg0000.jsp"><img src="/index_markup/img/main_logo.png" alt=""></a>
+        </h1>
          <nav class="gnb">
             <ul>
-                <li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
+                <li><a href="/myInfoController"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
             </ul>
          </nav>
     </header>
@@ -74,10 +76,11 @@
 					for (int i = 0; i < list.size(); i++) {
 						reviewDTO lists = list.get(i); // 반환된 list에 담긴 참조값
 %>            
-                    <div id = "inform" onclick = "goResNum(<%=lists.getResnum()%>);">
+                    <div id = "inform" onclick = "goResNum('<%=lists.getResnum()%>')">
                     <div class = imgform>
                         <h1 class = "iems"><img src = "/img/kakaologo.png"></h1>
                         <div class ="container">
+                        <%=lists.getResnum() %>
                             <h2><%=lists.getResName()%><span class = "col">★<%=lists.getStarScore()%>점</span><span><%=lists.getReviewDate()%></span></h2>
                                 <div class = "itemss"><%=lists.getContent()%></div>
                         </div> 
