@@ -379,6 +379,7 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 
     </footer>
 </div>
+	
 
 
 </body>

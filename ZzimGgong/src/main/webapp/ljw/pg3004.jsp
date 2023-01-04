@@ -143,24 +143,18 @@
 	<jsp:useBean id="dao" class="ljw.WaitingDao"/>
 	
 	<%
-		//String loginUserEmail = loginUser.getEmail();
+		String loginUserEmail = loginUser.getEmail();
 		
 		String resnum = request.getParameter("resnum"); //parameter로 가게 번호
 		String countResnum = request.getParameter("countResnum"); //parameter로 시간
 		int countResnumInt = Integer.parseInt(countResnum);
-				
-		String personNum = request.getParameter("resCnt");
-		int personNumInt = Integer.parseInt(personNum);
-		// http://localhost:7080/ljw/pg3004.jsp?resCnt=5&resnum=123-45-67895
 
-		//"${loginUser}"
-		dao.insertWaiting(new Waiting(resnum,"jyh123@naver.com", personNumInt,"F","F"));
-		dao.updWaitingNum(new Waiting(resnum, "jyh123@naver.com"));
+
 		
 	%>
 
    		    		<div class="rmt_wt">대기예상시간 <%=5+countResnumInt*5 %>분</div>
-   		    		<input type="submit" class="rmt_confirm" value="대기신청하기"/>
+   		    		<input type="button" class="rmt_confirm" value="대기신청하기"/>
    		    	</form>
    		    </div>
    		        
@@ -194,11 +188,16 @@
 <script>
 	
 	var confirmButton = document.querySelector(".rmt_confirm");
+	var resCnt = document.querySelector("[name=resCnt]");
+	var resnum = "<%=resnum%>"
+	var countResnum = <%=countResnum%>
 	
-	confirmButton.addEventListener("click", function(){
+	confirmButton.onclick = function(){
 		alert("원격줄서기 신청완료");
-		location.href="/ljw/pg0000.jsp";
-	})
+		location.href="/ljw/pg3004_resCnt.jsp?resnum="+resnum+"&countResnum="+countResnum+"&resCnt=" + resCnt.value
+	}
+	
+
 	
 </script>
 </html>
