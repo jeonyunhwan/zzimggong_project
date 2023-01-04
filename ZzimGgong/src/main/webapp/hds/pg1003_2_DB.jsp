@@ -8,11 +8,11 @@
 <%
 
 String email = request.getParameter("user_email");
-String res_Num = request.getParameter("resnum");
+String res_Num = request.getParameter("resNum");
 String start_time = request.getParameter("reserve_start_time");
 
 start_time = start_time.replace("%", " ");
 System.out.println(start_time);
-dao.res_deny(email, res_Num, start_time);
+dao.res_approval(email, res_Num, start_time);
 
 %>

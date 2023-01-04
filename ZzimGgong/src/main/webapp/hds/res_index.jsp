@@ -293,7 +293,7 @@
 	    			</div>
 	    			<div class="text_box">
 	    				<ul>
-	    					<li class="info_title" onclick="location.href='pg_1001.jsp?resNum=123-45-67890'">연돈</li>
+	    					<li class="info_title" onclick="location.href='pg_1001.jsp?resnum=123-45-67890'">연돈</li>
 	    					<li>☆ 5.0</li>
 	    					<li>일식</li>
 	    					<li>용오로 84</li>
@@ -306,7 +306,7 @@
 	    			</div>
 	    			<div class="text_box">
 	    				<ul>
-	    					<li class="info_title" onclick="location.href='pg_1001.jsp?resNum=123-45-67894'">도원</li>
+	    					<li class="info_title" onclick="location.href='pg_1001.jsp?resnum=123-45-67894'">도원</li>
 	    					<li>☆ 4.8</li>
 	    					<li>중식</li>
 	    					<li>토금북로 30</li>
@@ -319,7 +319,7 @@
 	    			</div>
 	    			<div class="text_box">
 	    				<ul>
-	    					<li class="info_title" onclick="location.href='pg_1001.jsp?resNum=123-45-67893'">은희네 해장국</li>
+	    					<li class="info_title" onclick="location.href='pg_1001.jsp?resnum=123-45-67893'">은희네 해장국</li>
 	    					<li>☆ 3.2</li>
 	    					<li>한식</li>
 	    					<li>토금북로 32</li>
@@ -332,7 +332,7 @@
 	    			</div>
 	    			<div class="text_box">
 	    				<ul>
-	    					<li class="info_title" onclick="location.href='pg_1001.jsp?resNum=123-45-67891'">동화가든</li>
+	    					<li class="info_title" onclick="location.href='pg_1001.jsp?resnum=123-45-67891'">동화가든</li>
 	    					<li>☆ 5.0</li>
 	    					<li>한식</li>
 	    					<li>토금북로 22</li>

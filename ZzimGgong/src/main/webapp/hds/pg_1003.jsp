@@ -150,7 +150,7 @@ for(Reservation r : dao.showApproval(user_email, reserve_start_time, resNum)) {
             
             <div class="btn_wrapper">
                 <div class="btn" id="addBtn">승인</div>
-                <div class="btn" onclick="location.href='pg_1004.html'">거절</div>
+                <div class="btn" onclick="location.href='pg_1004.jsp'">거절</div>
             </div>
             
             <%}else{ %>
@@ -202,17 +202,21 @@ pg1003_DB.jsp?user_email=hds123@naver.com&resNum=2023-01-05 17:00&reserve_start_
 				+"&resNum="+"<%=resNum%>"
 				+"&reserve_start_time="+"<%=reserve_start_time%>";
 			console.log(qstr);
-			callAjax(qstr);
+			callAjax(qstr)
 		}	
 	 
 	
 	function callAjax(qstr) {
-		var xhr = new XMLHttpRequest()
+		var xhr = new XMLHttpRequest();
 		xhr.open("get","pg1003_DB.jsp"+qstr, true);
 		xhr.send()
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 & xhr.status==200){
-				console.log("pg1003_DB.jsp"+qstr+"전송 완료!");
+				console.log("전송 완료!");
+				var go_page = confirm("승인이 완료되었습니다. 예약 내역 확인 페이지로 가시겠습니까?");
+				if(go_page){
+					location.href="pg_1007.jsp"
+				}
 			}
 		}
 	}

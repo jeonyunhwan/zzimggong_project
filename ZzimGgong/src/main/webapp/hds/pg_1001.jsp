@@ -3,7 +3,7 @@
     import="java.util.*"  
 	import="ymw.*"
     import="jyh.model.*"
-    import="jds.*"
+    import="hds.*"
     import="hjw.*"
     import="ljw.*"
    %>
@@ -157,7 +157,7 @@
 </head>
 <body>
 <%
-	String resNum = request.getParameter("resNum");
+	String resnum = request.getParameter("resnum");
 %>
 <div class="wrapper">
 <%
@@ -271,7 +271,7 @@
 			var addReqVal = addReqOb.value;
 			var qstr = "?reserve_apply_person="+resCntVal
 					+"&reserve_start_time="+resDateVal+" "+resTimeVal
-					+"&reserve_request="+addReqVal+"&resNum="+"<%=resNum%>"+"&userEmail="+"<%=user_email%>";
+					+"&reserve_request="+addReqVal+"&resnum="+"<%=resnum%>"+"&userEmail="+"<%=user_email%>";
 			
 			console.log(qstr);
 			callAjax(qstr);
