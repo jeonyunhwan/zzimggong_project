@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <title>찜꽁</title>
-    <link rel="stylesheet" href="../index_markup/reset.css">
+    <link rel="stylesheet" href="/index_markup/reset.css">
     <link rel="stylesheet" href="./style.css">
     <style type="text/css">
     </style>
@@ -26,10 +26,10 @@
 <body style="background-color: #eeee;">
     <div class="wrapper" style="padding-top:11%;">
         <header>
-            <h1 class="logo"><img src="../index_markup/img/main_logo.png" alt=""></h1>
+            <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
             <nav class="gnb">
                 <ul>
-                    <li><a href="#"><img src="../index_markup/img/myPageImg.png" alt=""></a></li>
+                    <li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
                 </ul>
             </nav>
         </header>

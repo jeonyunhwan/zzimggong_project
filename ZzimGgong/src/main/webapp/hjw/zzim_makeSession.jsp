@@ -14,7 +14,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/a00_com/a01_common.css" rel="stylesheet">
 <script>
 /*
  
