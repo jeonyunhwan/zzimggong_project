@@ -76,6 +76,8 @@
 </style>
 </head>
 <body>
+<jsp:useBean id="dao" class="hds.reservation_Dao"/>
+
 
 <div class="wrapper">
     <header>
