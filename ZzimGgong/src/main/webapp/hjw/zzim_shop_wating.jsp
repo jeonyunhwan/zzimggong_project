@@ -135,6 +135,9 @@
         		<div id="enter">입장하기</div>
         		<div id="noenter">입장취소</div>
         	</div>
+        	<div>
+        		<p>${wait.userEmail }</p>
+        	</div>
         </div>
         </section>
         <footer>

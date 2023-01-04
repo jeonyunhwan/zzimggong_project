@@ -84,7 +84,7 @@
 	                	<input type="submit" value="변경">
 					</div>
 				</form>
-				<form action="zzim_update_res.jsp">
+				<form action="zzim_update_pick.jsp">
 					<div class="myshop_contain_info">
 						<p class="myshop_info_smallHead">매장픽</p>
 						<div class="pick_wrapper" style="padding-bottom: 5%">
@@ -108,6 +108,7 @@
 			                    <p>: <input class="myshop_text" type="text" name="purpose" value="${pick.purpose }"></p>
 			                    <p>: <input class="myshop_text" type="text" name="food_type" value="${pick.food_type }"></p>
 			                    <p>: <input class="myshop_text" type="text" name="table_type" value="${pick.table_type }"></p>
+								<input type="hidden"  name="resnum"  value="${res.resnum }">
 							</div>
 						</div>
 						<input type="submit" value="변경">
