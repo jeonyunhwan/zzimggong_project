@@ -69,7 +69,7 @@ public class WaitingCrDao {
 				+ "FROM waiting w, (\r\n"
 				+ "SELECT TO_CHAR(rownum,'9999' ) rrn , user_email\r\n"
 				+ "FROM WAITING\r\n"
-				+ "WHERE to_char(to_date('2023/01/05', 'YYYY/MM/DD'),'YYYY/MM/DD') = TO_char(wstarttime,'YYYY/MM/DD')\r\n"
+				+ "WHERE to_char(SYSDATE,'YYYY/MM/DD') = TO_char(wstarttime,'YYYY/MM/DD')\r\n"
 				+ "AND resnum=(\r\n"
 				+ "			SELECT RESNUM \r\n"
 				+ "			FROM WAITING\r\n"
