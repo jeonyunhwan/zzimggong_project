@@ -211,7 +211,9 @@
 	    font-weight:900;
 	    width:50%;
 	    margin:0px auto;
-	    line-height:40px; 
+	    line-height:50px; 
+	    border:none;
+	    
    }
    	.crst04:hover{
 		cursor:pointer;
@@ -301,9 +303,11 @@
 		    		<div class="crstRmln">원격줄서기</div>
 		    	</div>
 		    </nav>
+		    
 			<div class="crst">
-				<h1>사용하시는 서비스가 없습니다</h1>
+				<h1>이용 중인 서비스를 선택하세요</h1>
 		    </div>
+		    
 		    <div class="crst_rsv">
 				<!-- 즉시 예약 -->
 				<h2>나의 즉시 예약 현황</h2>
@@ -332,9 +336,7 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 		    </div>
 		    
 	<!-- 원격줄서기 -->	    
-	<%-- waitingcurrent ${loginUser}--%>
 	<jsp:useBean id="daoo" class="ljw.WaitingCrDao"/>
-<%--<c:set var="waiting" value="${daoo.curntSitu( ${loginUser} )}"/>  --%>	 <%-- 가게/신청정보 출력 --%>
 	<c:set var="waiting" value="${daoo.curntSitu( sesID.email )}"/> 	 <%-- 가게/신청정보 출력 --%>
 		    
 		    <div class="crst_rmt">
@@ -461,7 +463,7 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 		crstBlankOb.style.display="none"
 		
 		var xhr = new XMLHttpRequest()
-		xhr.open("get", "pg3005_wcrprint.jsp?wstarttimeS="+wdate, true)
+		xhr.open("get", "pg3005_wcrprint.jsp", true)
 		xhr.send()
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4&&xhr.status==200){

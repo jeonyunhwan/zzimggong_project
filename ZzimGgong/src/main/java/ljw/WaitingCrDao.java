@@ -64,29 +64,31 @@ public class WaitingCrDao {
 
 	//2. 실시간 입장순서
 	
-	public int currentNum(WaitingCurrent wc){
-		String sql="SELECT ROWNUM\r\n"
+	public int currentNum(String userEmail){
+		String sql="SELECT TO_NUMBER(rn.rrn) AS rrownum\r\n"
+				+ "FROM waiting w, (\r\n"
+				+ "SELECT TO_CHAR(rownum,'9999' ) rrn , user_email\r\n"
 				+ "FROM WAITING\r\n"
-				+ "WHERE to_char(to_date(?, 'YYYY/MM/DD'),'YYYY/MM/DD') = TO_char(wstarttime,'YYYY/MM/DD')\r\n"
+				+ "WHERE to_char(to_date('2023/01/05', 'YYYY/MM/DD'),'YYYY/MM/DD') = TO_char(wstarttime,'YYYY/MM/DD')\r\n"
 				+ "AND resnum=(\r\n"
-				+ "	SELECT RESNUM \r\n"
-				+ "	FROM WAITING\r\n"
-				+ "	WHERE user_email=?\r\n"
-				+ "	AND cancel='F' 		\r\n"
-				+ "	AND enter_check='F'\r\n"
-				+ ")\r\n"
-				+ "AND user_email = ?\r\n"
+				+ "			SELECT RESNUM \r\n"
+				+ "			FROM WAITING\r\n"
+				+ "			WHERE user_email=?\r\n"
+				+ "			AND cancel='F' 		\r\n"
+				+ "			AND enter_check='F'\r\n"
+				+ "			)\r\n"
 				+ "AND cancel='F' 		\r\n"
 				+ "AND enter_check='F'\r\n"
-				+ "ORDER BY wstarttime";
+				+ "ORDER BY wstarttime) rn\r\n"
+				+ "WHERE w.user_email = rn.user_email\r\n"
+				+ "AND w.user_email=?";
 		int cnt = 0;
 		try {
 			con = DB.con();
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, wc.getWstarttimeS());
-			pstmt.setString(2, wc.getUserEmail());
-			pstmt.setString(3, wc.getUserEmail());
+			pstmt.setString(1, userEmail);
+			pstmt.setString(2, userEmail);
 
 			rs = pstmt.executeQuery();// countResnum
 			if(rs.next()) {

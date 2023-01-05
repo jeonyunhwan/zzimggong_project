@@ -36,17 +36,16 @@ public class WaitingCurrent {
 		this.userEmail = userEmail;
 	}
 	
-	
 	//실시간 입장순서
-	public WaitingCurrent(int rownum ) {
-		this.rownum=rownum;	
-	}
-	public WaitingCurrent(String wstarttimeS, String userEmail) {
-		this.wstarttimeS = wstarttimeS;
+	public WaitingCurrent(int rownum, String userEmail) {
+		this.rownum = rownum;
 		this.userEmail = userEmail;
+	}	
+	public WaitingCurrent(int rownum) {
+		this.rownum = rownum;
 	}
-
 	
+
 	public String getResName() {
 		return resName;
 	}

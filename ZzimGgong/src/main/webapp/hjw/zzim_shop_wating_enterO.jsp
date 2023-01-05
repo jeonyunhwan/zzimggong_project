@@ -5,9 +5,9 @@
     import="jyh.model.*"
     import="hds.*"
     import="ymw.*"
+    import="hjw.*"
     import="ljw.*"
     import="ljw.vo.*"
-    import="hjw"
    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -23,7 +23,7 @@
 	
 	
 	${enO.setUserEmail(param.userEmail) }
-	${enO.setResnum('${sre.resnum}') } 
+	${enO.setResnum(res.resnum) } 
 	${enO.setWstarttimeS(param.wstarttimeS) }
 	
 	${enOdao.enterWStore(enO) }

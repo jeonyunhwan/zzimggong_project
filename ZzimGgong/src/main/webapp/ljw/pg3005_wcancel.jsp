@@ -22,7 +22,7 @@
  	<jsp:useBean id ="ccdao" class="ljw.WaitingCcEntDao"/>
 	<jsp:useBean id ="cc" class="ljw.vo.WaitingCancelEnter"/>
 	
-	${cc.setUserEmail(${loginUser}) } 
+	${cc.setUserEmail(sesID.email) } 
 	${cc.setWstarttimeS(param.wstarttimeS) }
 	
 	${ccdao.cancelWCustomer(cc) }

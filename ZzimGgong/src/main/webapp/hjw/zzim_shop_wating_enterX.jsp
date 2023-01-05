@@ -5,9 +5,9 @@
     import="jyh.model.*"
     import="hds.*"
     import="ymw.*"
+    import="hjw.*"
     import="ljw.*"
     import="ljw.vo.*"
-    import="hjw.*"
    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -24,7 +24,7 @@
 	
 	
 	${enX.setUserEmail(param.userEmail) }
-	${enX.setResnum('${res.resnum}') } 
+	${enX.setResnum(res.resnum) } 
 	${enX.setWstarttimeS(param.wstarttimeS) }
 	
 	${enXdao.cancelWStore(enX) }

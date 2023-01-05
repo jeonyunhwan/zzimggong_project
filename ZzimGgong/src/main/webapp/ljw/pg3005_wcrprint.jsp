@@ -21,11 +21,8 @@
 
 	<jsp:useBean id ="wndao" class="ljw.WaitingCrDao"/>
 	<jsp:useBean id ="wn" class="ljw.vo.WaitingCurrent"/>
-	<%--<jsp:setProperty property="*" name="wn"/>--%>
-	<%-- <c:set var="a" value="${wndao.currentNum() }"/>--%>
-	${wn.setUserEmail(sesID.email) } 
-	${wn.setWstarttimeS(param.wstarttimeS) }
+
 	
-	${wndao.currentNum(wn) }
+	${wndao.currentNum(sesID.email) }
 	
   
