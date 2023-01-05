@@ -55,11 +55,12 @@ public class WaitingDao {
 	}
 	*/
 	
-	//신청전 대기인원-쉬운버전 날짜 빠진 버전
+	//신청전 대기인원-쉬운버전 날짜sysdate 버전
 	public int countWaiting(String resnum){
 		String sql = "SELECT count(resnum) AS countResnum\r\n"
 				+ "FROM WAITING w \r\n"
 				+ "WHERE RESNUM = ? \r\n"
+				+ "AND TO_CHAR(WSTARTTIME, 'YYYY/MM/DD')  = to_char(sysdate, 'YYYY/MM/DD')\r\n"
 				+ "AND CANCEL = 'F' AND ENTER_CHECK ='F' \r\n"
 				+ "GROUP BY resnum";
 		System.out.println(sql);
@@ -109,7 +110,6 @@ public class WaitingDao {
 			pstmt.setInt(3, w.getWaitingPerson());
 			pstmt.setString(4, w.getCancle());
 			pstmt.setString(5, w.getEnterCheck());
-
 			pstmt.executeUpdate();
 			con.commit();
 			

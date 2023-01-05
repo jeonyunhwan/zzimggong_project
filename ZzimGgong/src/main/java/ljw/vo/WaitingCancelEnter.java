@@ -24,10 +24,7 @@ public class WaitingCancelEnter {
 		this.wstarttimeS = wstarttimeS;
 	}
 	
-	
-	//취소하기(가게)
-	//입장하기(가게)
-	
+
 
 	public String getResnum() {
 		return resnum;

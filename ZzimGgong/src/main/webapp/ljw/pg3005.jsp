@@ -334,7 +334,8 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 	<!-- 원격줄서기 -->	    
 	<%-- waitingcurrent ${loginUser}--%>
 	<jsp:useBean id="daoo" class="ljw.WaitingCrDao"/>
-	<c:set var="waiting" value="${daoo.curntSitu( ${loginUser} )}"/> 	 <%-- 가게/신청정보 출력 --%>
+<%--<c:set var="waiting" value="${daoo.curntSitu( ${loginUser} )}"/>  --%>	 <%-- 가게/신청정보 출력 --%>
+	<c:set var="waiting" value="${daoo.curntSitu( sesID.email )}"/> 	 <%-- 가게/신청정보 출력 --%>
 		    
 		    <div class="crst_rmt">
 			    <div class="crst01">
@@ -384,6 +385,7 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 
 </body>
 <script type="text/javascript">
+	
 	
 	var crstRsvButtonOb = document.querySelector(".crstRsrv")
 	var crstRmtButtonOb = document.querySelector(".crstRmln")
@@ -469,6 +471,5 @@ for(Reservation r : dao.showCurrentRes(userEmail, resNum)) {
 			}
 		}
 	}
-	
 </script>
 </html>
