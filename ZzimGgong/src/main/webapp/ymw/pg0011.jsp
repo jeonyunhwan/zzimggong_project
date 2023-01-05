@@ -303,7 +303,7 @@ snums.forEach(function(snum){
 storeInfoDivs.forEach(function(inf,idx){
 	inf.style.cursor = "pointer";
 	if(inf.onclick = function(){
-		location.href = "./pg0012.jsp?resnum="+snums[idx].innerText+"&sch="+schInpOb2.value
+		location.href = "/ymw/pg0012.jsp?resnum="+snums[idx].innerText+"&sch="+schInpOb2.value
 	}){
 	}
 })
@@ -328,7 +328,7 @@ appKindArr.forEach(function(kind){
 			schInpOb2.focus()
 		}
 		else{
-			location.href="./pg0011.jsp?sch="+schInpOb2.value+"&appKind="+appKind+"&arrKind=${param.arrKind}"
+			location.href="/ymw/pg0011.jsp?sch="+schInpOb2.value+"&appKind="+appKind+"&arrKind=${param.arrKind}"
 		}
 		
 	}
@@ -340,7 +340,7 @@ arrKindSel.onchange = function(){
 		schInpOb2.focus()
 	}
 	else{
-		location.href="./pg0011.jsp?sch="+schInpOb2.value+"&appKind=${param.appKind}&arrKind="+arrKind
+		location.href="/ymw/pg0011.jsp?sch="+schInpOb2.value+"&appKind=${param.appKind}&arrKind="+arrKind
 	}
 }
 schInpOb2.onkeyup = function(){
@@ -350,7 +350,7 @@ schInpOb2.onkeyup = function(){
 			schInpOb2.focus()
 		}
 		else{
-			location.href="./pg0011.jsp?sch="+schInpOb2.value+"&appKind=전체&arrKind=별점높은순"
+			location.href="/ymw/pg0011.jsp?sch="+schInpOb2.value+"&appKind=전체&arrKind=별점높은순"
 		}
 	}
 }
