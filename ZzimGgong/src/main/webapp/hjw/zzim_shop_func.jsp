@@ -83,25 +83,20 @@
                     </div>
                     <p class="myshop_info_smallHead">메뉴</p>
                     <p>메뉴종류 : ${menu.mcategory }</p>
-					
-					<c:set var="menuArr" value="${fn:split(menu.menuname,'/') }"/>
-					<c:set var="priceArr" value="${fn:split(menu.price,'/') }"/>
-					<c:forEach var="i" begin="0" end="${fn:length(menuArr)-1 }">
-					<div class="shop_menu_contain">
-						<div class="shop_menu_contain_left">
-							<img class="shop_menu_img" src="${menu.food_img }">
-						</div>
-						<div class="shop_menu_contain_right">
-							<p class="shop_menu_contain_p">${menuArr[i]}</p>
-							<p class="shop_menu_contain_price">${priceArr[i]} 원</p>
-						</div>
-						
-
+		            <c:set var="menuArr" value="${fn:split(menu.menuname,'/') }"/>
+		            <c:set var="priceArr" value="${fn:split(menu.price,'/') }"/>
+		            <c:set var="imgArr" value="${fn:split(menu.food_img,'@') }"/>
+		            <c:forEach var="i" begin="0" end="${fn:length(menuArr)-1 }">
+		            <div class="shop_menu_contain">
+		               <div class="shop_menu_contain_left">
+		                  <img class="shop_menu_img" src="${imgArr[i] }">
+		               </div>
+		               <div class="shop_menu_contain_right">
+		                  <p class="shop_menu_contain_p">${menuArr[i]}</p>
+		                  <p class="shop_menu_contain_price">${priceArr[i]} 원</p>
+		               </div>
 					</div>
-
-					
-					</c:forEach>
-                    
+		            </c:forEach>
                 </div>
             </div>
         </section>

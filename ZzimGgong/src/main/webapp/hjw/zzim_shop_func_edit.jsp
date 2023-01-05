@@ -119,19 +119,20 @@
 					<div class="myshop_contain_info">
 						<p class="myshop_info_smallHead">메뉴</p>
 	                    <p>메뉴종류 : ${menu.mcategory }</p>
-						<c:set var="menuArr" value="${fn:split(menu.menuname,'/') }"/>
-						<c:set var="priceArr" value="${fn:split(menu.price,'/') }"/>
-						<c:forEach var="i" begin="0" end="${fn:length(menuArr)-1 }">
-						<div class="shop_menu_contain">
-							<div class="shop_menu_contain_left">
-								<img class="shop_menu_img" src="${menu.food_img }">
-							</div>
-							<div class="shop_menu_contain_right">
-								<p class="shop_menu_contain_p">${menuArr[i]}</p>
-								<p class="shop_menu_contain_price">${priceArr[i]} 원</p>
-							</div>
+			            <c:set var="menuArr" value="${fn:split(menu.menuname,'/') }"/>
+			            <c:set var="priceArr" value="${fn:split(menu.price,'/') }"/>
+			            <c:set var="imgArr" value="${fn:split(menu.food_img,'@') }"/>
+			            <c:forEach var="i" begin="0" end="${fn:length(menuArr)-1 }">
+			            <div class="shop_menu_contain">
+			               <div class="shop_menu_contain_left">
+			                  <img class="shop_menu_img" src="${imgArr[i] }">
+			               </div>
+			               <div class="shop_menu_contain_right">
+			                  <p class="shop_menu_contain_p">${menuArr[i]}</p>
+			                  <p class="shop_menu_contain_price">${priceArr[i]} 원</p>
+			               </div>
 						</div>
-						</c:forEach>
+			            </c:forEach>
 					</div>
 				</form>
             </div>
@@ -158,28 +159,6 @@
 
 </body>
 <script>
-function is_checked() {
-	  
-	  // 1. checkbox element를 찾습니다.
-	  const checkbox = document.getElementById('pick3');
-	  // 2. checked 속성을 체크합니다.
-	  const is_checked = checkbox.checked;
-	  // 3. 결과를 출력합니다.
-	  document.getElementById('result').innerText = is_checked;
-	  
-	}
-
-
-	var pickAll = document.querySelectorAll(".pick_label");
-	pickAll.forEach(function (pickAll) {
-		pickAll.onclick = function () {
-			this.style.background = "#995dbb"
-			this.style.color = "#f2ebf5"
-			const checkbox = document.getElementById('pick3');
-			const is_checked = checkbox.checked;
-			console.log(is_checked)
-	    }
-	})
 </script>
 
 </html>
