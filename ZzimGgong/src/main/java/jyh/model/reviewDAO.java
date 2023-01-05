@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import ymw.dao.DB;
+
 public class reviewDAO {
 	private Connection con = null;
     private PreparedStatement pstmt = null;
@@ -36,7 +38,7 @@ public class reviewDAO {
     //페이지 처리한 메서드 
     public ArrayList<reviewDTO> reviewView(String email,int page) {
     	ArrayList<reviewDTO> list = new ArrayList<reviewDTO>();
-    	int startNum = (page-1)*3;
+    	int startNum = (page-1)*3+1;
     	int endNum = page*3;
     	//page-1*3
     	//int pages = (page-1)*3;

@@ -101,7 +101,7 @@
 
 	<%-- 가게/신청정보 출력  --%>
 	<jsp:useBean id="dao" class="hjw.WaitingStoreDao"/>
-	<c:set var="store" value="${dao.firstWaiter( '${res.resnum}' )}"/>
+	<c:set var="store" value="${dao.firstWaiter(res.resnum)}"/>
 
 
     <div class="wrapper">
@@ -122,7 +122,7 @@
         	<div class="infoprint">
         		<ul>
         			<li class="text01">입장대기자의 대기번호</li>
-        			<li class="data01">1${store.waitingNum}</li>
+        			<li class="data01">${store.waitingNum}</li>
         			
         			<li class="text01">고객정보</li>
         			<li class="data02">${store.nickname}&nbsp;님</li>
@@ -134,9 +134,6 @@
         	<div class="buttons">
         		<div id="enter">입장하기</div>
         		<div id="noenter">입장취소</div>
-        	</div>
-        	<div>
-        		<p>${wait.userEmail }</p>
         	</div>
         </div>
         </section>

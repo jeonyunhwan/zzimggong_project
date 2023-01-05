@@ -112,7 +112,7 @@ reserve_start_time = reserve_start_time.replace("%", " ");
 
 <div class="wrapper">
       <header>
-         <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+         <h1 class="logo"><a href="/hjw/zzim_shop.jsp?resnum=${param.resnum}"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
          <nav class="gnb">
             <ul>
                <li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
@@ -193,7 +193,9 @@ for(Reservation r : dao.showApproval(user_email, reserve_start_time, resnum)) {
 pg1003_DB.jsp?user_email=hds123@naver.com&resNum=2023-01-05 17:00&reserve_start_time=123-45-67890전송 완료!
 
  --%>
+ <script type="text/javascript" src="/hjw/script/shop_loginJS.js"></script>
 <script type="text/javascript">
+
 	var addBtnOb = document.querySelector("#addBtn");
 	var denyBtnOb = document.querySelector("#denyBtn");
 	

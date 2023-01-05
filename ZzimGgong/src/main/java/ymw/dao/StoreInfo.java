@@ -70,10 +70,11 @@ public class StoreInfo {
 	         pstmt.setString(1, resnum);
 	         rs=pstmt.executeQuery();
 	         while(rs.next()) {
+	        	 double result2 = Math.round(rs.getDouble(3) * 10) / 10.0;
 	        	 schList = new StoReview(
 	        			 rs.getString(1),
 	        			 rs.getString(2),
-			        	 rs.getDouble(3),
+	        			 result2,
 						 rs.getInt(4))
 							 ;
 				}
@@ -99,11 +100,12 @@ public class StoreInfo {
 	         pstmt.setString(1, resnum);
 	         rs=pstmt.executeQuery();
 	         while(rs.next()) {
+	        	 double result2 = Math.round(rs.getDouble(3) * 10) / 10.0;
 	        	 schList = new Review(
 	        			 rs.getString(1),
 	        			 rs.getString(2),
 			        	 rs.getString(3),
-						 rs.getDouble(4),
+			        	 result2,
 						 rs.getString(5),
 						 rs.getString(6),
 						 rs.getString(7))

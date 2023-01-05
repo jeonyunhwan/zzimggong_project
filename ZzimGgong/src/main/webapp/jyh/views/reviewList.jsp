@@ -18,9 +18,6 @@
 	int currentPage = Integer.parseInt(pageNum);
 
 	// 해당 페이지에서 시작할 레코드 / 마지막 레코드
-	int startRow = (currentPage - 1) * pageSize;
-	int endRow = currentPage * pageSize;
-
 	int count = 0;
 	reviewDAO manage = new reviewDAO();
 	count = manage.selectCount(email); // 데이터베이스에 저장된 총 갯수
@@ -80,7 +77,6 @@
                     <div class = imgform>
                         <h1 class = "iems"><img src = "/img/kakaologo.png"></h1>
                         <div class ="container">
-                        <%=lists.getResnum() %>
                             <h2><%=lists.getResName()%><span class = "col">★<%=lists.getStarScore()%>점</span><span><%=lists.getReviewDate()%></span></h2>
                                 <div class = "itemss"><%=lists.getContent()%></div>
                         </div> 

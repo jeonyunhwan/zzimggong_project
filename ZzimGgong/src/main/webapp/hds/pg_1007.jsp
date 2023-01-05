@@ -89,10 +89,10 @@
 %> 
 <div class="wrapper">
       <header>
-         <h1 class="logo"><img src="/index_markup/img/main_logo.png" alt=""></h1>
+         <h1 class="logo"><a href="/hjw/zzim_shop.jsp?resnum=${param.resnum}"><img src="/index_markup/img/main_logo.png" alt=""></a></h1>
          <nav class="gnb">
             <ul>
-               <li><a href="#"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
+               <li><a href="/hjw/zzim_shop.jsp?resnum=${param.resnum}"><img src="/index_markup/img/myPageImg.png" alt=""></a></li>
                <li><button onclick="logout()">종료</button></li>
             </ul>
          </nav>
@@ -142,9 +142,5 @@ for(Reservation r : dao.showResList(user_email, resnum)) {
     </footer>
 </div>
 </body>
-<script>
-/*
-
- */
-</script>
+<script type="text/javascript" src="/hjw/script/shop_loginJS.js"></script>
 </html>

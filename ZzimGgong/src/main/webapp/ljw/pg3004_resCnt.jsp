@@ -5,7 +5,6 @@
     import="ymw.*"
     import="jyh.model.*"
     import="jds.*"
-    import="hjw.*"
     import="ljw.*"
     import="ljw.vo.*"
    %>

@@ -87,6 +87,7 @@ public class Sch {
 	         while(rs.next()) {
 					// select에 해당 컬럼에 맞는 컬럼명, 데이터유형에
 					// 맞게 rs.get타입("컬럼명") 지정하여야 한다.
+	        	 double result2 = Math.round(rs.getDouble(8) * 10) / 10.0;
 	        	 schList.add(new SchList(
 	        			 rs.getString(1),
 	        			 rs.getString(2),
@@ -94,7 +95,7 @@ public class Sch {
 	        			 rs.getInt(4),
 	        			 rs.getInt(5),
 	        			 rs.getString(6),
-	        			 rs.getDouble(8),
+	        			 result2,
 	        			 rs.getInt(7),
 	        			 rs.getString(10)
 	        			 )

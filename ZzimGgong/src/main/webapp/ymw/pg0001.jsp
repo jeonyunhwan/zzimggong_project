@@ -175,7 +175,8 @@
 			    <c:if test="${not empty sesID }">
 			       <div class="recSch">
 			       		<ul>
-			       			<c:forEach var="recSch" begin="0" end="4" items="${schDao.recSch(sesID.email) }">
+			       			<c:forEach var="recSch" begin="0" end="4" 
+			       				items="${schDao.recSch(sesID.email) }">
 			       				<li><span>${recSch }</span></li>
 			       			</c:forEach>
 			       		</ul>

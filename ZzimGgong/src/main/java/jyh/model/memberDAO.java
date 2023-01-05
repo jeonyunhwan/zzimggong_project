@@ -5,8 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import jyh.model.DB;
-import jyh.model.memberDTO;
+import ymw.dao.DB;
 
 
 

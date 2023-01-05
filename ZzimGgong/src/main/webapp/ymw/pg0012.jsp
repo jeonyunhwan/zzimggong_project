@@ -401,7 +401,7 @@
 		       					<div class="star">
 		       						<c:if test="${fn:length(reviews)>0}">
 		       						<c:set var="starCnt" value="0"/>
-				        				<c:forEach var="i" begin="1" end="${reviews[g].star_sco }">
+				        				<c:forEach var="i" begin="1" end="${reviews[g].star_sco}">
 				        					<c:set var="starCnt" value="${i }"/>
 				        					<span><img src="https://cdn-icons-png.flaticon.com/512/956/956100.png"></span>
 				        				</c:forEach>
@@ -540,7 +540,6 @@
 	if(${waiting}==1){
 		waiting.onclick = function(){
 			if(sesID != ""){
-				alert("${countResnum}")
 				var result = confirm("대기인원 ${countResnum}명\n 예상대기시간\t ${5+countResnum*5}분\n 원격줄서기를 신청하시겠습니까?")
 		     	if(result==true){
 		    		location.href="/ljw/pg3004.jsp?resnum=${param.resnum}&countResnum=${countResnum}";
