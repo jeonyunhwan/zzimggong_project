@@ -605,19 +605,19 @@
 	morePage.forEach(function(page,idx){
 		page.onclick = function(){
 			if(idx==0){
-				location.href="./pg0013.jsp?resnum=${param.resnum }"
+				location.href="/ymw/pg0013.jsp?resnum=${param.resnum }"
 			}
 			else if(idx==1){
-				location.href="./pg0014.jsp?resnum=${param.resnum }"
+				location.href="/ymw/pg0014.jsp?resnum=${param.resnum }"
 			}
 			else if(idx==2){
-				location.href="./pg0015.jsp?resnum=${param.resnum }"
+				location.href="/ymw/pg0015.jsp?resnum=${param.resnum }"
 			}
 			else if(idx==3){
-				location.href="./pg0016.jsp?resnum=${param.resnum }"
+				location.href="/ymw/pg0016.jsp?resnum=${param.resnum }"
 			}
 			else if(idx==4){
-				location.href="./pg0017.jsp?resnum=${param.resnum }"
+				location.href="/ymw/pg0017.jsp?resnum=${param.resnum }"
 			}
 		}
 	})
