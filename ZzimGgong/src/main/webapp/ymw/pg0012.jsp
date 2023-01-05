@@ -523,7 +523,8 @@
 
     </footer>
 </div>
-
+	<jsp:useBean id="dao" class="ljw.WaitingDao"/>			
+	<c:set var="countResnum" value="${dao.countWaiting(param.resnum)}"/>
 </body>
 <script type="text/javascript">
 	var sesID = "${sesID}"
@@ -539,7 +540,11 @@
 	if(${waiting}==1){
 		waiting.onclick = function(){
 			if(sesID != ""){
-				location.href="/ljw/pg0012.jsp?resnum=${param.resnum}"
+				alert("${countResnum}")
+				var result = confirm("대기인원 ${countResnum}명\n 예상대기시간\t ${5+countResnum*5}분\n 원격줄서기를 신청하시겠습니까?")
+		     	if(result==true){
+		    		location.href="/ljw/pg3004.jsp?resnum=${param.resnum}&countResnum=${countResnum}";
+		      	}
 			}else{
 				var goLogin = confirm("로그인 후 이용 가능합니다.\n로그인 창으로 이동하시겠습니까?")
 				if(goLogin){

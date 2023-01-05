@@ -11,8 +11,6 @@ public class SchList {
 	private int cnt;
 	private String res_img;
 	
-	private int rownum;
-	
 	public SchList() {
 		// TODO Auto-generated constructor stub
 	}
@@ -32,27 +30,12 @@ public class SchList {
 		this.res_img = res_img;
 	}
 
-	//메인화면에 가게 출력
-	public SchList(int rownum, String resnum, String res_img, String res_name, double sco, 
-			String mcategory, String res_address, int cnt) {
-		this.rownum = rownum;
-		this.resnum = resnum;
-		this.res_img = res_img;
-		this.res_name = res_name;
-		this.sco = sco;
-		this.mcategory = mcategory;
-		this.res_address = res_address;
-		this.cnt = cnt;
-		
-	}
-	
-	
-	
 
 
 	public String getResnum() {
 		return resnum;
 	}
+
 	public void setResnum(String resnum) {
 		this.resnum = resnum;
 	}
@@ -118,12 +101,6 @@ public class SchList {
 	}
 	public void setRes_img(String res_img) {
 		this.res_img = res_img;
-	}
-	public int getRownum() {
-		return rownum;
-	}
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
 	}
 	
 	
