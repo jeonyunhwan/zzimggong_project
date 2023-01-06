@@ -169,7 +169,6 @@
 	
 	enterButton.onclick=function(){
 		var xhr = new XMLHttpRequest()
-		alert("${store.userEmail}")
 		xhr.open("get", "zzim_shop_wating_enterO.jsp?userEmail=${store.userEmail}&wstarttimeS="+wdate, true)
 		xhr.send()
 		xhr.onreadystatechange=function(){

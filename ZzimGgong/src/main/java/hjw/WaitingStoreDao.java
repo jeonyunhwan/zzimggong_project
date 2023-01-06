@@ -60,15 +60,16 @@ public class WaitingStoreDao {
 		// 대기자 정보출력 -시간포함 버전
 		public WaitingStore firstWaiter(String resnum){
 			WaitingStore fwlist = new WaitingStore();
-			String sql="SELECT ROWNUM, w.user_email, nickname, WSTARTTIME, WAITING_PERSON , WAITING_NUM\r\n"
+			String sql="SELECT rownum, e.* from(\r\n"
+					+ "SELECT w.user_email, nickname, WSTARTTIME, WAITING_PERSON , WAITING_NUM\r\n"
 					+ "FROM WAITING w, JJIM_USER ju \r\n"
 					+ "WHERE w.USER_EMAIL = ju.USER_EMAIL \r\n"
-					+ "AND rownum = 1\r\n"
 					+ "AND resnum= ?\r\n"
 					+ "AND TO_CHAR(WSTARTTIME, 'YYYY/MM/DD')  = to_char(sysdate, 'YYYY/MM/DD')\r\n"
-					+ "AND cancel='F' 		\r\n"
+					+ "AND cancel='F'       \r\n"
 					+ "AND enter_check='F'\r\n"
-					+ "ORDER BY wstarttime";
+					+ "ORDER BY w.wstarttime) e\r\n"
+					+ "WHERE rownum = 1";
 			System.out.println(resnum);
 			try {
 				con = DB.con();
