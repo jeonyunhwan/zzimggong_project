@@ -1,5 +1,5 @@
 # zzimggong_project
-찜꽁프로젝트
+테이블링 앱을 모티브로 jsp, javascript,servlet,html,css,oracle로 진행한 웹 프로젝트입니다. 
 
 
 ## 어떤 프로젝트인가요 ? 
