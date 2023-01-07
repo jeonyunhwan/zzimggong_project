@@ -3,3 +3,4 @@
 
 
 ## 어떤 프로젝트인가요 ? 
+<img src = 'img/jjimggong.png'>
